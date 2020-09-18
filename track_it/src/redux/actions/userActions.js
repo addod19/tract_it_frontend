@@ -1,5 +1,3 @@
-const { useState } = require("react");
-
 const defaultUrl = 'http://localhost:3000';
 
 const setUser = payload => ({ type: 'SET_USER', payload });
