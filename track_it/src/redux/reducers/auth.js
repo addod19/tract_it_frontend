@@ -9,7 +9,7 @@ export default function(state = initialState, action) {
     case 'SET_USER':
       return {
         loggedIn: true,
-        user: {...payloa},
+        user: {...payload},
       };
     case 'SIGN_OUT':
       localStorage.clear();
