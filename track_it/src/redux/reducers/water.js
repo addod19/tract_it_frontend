@@ -1,5 +1,5 @@
 import { ADD_WATER, GET_ALL_WATER, GET_WATER, DELETE_WATER, PROGRESS, UPDATE_WATER}
-    from '../actions/types';
+    from '../actions';
 
 const initialState = {
   all_water: [],
