@@ -1,5 +1,5 @@
-import { ADD_WATER, GET_ALL_WATER, GET_WATER, DELETE_WATER, PROGRESS, UPDATE_WATER}
-    from '../actions';
+import { GET_WATER, GET_ALL_WATER, ADD_WATER, DELETE_WATER, UPDATE_WATER, PROGRESS_CALCULATON }
+ from '../actions/types';
 
 const initialState = {
   all_water: [],
@@ -9,7 +9,8 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-  switch(action.type) {
+  const { type, payload } = action;
+  switch(type) {
     case GET_ALL_WATER:
       return {
         ...state,
@@ -31,12 +32,12 @@ export default function (state = initialState, action) {
         loading: false,
       };
 
-    case GET_WATER:
-      return {
-        ...state,
-        water: payload,
-        loading: false,
-      };
+    // case GET_WATER:
+    //   return {
+    //     ...state,
+    //     water: payload,
+    //     loading: false,
+    //   };
 
     case DELETE_WATER:
       return {
@@ -51,7 +52,7 @@ export default function (state = initialState, action) {
         loading: false,
       };
 
-    case PROGRESS:
+    case PROGRESS_CALCULATON:
       return {
         ...state,
         progress_calculations: payload,

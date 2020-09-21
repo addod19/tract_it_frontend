@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import Login from '../components/Auth/Login';
+import Login from './auth/Login';
+import Signup from './auth/Signup';
 import Home from '../components/Home';
 import About from '../components/About';
 
@@ -13,7 +14,8 @@ const App = () => {
       <Router>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="login" exact component={Login} />
+          <Route path="signin" exact component={Login} />
+          <Route path="/signup" exact component={Signup} />
         </Switch>
       </Router>
     </Provider>

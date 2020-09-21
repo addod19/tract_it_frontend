@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { GET_ALL_WATER, GET_WATER, DELETE_WATER, ADD_ALL_WATER, UPDATE_WATER, 
-  PROGRESS_CALCULATION, ALL_WATER_ERRORS } from './types';
+  PROGRESS_CALCULATION, ALL_WATER_ERRORS, ADD_WATER } from './types';
 
 const defaultURL = 'http://localhost:3000';
 const apiConfig = {
@@ -22,8 +22,20 @@ const addAllWater = waterData => async dispatch => {
   }));
 };
 
+const addAllWater = waterData => async dispatch => {
+  await axios.post(`${defaultURL}/all_water/create`, waterDate, apiConfig)
+  .then(response => dispatch({
+    type: ADD_ALL_WATER,
+    payload: response.data,
+  }))
+  .then(error => dispatch({
+      type: ALL_WATER_ERRORS,
+      payload: error,
+  }));
+};
+
 const getWater = id = async dispatch => {
-  await axios.post(`${defaultURL}/SHOW/${id}`, apiConfig)
+  await axios.post(`${defaultURL}/show/${id}`, apiConfig)
   .then(response => dispatch({
     type: GET_WATER,
     payload: response.data,

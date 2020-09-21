@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { signup } from '../../redux/actions/authActions';
 
-
-const SignUp = ({signup, authenticated: { loggedIn }}) => {
+const SignUp = ({ signup, authenticated: { loggedIn }}) => {
   const [signupData, setSignupData] = useState({
     name: '',
     email: '',

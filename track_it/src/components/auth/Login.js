@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { signin } from '../../redux/actions/authActions';
 
-const Login = ( { login, authenticated: { loggedIn }}) => {
+const Login = ( { signin, authenticated: { loggedIn }}) => {
   const [loginData, setloginData] = useState({
     email: '',
     password: ''
@@ -14,8 +15,8 @@ const Login = ( { login, authenticated: { loggedIn }}) => {
   const onChange = e => setloginData({ ...loginData, [e.target.name]: e.target.value });
 
   const onSubmit = async e => {
-    e.preventDefault;
-    login({ email, password });
+    e.preventDefault();
+    signin({ email, password });
   }
 
   if (loggedIn) {
@@ -34,7 +35,7 @@ const Login = ( { login, authenticated: { loggedIn }}) => {
 }
 
 Login.propTypes = {
-  login: PropTypes.func.isRequired,
+  signin: PropTypes.func.isRequired,
   authenticated: PropTypes.shape({
     loggedIn: PropTypes.bool.isRequired,
   }).isRequired,
@@ -44,4 +45,4 @@ const mapStateToProps = state => ({
   authenticate: state.auth,
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { signin })(Login);
