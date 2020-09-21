@@ -3,7 +3,7 @@ const defaultUrl = 'http://localhost:3000';
 const setUser = payload => ({ type: 'SET_USER', payload });
 
 const loadUser = () => dispatch => {
-  fetch(`${defaultUrl}/user_login`, {
+  fetch(`${defaultUrl}/auto_login`, {
     header: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
