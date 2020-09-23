@@ -1,5 +1,5 @@
 {
-  "name": "track_it",
+  "name": "track_it_frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,6 +17,7 @@
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "styled-components": "^5.2.0",
     "uuid": "^8.3.0"
   },
   "scripts": {

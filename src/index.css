@@ -16,12 +16,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family:
-    source-code-pro,
-    Menlo,
-    Monaco,
-    Consolas,
-    'Courier New',
-    monospace;
+.navbar {
+  background-color: #65B9FF;
+  height: 5em;
+  margin-top: 0;
 }

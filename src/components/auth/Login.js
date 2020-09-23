@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { signin } from '../../redux/actions/authActions';
 
-const Login = ( { signin, authenticated: { loggedIn }}) => {
+const Signin = ( { signin, authenticated: { loggedIn }}) => {
   const [loginData, setloginData] = useState({
     email: '',
     password: ''
@@ -34,7 +34,7 @@ const Login = ( { signin, authenticated: { loggedIn }}) => {
   )
 }
 
-Login.propTypes = {
+Signin.propTypes = {
   signin: PropTypes.func.isRequired,
   authenticated: PropTypes.shape({
     loggedIn: PropTypes.bool.isRequired,
@@ -45,4 +45,4 @@ const mapStateToProps = state => ({
   authenticate: state.auth,
 });
 
-export default connect(mapStateToProps, { signin })(Login);
+export default connect(mapStateToProps, { signin })(Signin);

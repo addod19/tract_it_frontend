@@ -1,0 +1,11 @@
+export const SET_USER = 'SET_USER';
+export const GET_ALL_WATER = 'GET_ALL_WATER';
+export const GET_WATER = 'GET_WATER';
+export const UPDATE_WATER = 'UPDATE_WATER';
+export const PROGRESS_CALCULATION = 'PROGRESS_CALCULATION';
+export const ALL_WATER_ERRORS = 'ALL_WATER_ERRORS';
+export const ADD_ALL_WATER = 'ADD_ALL_WATER';
+export const SIGN_OUT = 'SIGN_OUT';
+export const ADD_WATER = 'ADD_WATER';
+export const DELETE_WATER = 'DELETE_WATER';
+export const AUTH_FAIL = 'AUTH_FAIL';

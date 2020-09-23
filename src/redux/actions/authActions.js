@@ -1,6 +1,5 @@
-import userEvent from '@testing-library/user-event';
 import setAuthToken from '../../helpers/setAuthToken';
-import AUTH_FAIL from './types';
+import { AUTH_FAIL } from './types';
 
 const defaultUrl = 'http://localhost:3000';
 
