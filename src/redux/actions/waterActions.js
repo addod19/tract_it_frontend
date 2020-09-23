@@ -1,6 +1,8 @@
+/* global id */
+/* eslint-disable import/prefer-default-export */
 import axios from 'axios';
-import { GET_ALL_WATER, GET_WATER, DELETE_WATER, ADD_ALL_WATER, UPDATE_WATER, 
-  PROGRESS_CALCULATION, ALL_WATER_ERRORS, ADD_WATER } from './types';
+import { GET_WATERS, GET_WATER, DELETE_WATER, ADD_WATERS, UPDATE_WATER, 
+  PROGRESS_CALCULATION, WATERS_ERRORS } from './types';
 
 const defaultURL = 'http://localhost:3000';
 const apiConfig = {
@@ -10,26 +12,14 @@ const apiConfig = {
     Authorization: `Bearer ${localStorage.getItem('token')}`,
   },
 };
-const addAllWater = waterData => async dispatch => {
-  await axios.post(`${defaultURL}/all_water/create`, waterDate, apiConfig)
+const addWaters = waterData => async dispatch => {
+  await axios.post(`${defaultURL}/all_water/create`, waterData, apiConfig)
   .then(response => dispatch({
-    type: ADD_ALL_WATER,
+    type: ADD_WATERS,
     payload: response.data,
   }))
   .then(error => dispatch({
-      type: ALL_WATER_ERRORS,
-      payload: error,
-  }));
-};
-
-const addAllWater = waterData => async dispatch => {
-  await axios.post(`${defaultURL}/all_water/create`, waterDate, apiConfig)
-  .then(response => dispatch({
-    type: ADD_ALL_WATER,
-    payload: response.data,
-  }))
-  .then(error => dispatch({
-      type: ALL_WATER_ERRORS,
+      type: WATERS_ERRORS,
       payload: error,
   }));
 };
@@ -41,31 +31,31 @@ const getWater = id = async dispatch => {
     payload: response.data,
   }))
   .then(error => dispatch({
-      type: ALL_WATER_ERRORS,
+      type: WATERS_ERRORS,
       payload: error,
   }));
 };
 
-const getAllWater = () => async dispatch => {
+const getWaters = () => async dispatch => {
   await axios.post(`${defaultURL}/water/index`, apiConfig)
   .then(response => dispatch({
-    type: GET_ALL_WATER,
+    type: GET_WATERS,
     payload: response.data,
   }))
   .then(error => dispatch({
-      type: ALL_WATER_ERRORS,
+      type: WATERS_ERRORS,
       payload: error,
   }));
 };
 
-const updateWater = id = async dispatch => {
-  await axios.put(`${defaultURL}/update/${id}`, apiConfig)
+const updateWater = (id, water )= async dispatch => {
+  await axios.put(`${defaultURL}/update/${id}`, water, apiConfig)
   .then(response => dispatch({
     type: UPDATE_WATER,
     payload: response.data,
   }))
   .then(error => dispatch({
-      type: ALL_WATER_ERRORS,
+      type: WATERS_ERRORS,
       payload: error,
   }));
 };
@@ -77,7 +67,7 @@ const deleteWater = id => async dispatch => {
     payload: response.data,
   }))
   .then(error => dispatch({
-      type: ALL_WATER_ERRORS,
+      type: WATERS_ERRORS,
       payload: error,
   }));
 };
@@ -89,9 +79,9 @@ const progressCal = () => async dispatch => {
     payload: response.data.progress,
   }))
   .then(error => dispatch({
-      type: ALL_WATER_ERRORS,
+      type: WATERS_ERRORS,
       payload: error,
   }));
 };
 
-export default { addAllWater, getWater, getAllWater, updateWater, deleteWater, progressCal };
+export default { addWaters, getWater, getWaters, updateWater, deleteWater, progressCal };

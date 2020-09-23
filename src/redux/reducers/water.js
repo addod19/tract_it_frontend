@@ -1,4 +1,4 @@
-import { GET_WATER, GET_ALL_WATER, ADD_WATER, DELETE_WATER, UPDATE_WATER, PROGRESS_CALCULATION }
+import { GET_WATER, GET_WATERS, ADD_WATER, DELETE_WATER, UPDATE_WATER, PROGRESS_CALCULATION }
  from '../actions/types';
 
 const initialState = {
@@ -11,7 +11,7 @@ const initialState = {
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch(type) {
-    case GET_ALL_WATER:
+    case GET_WATERS:
       return {
         ...state,
         all_water: payload,
