@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { signout } from '../redux/actions/authActions';
+import Footer from './Footer';
 
 const Home = ({ auth: { loggedIn, user }, signout }) => (
   <div>
-    {loggedIn === false ? (
+    {loggedIn !== true ? (
         <>
         <div >
           <h3>Water Intake Tracker</h3>
@@ -31,6 +32,7 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
         <div>
           <button type="button" onClick={signout}>Signout</button>
         </div>
+        <Footer />
       </div>
     )}
   </div>

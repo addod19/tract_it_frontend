@@ -24,7 +24,7 @@ const addWaters = waterData => async dispatch => {
   }));
 };
 
-const getWater = id = async dispatch => {
+const getWater = id => async dispatch => {
   await axios.post(`${defaultURL}/show/${id}`, apiConfig)
   .then(response => dispatch({
     type: GET_WATER,
@@ -48,7 +48,7 @@ const getWaters = () => async dispatch => {
   }));
 };
 
-const updateWater = (id, water )= async dispatch => {
+const updateWater = ( id, water ) => async dispatch => {
   await axios.put(`${defaultURL}/update/${id}`, water, apiConfig)
   .then(response => dispatch({
     type: UPDATE_WATER,
