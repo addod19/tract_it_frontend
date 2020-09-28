@@ -5,15 +5,33 @@ import home from '../images/home.png';
 import trackIt from '../images/track-it.png';
 import progress from '../images/progress.png';
 
+import '../App.css';
+import styled from 'styled-components';
+
+const FooterWrap = styled.div`
+  height: 100px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  margin-top: 45%;
+`;
+
+const LogoWrap = styled.div`
+
+`;
+
 const Footer = () => (
 
-  <footer className="footer">
+  <FooterWrap>
     <Link
-      to="/addwater"
+      to="/add_waters"
       className="btn btn-lg footer-btn"
       role="button"
     >
-      <img className="footer-img" src={addWater} alt="addwater" />
+      <LogoWrap>
+        <img className="footer-icons" src={addWater} alt="addwater" />
+      </LogoWrap>
       <p className="mb-0">Add Water</p>
     </Link>
     <Link
@@ -21,7 +39,7 @@ const Footer = () => (
       className="btn footer-btn"
       role="button"
     >
-      <img className="footer-img" src={trackIt} alt="trackit" />
+      <img className="footer-icons" src={trackIt} alt="trackit" />
       <p className="mb-0">Track.it</p>
     </Link>
     <Link
@@ -29,7 +47,7 @@ const Footer = () => (
       className="btn btn-lg footer-btn"
       role="button"
     >
-      <img className="footer-img" src={progress} alt="progress" />
+      <img className="footer-icons" src={progress} alt="progress" />
       <p className="mb-0">Your progress</p>
     </Link>
     <Link
@@ -37,10 +55,10 @@ const Footer = () => (
       className="btn btn-lg footer-btn"
       role="button"
     >
-      <img className="footer-img" src={home} alt="home" />
+      <img className="footer-icons" src={home} alt="home" />
       <p className="mb-0">Home</p>
     </Link>
-  </footer>
+  </FooterWrap>
 );
 
 export default Footer;

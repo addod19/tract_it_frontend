@@ -65,6 +65,7 @@ export const signin = userDetails => async dispatch => {
   .then(data => {
     localStorage.setItem('token', data.token);
     dispatch(setUser(data.user));
+    console.log(data.user);
   })
   .then(error => dispatch({
     type: AUTH_FAIL,
@@ -72,7 +73,6 @@ export const signin = userDetails => async dispatch => {
   }));
 };
 
-export const signout = () => ({ type: 'LOG_OUT' });
+export const signout = () => ({ type: 'SIGN_OUT' });
 
-export default { loadUser }
-
+export default loadUser;

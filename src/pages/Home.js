@@ -4,38 +4,66 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { signout } from '../redux/actions/authActions';
 import Footer from './Footer';
+import Signin from '../components/auth/Login';
 
+import styled from 'styled-components';
+
+const MainWrap = styled.div`
+  width: 100%;
+  height: 690px;
+  background-color: #51adcf;
+`;
+
+const UserWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  border: 1px solid red;
+`;
+
+const IntroWrap = styled.div`
+  height: 40px;
+  width: 50%;
+`;
+
+const IntroText = styled.div`
+  text-align: center;
+  position: absolute;
+  margin-top: 20%;
+  margin-left: 40%;
+  font-size: 25px;
+`;
 const Home = ({ auth: { loggedIn, user }, signout }) => (
-  <div>
-    {loggedIn !== true ? (
+  <MainWrap>
+    {loggedIn === false ? (
         <>
-        <div >
-          <h3>Water Intake Tracker</h3>
-        </div>
+        <IntroWrap>
+          <IntroText>Water Intake Tracker</IntroText>
+        </IntroWrap>
         <div>
-          <Link to="/signin">
-            Signin
-          </Link>
+          <Signin />
           <Link to="/signup">
             Signup
           </Link>
         </div>
         </>
     ) : (
-      <div>
+      <>
+      <UserWrap>
         <div>
           Home
         </div>
         <div>
-          {user.email}
+         welcome {user.email} !!
         </div>
         <div>
           <button type="button" onClick={signout}>Signout</button>
         </div>
-        <Footer />
-      </div>
+      </UserWrap>
+      <Footer />
+      </>
     )}
-  </div>
+  </MainWrap>
 );
 
 Home.propTypes = {

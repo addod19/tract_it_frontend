@@ -4,6 +4,31 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { signin } from '../../redux/actions/authActions';
 
+import styled from 'styled-components';
+
+const SignInWrap = styled.div`
+  width: 50%;
+  height: 140px;
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1), 
+              0 0  0 2px rgb(255,255,255),
+              0.3em 0.3em 1em rgba(0,0,0,0.3);
+`;
+
+const EmailWrap = styled.div`
+  width: 100%;
+`;
+
+const PasswordWrap = styled.div`
+  width: 100%;
+`;
+
+const ButtonWrap = styled.div`
+  width: 100%;
+`;
+
 const Signin = ( { signin, authenticated: { loggedIn }}) => {
   const [loginData, setloginData] = useState({
     email: '',
@@ -24,15 +49,22 @@ const Signin = ( { signin, authenticated: { loggedIn }}) => {
   }
 
   return(
-    <>
+    <SignInWrap>
       <form onSubmit={onSubmit}>
-        <input type='email' onChange={onChange} value={email} name="email" required /> 
-        <input type='password' onChange={onChange} value={password} name="password" required /> 
-        <button type="submit">Login</button>
+        <EmailWrap>
+          <input type='email' onChange={onChange} value={email} name="email" required /> 
+        </EmailWrap>
+        <PasswordWrap>
+          <input type='password' onChange={onChange} value={password} name="password" required /> 
+        </PasswordWrap>
+        <ButtonWrap>
+          <button type="submit" onSubmit={onSubmit}>Login</button>
+        </ButtonWrap>
       </form>
-    </>
+    </SignInWrap>
   )
 }
+
 
 Signin.propTypes = {
   signin: PropTypes.func.isRequired,
@@ -42,7 +74,7 @@ Signin.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  authenticate: state.auth,
+  authenticated: state.auth,
 });
 
 export default connect(mapStateToProps, { signin })(Signin);
