@@ -1,15 +1,15 @@
 const initialState = {
   loggedIn: false,
-  user: {}
+  user: {},
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case 'SET_USER':
       return {
         loggedIn: true,
-        user: {...payload},
+        user: { ...payload },
       };
     case 'SIGN_OUT':
       localStorage.clear();
@@ -20,4 +20,4 @@ export default function(state = initialState, action) {
     default:
       return state;
   }
-};
+}

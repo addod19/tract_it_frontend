@@ -10,4 +10,3 @@ export const SIGN_IN = 'SIGN_IN';
 export const ADD_WATER = 'ADD_WATER';
 export const DELETE_WATER = 'DELETE_WATER';
 export const AUTH_FAIL = 'AUTH_FAIL';
-

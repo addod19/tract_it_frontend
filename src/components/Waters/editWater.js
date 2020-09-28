@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getWater, updateWater } from '../../redux/actions/movieActions';
 
-
-const EditWater = ({ getWater, match, updateWater, history }) => {
+const EditWater = ({
+  getWater, match, updateWater, history,
+}) => {
   const [formData, setFormData] = useState({
     amount: '',
     total: '',
   });
   const {
-    amount, total
+    amount, total,
   } = formData;
 
   const { id } = match.params;
@@ -20,14 +21,14 @@ const EditWater = ({ getWater, match, updateWater, history }) => {
       amount: !water.amount ? '' : water.amount,
       total: !water.total ? '' : water.total,
     });
-  }, [getWater, id, water.amount, water.total ]);
+  }, [getWater, id, water.amount, water.total]);
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async e => {
     e.preventDefault();
     updateWater(id, {
-      amount, total, 
+      amount, total,
     }, history);
   };
 
@@ -49,7 +50,7 @@ const EditWater = ({ getWater, match, updateWater, history }) => {
                   onChange={onChange}
                   placeholder="Amount"
                   required
-                  
+
                 />
               </label>
             </div>

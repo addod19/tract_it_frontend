@@ -3,14 +3,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addWater } from '../../redux/actions/waterActions';
 
-
 const AddWater = ({ addWater }) => {
   const [formData, setFormData] = useState({
     amount: '',
     total: '',
   });
   const {
-    amount, total
+    amount, total,
   } = formData;
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,7 +17,7 @@ const AddWater = ({ addWater }) => {
   const onSubmit = async e => {
     e.preventDefault();
     addWater({
-      amount, total, 
+      amount, total,
     });
   };
 
@@ -39,7 +38,7 @@ const AddWater = ({ addWater }) => {
                   value={amount}
                   onChange={onChange}
                   placeholder="Amount"
-                  required 
+                  required
                 />
               </label>
             </div>

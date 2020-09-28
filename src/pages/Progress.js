@@ -24,11 +24,11 @@ const Progress = ({ progressCal, progress }) => {
         Progress Data
       </div>
       <div>
-        <main >
+        <main>
           <div className="text-center">
             <div>
               <div>
-                <div >
+                <div>
                   <PieChart
                     data={[{
                       value: 1, color: '#8ce08a', key: `${result(progress.total_amount, progress.total_water)} %`,

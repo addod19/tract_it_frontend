@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { signin } from '../../redux/actions/authActions';
-
 import styled from 'styled-components';
+import { signin } from '../../redux/actions/authActions';
 
 const SignInWrap = styled.div`
   width: 50%;
@@ -35,10 +34,10 @@ const ButtonWrap = styled.div`
   margin-left: 130%;
 `;
 
-const Signin = ( { signin, authenticated: { loggedIn }}) => {
+const Signin = ({ signin, authenticated: { loggedIn } }) => {
   const [loginData, setloginData] = useState({
     email: '',
-    password: ''
+    password: '',
   });
 
   const { email, password } = loginData;
@@ -48,31 +47,42 @@ const Signin = ( { signin, authenticated: { loggedIn }}) => {
   const onSubmit = async e => {
     e.preventDefault();
     signin({ email, password });
-  }
+  };
 
   if (loggedIn) {
-    return <Redirect to='/' />;
+    return <Redirect to="/" />;
   }
 
-  return(
+  return (
     <SignInWrap>
       <form onSubmit={onSubmit}>
         <EmailWrap>
-          <input type='email' onChange={onChange} value={email} 
-          placeholder="Enter your email" name="email" required /> 
+          <input
+            type="email"
+            onChange={onChange}
+            value={email}
+            placeholder="Enter your email"
+            name="email"
+            required
+          />
         </EmailWrap>
         <PasswordWrap>
-          <input type='password' onChange={onChange} value={password} 
-          placeholder="Enter your paswword" name="password" required /> 
+          <input
+            type="password"
+            onChange={onChange}
+            value={password}
+            placeholder="Enter your paswword"
+            name="password"
+            required
+          />
         </PasswordWrap>
         <ButtonWrap>
-          <button type="submit" onSubmit={onSubmit}>Login</button>
+          <button type="submit" className="btn" onSubmit={onSubmit}>Login</button>
         </ButtonWrap>
       </form>
     </SignInWrap>
-  )
-}
-
+  );
+};
 
 Signin.propTypes = {
   signin: PropTypes.func.isRequired,

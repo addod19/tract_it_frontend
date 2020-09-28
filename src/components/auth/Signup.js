@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { signup } from '../../redux/actions/authActions';
-
 import styled from 'styled-components';
+import { signup } from '../../redux/actions/authActions';
 
 const RegFormWrap = styled.div`
   width: 50%;
@@ -35,7 +34,7 @@ const ButtonWrap = styled.div`
   margin-left: 30%;
 `;
 
-const SignUp = ({ signup, authenticated: { loggedIn }}) => {
+const SignUp = ({ signup, authenticated: { loggedIn } }) => {
   const [signupData, setSignupData] = useState({
     name: '',
     email: '',
@@ -52,7 +51,7 @@ const SignUp = ({ signup, authenticated: { loggedIn }}) => {
   };
 
   if (loggedIn) {
-    return <Redirect to="/" />
+    return <Redirect to="/" />;
   }
 
   return (

@@ -31,7 +31,7 @@ const AllWater = ({ getWaters, waters }) => {
             animate
             label={({ dataEntry }) => dataEntry.key}
           />
-          <h5 >{water.amount}</h5>
+          <h5>{water.amount}</h5>
           <Link
             to={{ pathname: `/all_water/${water.id}` }}
           >
@@ -57,7 +57,7 @@ const AllWater = ({ getWaters, waters }) => {
       </div>
       <div>
         <div>
-            {all_water.length > 0 ? allStacks : noWaterData}
+          {all_water.length > 0 ? allStacks : noWaterData}
         </div>
       </div>
     </>

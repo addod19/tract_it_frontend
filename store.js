@@ -9,7 +9,7 @@ const middleware = [thunk];
 const store = createStore(
   rootReducer,
   initialState,
-  compose(applyMiddleware(...middleware),
+  compose(applyMiddleware(...middleware), /* eslint no-underscore-dangle: "error" */
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()),
 );
 

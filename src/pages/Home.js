@@ -2,11 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { signout } from '../redux/actions/authActions';
 import Footer from './Footer';
 import Signin from '../components/auth/Login';
-
-import styled from 'styled-components';
 
 const MainWrap = styled.div`
   width: 100%;
@@ -40,7 +39,7 @@ const SignupWrap = styled.div`
 const Home = ({ auth: { loggedIn, user }, signout }) => (
   <MainWrap>
     {loggedIn === false ? (
-        <>
+      <>
         <IntroWrap>
           <IntroText>Water Intake Tracker</IntroText>
         </IntroWrap>
@@ -51,23 +50,27 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
               Signup
             </Link>
           </SignupWrap>
-          
+
         </div>
-        </>
+      </>
     ) : (
       <>
-      <UserWrap>
-        <div>
-          Home
-        </div>
-        <div>
-         welcome {user.email} !!
-        </div>
-        <div>
-          <button type="button" onClick={signout}>Signout</button>
-        </div>
-      </UserWrap>
-      <Footer />
+        <UserWrap>
+          <div>
+            Home
+          </div>
+          <div>
+            welcome
+            {' '}
+            {user.email}
+            {' '}
+            !!
+          </div>
+          <div>
+            <button type="button" onClick={signout}>Signout</button>
+          </div>
+        </UserWrap>
+        <Footer />
       </>
     )}
   </MainWrap>
