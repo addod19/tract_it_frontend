@@ -4,6 +4,37 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { signup } from '../../redux/actions/authActions';
 
+import styled from 'styled-components';
+
+const RegFormWrap = styled.div`
+  width: 50%;
+  height: auto;
+  padding: 20px;
+  box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1), 
+              0 0  0 2px rgb(255,255,255),
+              0.3em 0.3em 1em rgba(0,0,0,0.3);
+  margin-left: 25%;
+`;
+
+const NameWrap = styled.div`
+  margin-left: 30%;
+  margin-bottom: 5%;
+`;
+
+const EmailWrap = styled.div`
+  margin-left: 30%;
+  margin-bottom: 5%;
+`;
+
+const PasswordWrap = styled.div`
+  margin-left: 30%;
+  margin-bottom: 5%;
+`;
+
+const ButtonWrap = styled.div`
+  margin-left: 30%;
+`;
+
 const SignUp = ({ signup, authenticated: { loggedIn }}) => {
   const [signupData, setSignupData] = useState({
     name: '',
@@ -25,22 +56,21 @@ const SignUp = ({ signup, authenticated: { loggedIn }}) => {
   }
 
   return (
-    <div className="row">
+    <RegFormWrap>
       <form onSubmit={onSubmit}>
-        <div className="formGroup">
+        <NameWrap>
           <label htmlFor="name">
             Name
             <input
               type="text"
               placeholder="Name"
-              className="form-control"
               value={name}
               onChange={onChange}
               required
             />
           </label>
-        </div>
-        <div className="formGroup">
+        </NameWrap>
+        <EmailWrap>
           <label htmlFor="email">
             Email
             <input
@@ -52,8 +82,8 @@ const SignUp = ({ signup, authenticated: { loggedIn }}) => {
               required
             />
           </label>
-        </div>
-        <div className="formGroup">
+        </EmailWrap>
+        <PasswordWrap>
           <label htmlFor="password">
             Password
             <input
@@ -65,12 +95,14 @@ const SignUp = ({ signup, authenticated: { loggedIn }}) => {
               required
             />
           </label>
-        </div>
-        <button type="submit" className="btnbtn-primary">
-          Create a User
-        </button>
+        </PasswordWrap>
+        <ButtonWrap>
+          <button type="submit" onSubmit={onSubmit}>
+            Create a User
+          </button>
+        </ButtonWrap>
       </form>
-    </div>
+    </RegFormWrap>
   );
 };
 

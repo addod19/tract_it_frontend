@@ -15,18 +15,24 @@ const SignInWrap = styled.div`
   box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1), 
               0 0  0 2px rgb(255,255,255),
               0.3em 0.3em 1em rgba(0,0,0,0.3);
+  margin-left: 25%;
 `;
 
 const EmailWrap = styled.div`
   width: 100%;
+  margin-left: 130%;
+  margin-bottom: 10%;
 `;
 
 const PasswordWrap = styled.div`
   width: 100%;
+  margin-left: 130%;
+  margin-bottom: 10%;
 `;
 
 const ButtonWrap = styled.div`
   width: 100%;
+  margin-left: 130%;
 `;
 
 const Signin = ( { signin, authenticated: { loggedIn }}) => {
@@ -52,10 +58,12 @@ const Signin = ( { signin, authenticated: { loggedIn }}) => {
     <SignInWrap>
       <form onSubmit={onSubmit}>
         <EmailWrap>
-          <input type='email' onChange={onChange} value={email} name="email" required /> 
+          <input type='email' onChange={onChange} value={email} 
+          placeholder="Enter your email" name="email" required /> 
         </EmailWrap>
         <PasswordWrap>
-          <input type='password' onChange={onChange} value={password} name="password" required /> 
+          <input type='password' onChange={onChange} value={password} 
+          placeholder="Enter your paswword" name="password" required /> 
         </PasswordWrap>
         <ButtonWrap>
           <button type="submit" onSubmit={onSubmit}>Login</button>

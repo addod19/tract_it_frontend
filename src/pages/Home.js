@@ -33,6 +33,10 @@ const IntroText = styled.div`
   margin-left: 40%;
   font-size: 25px;
 `;
+
+const SignupWrap = styled.div`
+  margin-left: 50%;
+`;
 const Home = ({ auth: { loggedIn, user }, signout }) => (
   <MainWrap>
     {loggedIn === false ? (
@@ -42,9 +46,12 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
         </IntroWrap>
         <div>
           <Signin />
-          <Link to="/signup">
-            Signup
-          </Link>
+          <SignupWrap>
+            <Link to="/signup">
+              Signup
+            </Link>
+          </SignupWrap>
+          
         </div>
         </>
     ) : (
