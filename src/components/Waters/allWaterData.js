@@ -24,9 +24,9 @@ const AllWater = ({ getWaters, waters }) => {
         <div>
           <PieChart
             data={[{
-              value: 1, color: '#8ce08a', key: `${result(water.amount, water.amount, water.total)} %`,
+              value: 1, color: '#8ce08a', key: `${result(waters.amount, waters.total)} %`,
             }]}
-            reveal={result(water.amount, water.amount, water.total)}
+            reveal={result(waters.amount, waters.total)}
             lineWidth={20}
             animate
             label={({ dataEntry }) => dataEntry.key}

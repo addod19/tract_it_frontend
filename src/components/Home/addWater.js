@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { addAllWater } from '../../redux/actions/movieActions';
-// import Footer from '../../layout/Footer';
+import Footer from '../../pages/Footer';
 
 const AddWater = ({ addAllWater }) => {
   const [formData, setFormData] = useState({
@@ -30,7 +29,7 @@ const AddWater = ({ addAllWater }) => {
       </div>
       <form className="add-stack px-5 pt-5 py-10" onSubmit={onSubmit}>
          <div className="form-group">
-          <label className="w-100" htmlFor="seriesName">
+          <label className="w-100" htmlFor="all_water">
             Amount
           <input
             type="number"
@@ -44,7 +43,7 @@ const AddWater = ({ addAllWater }) => {
           </label>
         </div>
         <div className="form-group">
-          <label className="w-100" htmlFor="episodeHours">
+          <label className="w-100" htmlFor="all_water total">
             Target
           <input
             type="number"
@@ -61,6 +60,7 @@ const AddWater = ({ addAllWater }) => {
           Create Water Data
         </button>
       </form>
+      <Footer />
     </div>
   );
 };
