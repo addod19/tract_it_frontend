@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addWater } from '../../redux/actions/waterActions';
+import { addWaters } from '../../redux/actions/waterActions';
 
-const AddWater = ({ addWater }) => {
+const AddWater = ({ addWaters }) => {
   const [formData, setFormData] = useState({
     amount: '',
     total: '',
@@ -16,7 +16,7 @@ const AddWater = ({ addWater }) => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    addWater({
+    addWaters({
       amount, total,
     });
   };
@@ -66,7 +66,7 @@ const AddWater = ({ addWater }) => {
 };
 
 AddWater.propTypes = {
-  addWater: PropTypes.func.isRequired,
+  addWaters: PropTypes.func.isRequired,
   water: PropTypes.shape({}).isRequired,
 };
 
@@ -74,4 +74,4 @@ const mapStateToProps = state => ({
   water: state.waters.water,
 });
 
-export default connect(mapStateToProps, { addWater })(AddWater);
+export default connect(mapStateToProps, { addWaters })(AddWater);

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { PieChart } from 'react-minimal-pie-chart';
-import { getWaters } from '../../redux/actions/movieActions';
+import { getWaters } from '../../redux/actions/waterActions';
 
 const AllWater = ({ getWaters, waters }) => {
   useEffect(() => {

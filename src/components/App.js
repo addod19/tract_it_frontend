@@ -13,9 +13,10 @@ import {
 } from '../redux/actions/waterActions';
 
 import Water from './Waters/waters';
-// import Waters from '../redux/actions/waterActions';
-// import updateWater from '../redux/actions/waterActions';
-// import ProgressCal from '../redux/actions/waterActions';
+import AddWater from './Waters/addWater';
+import EditWater from './Waters/editWater';
+import Progress from '../pages/Progress';
+
 
 import store from '../redux/store';
 
@@ -44,11 +45,11 @@ const App = () => {
             <Route path="/" exact component={Home} />
             <Route path="/signin" exact component={Signin} />
             <Route path="/signup" exact component={Signup} />
-            <Route path="/addwaters" exact component={addWaters} />
+            <Route path="/addwaters" exact component={AddWater} />
             <Route path="waters/:id" exact component={Water} />
             <Route path="/waters" exact component={Water} />
-            <Route path="/edit/:id" exact component={updateWater} />
-            <Route path="/progress_cal" exact component={progressCal} />
+            <Route path="/edit/:id" exact component={EditWater} />
+            <Route path="/progress_cal" exact component={Progress} />
           </Switch>
         </Router>
       </AppWrap>

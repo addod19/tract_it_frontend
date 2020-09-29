@@ -13,25 +13,54 @@ const RegFormWrap = styled.div`
               0 0  0 2px rgb(255,255,255),
               0.3em 0.3em 1em rgba(0,0,0,0.3);
   margin-left: 25%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    margin-left: 0;
+  }
 `;
 
 const NameWrap = styled.div`
   margin-left: 30%;
   margin-bottom: 5%;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
 `;
 
 const EmailWrap = styled.div`
   margin-left: 30%;
   margin-bottom: 5%;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
 `;
 
 const PasswordWrap = styled.div`
   margin-left: 30%;
   margin-bottom: 5%;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
 `;
 
-const ButtonWrap = styled.div`
+const ButtonWrap = styled.button`
   margin-left: 30%;
+  color: white;
+  background-color: blue;
+  border: 0;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 `;
 
 const SignUp = ({ signup, authenticated: { loggedIn } }) => {
@@ -43,7 +72,7 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
 
   const { name, email, password } = signupData;
 
-  const onChange = e => setSignupData({ ...signupData, [e.target.name]: e.target.valie });
+  const onChange = e => setSignupData({ ...signupData, [e.target.name]: e.target.value });
 
   const onSubmit = async evt => {
     evt.preventDefault();
@@ -62,9 +91,9 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
             Name
             <input
               type="text"
-              placeholder="Name"
-              value={name}
               onChange={onChange}
+              placeholder="Name"
+              value={name}              
               required
             />
           </label>
@@ -74,10 +103,9 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
             Email
             <input
               type="email"
-              placeholder="Email"
-              className="form-control"
-              value={email}
               onChange={onChange}
+              placeholder="Email"
+              value={email}
               required
             />
           </label>
@@ -87,18 +115,17 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
             Password
             <input
               type="password"
-              placeholder="Password"
-              className="form-control"
-              value={password}
               onChange={onChange}
+              placeholder="Password"
+              value={password}
               required
             />
           </label>
         </PasswordWrap>
-        <ButtonWrap>
-          <button type="submit" onSubmit={onSubmit}>
+        <ButtonWrap type="submit" onSubmit={onSubmit}>
+          {/* <button  > */}
             Create a User
-          </button>
+          {/* </button> */}
         </ButtonWrap>
       </form>
     </RegFormWrap>

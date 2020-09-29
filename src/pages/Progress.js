@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { PieChart } from 'react-minimal-pie-chart';
-import { progressCal } from '../redux/actions/movieActions';
+import { progressCal } from '../redux/actions/waterActions';
 import Footer from './Footer';
 
 const Progress = ({ progressCal, progress }) => {

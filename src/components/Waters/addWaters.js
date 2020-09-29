@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addAllWaters } from '../../redux/actions/movieActions';
+import { addAllWaters } from '../../redux/actions/waterActions';
 
 const AddWaters = ({ addAllWaters }) => {
   const [formData, setFormData] = useState({

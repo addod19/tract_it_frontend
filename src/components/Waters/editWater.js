@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { getWater, updateWater } from '../../redux/actions/movieActions';
+import { getWater, updateWater } from '../../redux/actions/waterActions';
 
 const EditWater = ({
-  getWater, match, updateWater, history,
+  getWater, match, updateWater, history, water
 }) => {
   const [formData, setFormData] = useState({
     amount: '',
