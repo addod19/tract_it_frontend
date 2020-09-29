@@ -9,10 +9,12 @@ import setAuthToken from '../helpers/setAuthToken';
 import loadUser from '../redux/actions/authActions';
 
 import {
-  AddWaters, Waters, EditWater, ProgressCal,
+  addWaters, updateWater, progressCal,
 } from '../redux/actions/waterActions';
+
+import Water from './Waters/waters';
 // import Waters from '../redux/actions/waterActions';
-// import EditWater from '../redux/actions/waterActions';
+// import updateWater from '../redux/actions/waterActions';
 // import ProgressCal from '../redux/actions/waterActions';
 
 import store from '../redux/store';
@@ -42,11 +44,11 @@ const App = () => {
             <Route path="/" exact component={Home} />
             <Route path="/signin" exact component={Signin} />
             <Route path="/signup" exact component={Signup} />
-            <Route path="/addwaters" exact component={AddWaters} />
-            <Route path="waters/:id" exact component={Waters} />
-            <Route path="/waters" exact component={Waters} />
-            <Route path="/edit/:id" exact component={EditWater} />
-            <Route path="/progress_cal" exact component={ProgressCal} />
+            <Route path="/addwaters" exact component={addWaters} />
+            <Route path="waters/:id" exact component={Water} />
+            <Route path="/waters" exact component={Water} />
+            <Route path="/edit/:id" exact component={updateWater} />
+            <Route path="/progress_cal" exact component={progressCal} />
           </Switch>
         </Router>
       </AppWrap>

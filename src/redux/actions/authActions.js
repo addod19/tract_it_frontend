@@ -1,5 +1,6 @@
 import setAuthToken from '../../helpers/setAuthToken';
-import { AUTH_FAIL } from './types';
+// import { AUTH_FAIL } from './types';
+import axios from 'axios';
 
 const defaultUrl = 'http://localhost:3000';
 
@@ -17,17 +18,10 @@ const loadUser = () => async dispatch => {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   };
-
-  await fetch(`${defaultUrl}/auto_login`, apiConfig)
-    .then(res => res.json())
-    .then(data => {
-      localStorage.setItem('token', data.token);
-      dispatch(setUser(data.user));
-    })
-    .then(error => dispatch({
-      type: AUTH_FAIL,
-      payload: error,
-    }));
+  const data = await axios.get(`${defaultUrl}/auto_login`, apiConfig);
+  localStorage.setItem('token', data.token);
+  dispatch(setUser(data.user));
+  return data;
 };
 
 export const signup = userDetails => async dispatch => {
@@ -39,16 +33,10 @@ export const signup = userDetails => async dispatch => {
     },
     body: JSON.stringify(userDetails),
   };
-  await fetch(`${defaultUrl}/signup`, userDetails, apiConfig)
-    .then(res => res.json())
-    .then(data => {
-      localStorage.setItem('token', data.token);
-      dispatch(setUser(data.user));
-    })
-    .then(error => dispatch({
-      type: AUTH_FAIL,
-      payload: error,
-    }));
+  const data = await axios.post(`${defaultUrl}/signup`, userDetails, apiConfig);
+  localStorage.setItem('token', data.token);
+  dispatch(setUser(data.user));
+  return data;
 };
 
 export const signin = userDetails => async dispatch => {
@@ -60,16 +48,10 @@ export const signin = userDetails => async dispatch => {
     },
     body: JSON.stringify(userDetails),
   };
-  await fetch(`${defaultUrl}/signin`, userDetails, apiConfig)
-    .then(res => res.json())
-    .then(data => {
-      localStorage.setItem('token', data.token);
-      dispatch(setUser(data.user));
-    })
-    .then(error => dispatch({
-      type: AUTH_FAIL,
-      payload: error,
-    }));
+  const data = await axios.post(`${defaultUrl}/signin`, userDetails, apiConfig);
+  localStorage.setItem('token', data.token);
+  dispatch(setUser(data.user));
+  return data;
 };
 
 export const signout = () => ({ type: 'SIGN_OUT' });

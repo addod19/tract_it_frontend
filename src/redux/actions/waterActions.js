@@ -15,77 +15,107 @@ const apiConfig = {
   },
 };
 const addWaters = waterData => async dispatch => {
-  await axios.post(`${defaultURL}/all_water/create`, waterData, apiConfig)
-    .then(response => dispatch({
+  try {
+    const waters = await axios.post(`${defaultURL}/all_water/create`, waterData, apiConfig);
+    dispatch({
       type: ADD_WATERS,
-      payload: response.data,
-    }))
-    .then(error => dispatch({
+      payload: waters.data,
+    });
+    return waters;
+
+  } catch(error) {
+    dispatch({
       type: WATERS_ERRORS,
-      payload: error,
-    }));
+      payload: error
+    });
+  }
 };
 
 const getWater = id => async dispatch => {
-  await axios.post(`${defaultURL}/show/${id}`, apiConfig)
-    .then(response => dispatch({
+  try {
+    const water = await axios.post(`${defaultURL}/show/${id}`, apiConfig);
+    dispatch({
       type: GET_WATER,
-      payload: response.data,
-    }))
-    .then(error => dispatch({
+      payload: water.data,
+    });
+    return water;
+
+  } catch(error) {
+    dispatch({
       type: WATERS_ERRORS,
       payload: error,
-    }));
+    });
+  }
 };
 
 const getWaters = () => async dispatch => {
-  await axios.post(`${defaultURL}/water/index`, apiConfig)
-    .then(response => dispatch({
+  try {
+    const allData = await axios.post(`${defaultURL}/water/index`, apiConfig);
+    dispatch({
       type: GET_WATERS,
-      payload: response.data,
-    }))
-    .then(error => dispatch({
+      payload: allData.data,
+    });
+    return allData;
+
+  } catch(error) {
+    dispatch({
       type: WATERS_ERRORS,
       payload: error,
-    }));
+    })
+  }
 };
 
 const updateWater = (id, water) => async dispatch => {
-  await axios.put(`${defaultURL}/update/${id}`, water, apiConfig)
-    .then(response => dispatch({
+  try {
+    const edit = await axios.put(`${defaultURL}/update/${id}`, water, apiConfig);
+    dispatch({
       type: UPDATE_WATER,
-      payload: response.data,
-    }))
-    .then(error => dispatch({
+      payload: edit.data,
+    });
+    return edit;
+
+  } catch(error) {
+    dispatch({
       type: WATERS_ERRORS,
       payload: error,
-    }));
+    });
+  }
 };
 
 const deleteWater = id => async dispatch => {
-  await axios.delete(`${defaultURL}/destroy/${id}`, apiConfig)
-    .then(response => dispatch({
+  try {
+    const remove = await axios.delete(`${defaultURL}/destroy/${id}`, apiConfig);
+    dispatch({
       type: DELETE_WATER,
-      payload: response.data,
-    }))
-    .then(error => dispatch({
+      payload: remove.data,
+    });
+    return remove;
+
+  } catch(error) {
+    dispatch({
       type: WATERS_ERRORS,
       payload: error,
-    }));
+    });
+  }
 };
 
 const progressCal = () => async dispatch => {
-  await axios.get(`${defaultURL}/water/progress`, apiConfig)
-    .then(response => dispatch({
+  try {
+    const prog = await axios.get(`${defaultURL}/water/progress`, apiConfig);
+    dispatch({
       type: PROGRESS_CALCULATION,
-      payload: response.data.progress,
-    }))
-    .then(error => dispatch({
+      payload: prog.data.progress,
+    });
+    return prog;
+
+  } catch(error) {
+    dispatch({
       type: WATERS_ERRORS,
       payload: error,
-    }));
+    });
+  }
 };
 
-export default {
-  addWaters, getWater, getWaters, updateWater, deleteWater, progressCal,
+export {
+  addWaters, getWater, getWaters, updateWater, deleteWater, progressCal
 };

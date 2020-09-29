@@ -4,8 +4,8 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { PieChart } from 'react-minimal-pie-chart';
-import Footer from '../../gages/Footer';
-import { getWater, deleteWater } from '../../redux/actions/movieActions';
+import Footer from '../../pages/Footer';
+import { getWater, deleteWater } from '../../redux/actions/waterActions';
 
 const Water = ({
   getWater, waters, match, deleteWater, history,
