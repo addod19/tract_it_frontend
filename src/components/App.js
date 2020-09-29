@@ -8,10 +8,6 @@ import Home from '../pages/Home';
 import setAuthToken from '../helpers/setAuthToken';
 import loadUser from '../redux/actions/authActions';
 
-import {
-  addWaters, updateWater, progressCal,
-} from '../redux/actions/waterActions';
-
 import Water from './Waters/waters';
 import AddWater from './Waters/addWater';
 import EditWater from './Waters/editWater';
