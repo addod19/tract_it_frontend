@@ -1,5 +1,5 @@
 import setAuthToken from '../../helpers/setAuthToken';
-// import { AUTH_FAIL } from './types';
+import { AUTH_FAIL } from './types';
 import axios from 'axios';
 
 const defaultUrl = 'http://localhost:3000';
@@ -18,10 +18,19 @@ const loadUser = () => async dispatch => {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   };
-  const data = await axios.get(`${defaultUrl}/auto_login`, apiConfig);
-  localStorage.setItem('token', data.token);
-  dispatch(setUser(data.user));
-  return data;
+  try {
+    const data = await axios.get(`${defaultUrl}/auto_login`, apiConfig);
+    localStorage.setItem('token', data.token);
+    dispatch(setUser(data.user));
+    return data;
+
+  } catch(error) {
+    dispatch({
+      type: AUTH_FAIL,
+      payload: error,
+    });
+  }
+  
 };
 
 export const signup = userDetails => async dispatch => {
@@ -33,10 +42,19 @@ export const signup = userDetails => async dispatch => {
     },
     body: JSON.stringify(userDetails),
   };
-  const data = await axios.post(`${defaultUrl}/signup`, userDetails, apiConfig);
-  localStorage.setItem('token', data.token);
-  dispatch(setUser(data.user));
-  return data;
+  try {
+    const data = await axios.post(`${defaultUrl}/signup`, userDetails, apiConfig);
+    localStorage.setItem('token', data.token);
+    dispatch(setUser(data.user));
+    return data;
+
+  } catch(error) {
+    dispatch({
+      type: AUTH_FAIL,
+      payload: error,
+    });
+  }
+  
 };
 
 export const signin = userDetails => async dispatch => {
@@ -48,10 +66,19 @@ export const signin = userDetails => async dispatch => {
     },
     body: JSON.stringify(userDetails),
   };
-  const data = await axios.post(`${defaultUrl}/signin`, userDetails, apiConfig);
-  localStorage.setItem('token', data.token);
-  dispatch(setUser(data.user));
-  return data;
+  try {
+    const data = await axios.post(`${defaultUrl}/signin`, userDetails, apiConfig);
+    localStorage.setItem('token', data.token);
+    dispatch(setUser(data.user));
+    return data;
+
+  } catch(error) {
+    dispatch({
+      type: AUTH_FAIL,
+      payload: error,
+    })
+  }
+  
 };
 
 export const signout = () => ({ type: 'SIGN_OUT' });
