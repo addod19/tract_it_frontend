@@ -42,9 +42,9 @@ const Signin = ({ signin, authenticated: { loggedIn } }) => {
 
   const { email, password } = loginData;
 
-  const onChange = e => setloginData({ ...loginData, [e.target.name]: e.target.value });
+  const handleChange = e => setloginData({ ...loginData, [e.target.name]: e.target.value });
 
-  const onSubmit = async e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     signin({ email, password });
   };
@@ -55,11 +55,11 @@ const Signin = ({ signin, authenticated: { loggedIn } }) => {
 
   return (
     <SignInWrap>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <EmailWrap>
           <input
             type="email"
-            onChange={onChange}
+            onChange={handleChange}
             value={email}
             placeholder="Enter your email"
             name="email"
@@ -69,7 +69,7 @@ const Signin = ({ signin, authenticated: { loggedIn } }) => {
         <PasswordWrap>
           <input
             type="password"
-            onChange={onChange}
+            onChange={handleChange}
             value={password}
             placeholder="Enter your paswword"
             name="password"
@@ -77,7 +77,7 @@ const Signin = ({ signin, authenticated: { loggedIn } }) => {
           />
         </PasswordWrap>
         <ButtonWrap>
-          <button type="submit" className="btn" onSubmit={onSubmit}>Login</button>
+          <button type="submit" className="btn" onSubmit={handleSubmit}>Login</button>
         </ButtonWrap>
       </form>
     </SignInWrap>

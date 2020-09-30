@@ -62,7 +62,7 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
           <div>
             welcome
             {' '}
-            {user.email}
+            {/* {user.email} */}
             {' '}
             !!
           </div>

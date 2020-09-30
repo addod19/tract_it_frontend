@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -64,19 +64,26 @@ const ButtonWrap = styled.button`
 `;
 
 const SignUp = ({ signup, authenticated: { loggedIn } }) => {
+
+  // const initialInpState = {
+  //   name: '',
+  //   email: '',
+  //   password: ''
+  // }
+
   const [signupData, setSignupData] = useState({
     name: '',
     email: '',
-    password: '',
+    password: ''
   });
 
   const { name, email, password } = signupData;
 
-  const onChange = e => setSignupData({ ...signupData, [e.target.name]: e.target.value });
+  const handleChange = e => setSignupData({ ...signupData, [e.target.name]: e.target.value });
 
-  const onSubmit = async evt => {
+  const handleSubmit = async evt => {
     evt.preventDefault();
-    signup({ name, email, password });
+    signup(signupData);
   };
 
   if (loggedIn) {
@@ -85,13 +92,12 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
 
   return (
     <RegFormWrap>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <NameWrap>
           <label htmlFor="name">
-            Name
             <input
               type="text"
-              onChange={onChange}
+              onChange={handleChange}
               placeholder="Name"
               value={name}              
               required
@@ -100,10 +106,9 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
         </NameWrap>
         <EmailWrap>
           <label htmlFor="email">
-            Email
             <input
               type="email"
-              onChange={onChange}
+              onChange={handleChange}
               placeholder="Email"
               value={email}
               required
@@ -112,21 +117,21 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
         </EmailWrap>
         <PasswordWrap>
           <label htmlFor="password">
-            Password
             <input
               type="password"
-              onChange={onChange}
+              onChange={handleChange}
               placeholder="Password"
               value={password}
               required
             />
           </label>
         </PasswordWrap>
-        <ButtonWrap type="submit" onSubmit={onSubmit}>
-          {/* <button  > */}
-            Create a User
-          {/* </button> */}
+        <ButtonWrap type="submit" onSubmit={handleSubmit}>
+          Create a new User
         </ButtonWrap>
+        or <Link to="/signin">
+              Signin
+            </Link>
       </form>
     </RegFormWrap>
   );
