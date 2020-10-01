@@ -1,4 +1,4 @@
-/* global id */
+// /* global id */
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 import {
@@ -16,7 +16,7 @@ const apiConfig = {
 };
 const addWaters = waterData => async dispatch => {
   try {
-    const waters = await axios.post(`${defaultURL}/all_water/create`, waterData, apiConfig);
+    const waters = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
     dispatch({
       type: ADD_WATERS,
       payload: waters.data,
@@ -33,7 +33,7 @@ const addWaters = waterData => async dispatch => {
 
 const getWater = id => async dispatch => {
   try {
-    const water = await axios.post(`${defaultURL}/show/${id}`, apiConfig);
+    const water = await axios.get(`${defaultURL}/waters/:${id}`, apiConfig);
     dispatch({
       type: GET_WATER,
       payload: water.data,
@@ -50,7 +50,7 @@ const getWater = id => async dispatch => {
 
 const getWaters = () => async dispatch => {
   try {
-    const allData = await axios.post(`${defaultURL}/water/index`, apiConfig);
+    const allData = await axios.get(`${defaultURL}/waters`, apiConfig);
     dispatch({
       type: GET_WATERS,
       payload: allData.data,
@@ -67,7 +67,7 @@ const getWaters = () => async dispatch => {
 
 const updateWater = (id, water) => async dispatch => {
   try {
-    const edit = await axios.put(`${defaultURL}/update/${id}`, water, apiConfig);
+    const edit = await axios.put(`${defaultURL}/waters/${id}`, water, apiConfig);
     dispatch({
       type: UPDATE_WATER,
       payload: edit.data,
@@ -84,7 +84,7 @@ const updateWater = (id, water) => async dispatch => {
 
 const deleteWater = id => async dispatch => {
   try {
-    const remove = await axios.delete(`${defaultURL}/destroy/${id}`, apiConfig);
+    const remove = await axios.delete(`${defaultURL}/waters/:${id}`, apiConfig);
     dispatch({
       type: DELETE_WATER,
       payload: remove.data,
@@ -101,7 +101,7 @@ const deleteWater = id => async dispatch => {
 
 const progressCal = () => async dispatch => {
   try {
-    const prog = await axios.get(`${defaultURL}/water/progress`, apiConfig);
+    const prog = await axios.get(`${defaultURL}/water_levels/progress`, apiConfig);
     dispatch({
       type: PROGRESS_CALCULATION,
       payload: prog.data.progress,

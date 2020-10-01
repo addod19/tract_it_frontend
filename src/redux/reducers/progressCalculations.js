@@ -1,23 +1,17 @@
-import { GET_WATER,  ADD_WATER } from '../actions/types';
+import { PROGRESS_CALCULATION } from '../actions/types';
 
 const initialState = {
-  water: {},
+  progress_calculations: {},
   loading: false,
 };
 
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case GET_WATER:
+    case PROGRESS_CALCULATION:
       return {
         ...state,
-        water: payload,
-        loading: false,
-      };
-    case ADD_WATER:
-      return {
-        ...state,
-        water: [payload, ...state.water],
+        progress_calculations: payload,
         loading: false,
       };
     default:

@@ -15,23 +15,40 @@ const SignInWrap = styled.div`
               0 0  0 2px rgb(255,255,255),
               0.3em 0.3em 1em rgba(0,0,0,0.3);
   margin-left: 25%;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    width: 100%;
+  }
 `;
 
 const EmailWrap = styled.div`
   width: 100%;
   margin-left: 130%;
   margin-bottom: 10%;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 `;
 
 const PasswordWrap = styled.div`
   width: 100%;
   margin-left: 130%;
   margin-bottom: 10%;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 `;
 
 const ButtonWrap = styled.div`
   width: 100%;
   margin-left: 130%;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 `;
 
 const Signin = ({ signin, authenticated: { loggedIn } }) => {

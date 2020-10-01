@@ -99,7 +99,8 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
               type="text"
               onChange={handleChange}
               placeholder="Name"
-              value={name}              
+              value={name}
+              name="name"            
               required
             />
           </label>
@@ -111,6 +112,7 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
               onChange={handleChange}
               placeholder="Email"
               value={email}
+              name="email"
               required
             />
           </label>
@@ -122,6 +124,7 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
               onChange={handleChange}
               placeholder="Password"
               value={password}
+              name="password"
               required
             />
           </label>

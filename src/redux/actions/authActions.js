@@ -67,7 +67,7 @@ export const signin = userDetails => async dispatch => {
     body: JSON.stringify(userDetails),
   };
   try {
-    const data = await axios.post(`${defaultUrl}/signin`, userDetails, apiConfig);
+    const data = await axios.post(`${defaultUrl}/auth/signin`, userDetails, apiConfig);
     localStorage.setItem('token', data.token);
     dispatch(setUser(data.user));
     return data;

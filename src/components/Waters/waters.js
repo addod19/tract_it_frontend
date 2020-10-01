@@ -7,6 +7,14 @@ import { PieChart } from 'react-minimal-pie-chart';
 import Footer from '../../pages/Footer';
 import { getWater, deleteWater } from '../../redux/actions/waterActions';
 
+import styled from 'styled-components';
+
+const MainWrap = styled.div`
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+`;
+
 const Water = ({
   getWater, waters, match, deleteWater, history,
 }) => {
@@ -29,7 +37,7 @@ const Water = ({
   };
 
   return waters ? (
-    <div>
+    <MainWrap>
       <div>
         <div>
           <div>
@@ -66,7 +74,7 @@ const Water = ({
         </div>
       </div>
       <Footer />
-    </div>
+    </MainWrap>
   ) : <h1>Loading........</h1>;
 };
 

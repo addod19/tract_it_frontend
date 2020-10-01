@@ -5,7 +5,7 @@ import { PieChart } from 'react-minimal-pie-chart';
 import { progressCal } from '../redux/actions/waterActions';
 import Footer from './Footer';
 
-const Progress = ({ progressCal, progress }) => {
+const Progress = ({ progressCal, progress_calculations }) => {
   const result = (amount, total) => {
     if (total === 0) {
       return 100;
@@ -31,21 +31,21 @@ const Progress = ({ progressCal, progress }) => {
                 <div>
                   <PieChart
                     data={[{
-                      value: 1, color: '#8ce08a', key: `${result(progress.total_amount, progress.total_water)} %`,
+                      value: 1, color: '#8ce08a', key: `${result(progress_calculations.total_amount,
+                        progress_calculations.total_water)} %`,
                     }]}
-                    reveal={result(progress.total_amount, progress.total_water)}
+                    reveal={result(progress_calculations.total_amount, progress_calculations.total_water)}
                     lineWidth={20}
                     animate
-                    className="pie-chart mb-3"
                     label={({ dataEntry }) => dataEntry.key}
                     labelStyle={{ fontSize: '1.6rem' }}
                   />
                   <p className="text-center">
-                    {progress.total_amount}
+                    {progress_calculations.total_amount}
                     {' '}
                     /
                     {' '}
-                    {progress.total_water}
+                    {progress_calculations.total_water}
                     {' '}
                     Water target acheived
                   </p>
@@ -61,7 +61,7 @@ const Progress = ({ progressCal, progress }) => {
 };
 
 Progress.propTypes = {
-  progress: PropTypes.shape({
+  progress_calculations: PropTypes.shape({
     total_amount: PropTypes.number.isRequired,
     total_water: PropTypes.number.isRequired,
   }).isRequired,
@@ -69,7 +69,7 @@ Progress.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  progress: state.waters.progress,
+  progress_calculations: state.waters.progress_calculations,
 });
 
 export default connect(mapStateToProps, { progressCal })(Progress);
