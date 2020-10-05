@@ -42,7 +42,7 @@ const Footer = () => (
       <p>Add Water</p>
     </Link>
     <Link
-      to="/waters/:id"
+      to="/waters"
       className="btn footer-btn"
       role="button"
     >
