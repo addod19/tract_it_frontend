@@ -34,6 +34,7 @@ const loadUser = () => async dispatch => {
 };
 
 export const signup = userDetails => async dispatch => {
+  // console.log(userDetails);
   const apiConfig = {
     method: 'POST',
     headers: {
@@ -59,6 +60,7 @@ export const signup = userDetails => async dispatch => {
 };
 
 export const signin = userDetails => async dispatch => {
+  console.log(userDetails);
   const apiConfig = {
     method: 'GET',
     headers: {
@@ -69,7 +71,7 @@ export const signin = userDetails => async dispatch => {
   };
   try {
     const data = await axios.get(`${defaultUrl}/auth/signin`, userDetails, apiConfig);
-    console.log(data);
+    console.log(data.config.email);
     localStorage.setItem('token', data.token);
     dispatch(setUser(data));
     return data;

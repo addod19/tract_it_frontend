@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { signout } from '../redux/actions/authActions';
-import Footer from './Footer';
+// import Footer from './Footer';
 import Signin from '../components/auth/Login';
 
 const MainWrap = styled.div`
@@ -63,19 +63,15 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
       <>
         <UserWrap>
           <div>
-            Home
-          </div>
-          <div>
-            welcome
+            welcome to the water tracking app
             {' '}
-            {user}
+            {user.config.email}
             {' '}
             !!
           </div>
           <div>
             <button type="button" onClick={signout}>Signout</button>
           </div>
-          <Footer />
         </UserWrap>
         
       </>
@@ -87,7 +83,7 @@ Home.propTypes = {
   auth: PropTypes.shape({
     loggedIn: PropTypes.bool.isRequired,
     user: PropTypes.shape({
-      email: PropTypes.string.isRequired,
+      email: PropTypes.string,
     }).isRequired,
   }).isRequired,
   signout: PropTypes.func.isRequired,

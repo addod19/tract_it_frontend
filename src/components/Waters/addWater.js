@@ -120,7 +120,7 @@ const AddWater = ({ addWaters }) => {
 
 AddWater.propTypes = {
   addWaters: PropTypes.func.isRequired,
-  water: PropTypes.shape({}).isRequired,
+  water: PropTypes.shape({}),
 };
 
 const mapStateToProps = state => ({
