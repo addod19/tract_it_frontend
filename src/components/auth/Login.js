@@ -7,25 +7,23 @@ import { signin } from '../../redux/actions/authActions';
 
 const SignInWrap = styled.div`
   width: 50%;
-  height: 140px;
+  height: auto;
+  margin-left: 30%;
   display: flex;
   flex-direction: row;
   padding: 20px;
   box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1), 
               0 0  0 2px rgb(255,255,255),
               0.3em 0.3em 1em rgba(0,0,0,0.3);
-  margin-left: 25%;
 
   @media (max-width: 768px) {
     margin-left: 0;
-    width: 100%;
+    width: 90%;
   }
 `;
 
 const EmailWrap = styled.div`
   width: 100%;
-  margin-left: 130%;
-  margin-bottom: 10%;
 
   @media (max-width: 768px) {
     margin-left: 0;
@@ -34,8 +32,6 @@ const EmailWrap = styled.div`
 
 const PasswordWrap = styled.div`
   width: 100%;
-  margin-left: 130%;
-  margin-bottom: 10%;
 
   @media (max-width: 768px) {
     margin-left: 0;
@@ -44,12 +40,55 @@ const PasswordWrap = styled.div`
 
 const ButtonWrap = styled.div`
   width: 100%;
-  margin-left: 130%;
 
   @media (max-width: 768px) {
     margin-left: 0;
   }
 `;
+
+const FormWrap = styled.form`
+  width: 100%;
+  height: 300px;
+`;
+
+const EmailInp = styled.input`
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 0;
+
+  &:focus {
+    color: blue;
+  }
+`;
+
+const PasswordInp = styled.input`
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 0;
+
+  &:focus {
+    color: blue;
+  }
+`;
+
+const LoginBtn = styled.button`
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 
 const Signin = ({ signin, authenticated: { loggedIn } }) => {
   const [loginData, setloginData] = useState({
@@ -72,9 +111,9 @@ const Signin = ({ signin, authenticated: { loggedIn } }) => {
 
   return (
     <SignInWrap>
-      <form onSubmit={handleSubmit}>
+      <FormWrap onSubmit={handleSubmit}>
         <EmailWrap>
-          <input
+          <EmailInp
             type="email"
             onChange={handleChange}
             value={email}
@@ -84,19 +123,19 @@ const Signin = ({ signin, authenticated: { loggedIn } }) => {
           />
         </EmailWrap>
         <PasswordWrap>
-          <input
+          <PasswordInp
             type="password"
             onChange={handleChange}
             value={password}
-            placeholder="Enter your paswword"
+            placeholder="Enter your password"
             name="password"
             required
           />
         </PasswordWrap>
         <ButtonWrap>
-          <button type="submit" className="btn" onSubmit={handleSubmit}>Login</button>
+          <LoginBtn type="submit" onSubmit={handleSubmit}>Login</LoginBtn>
         </ButtonWrap>
-      </form>
+      </FormWrap>
     </SignInWrap>
   );
 };

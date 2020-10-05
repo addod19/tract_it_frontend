@@ -7,69 +7,118 @@ import { signup } from '../../redux/actions/authActions';
 
 const RegFormWrap = styled.div`
   width: 50%;
-  height: auto;
+  height: 450px;
+  margin-left: 30%;
+  display: flex;
+  flex-direction: row;
   padding: 20px;
   box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1), 
               0 0  0 2px rgb(255,255,255),
               0.3em 0.3em 1em rgba(0,0,0,0.3);
-  margin-left: 25%;
 
   @media (max-width: 768px) {
-    width: 100%;
-    height: auto;
-    box-sizing: border-box;
     margin-left: 0;
+    width: 90%;
   }
 `;
 
 const NameWrap = styled.div`
-  margin-left: 30%;
-  margin-bottom: 5%;
+  width: 100%;
 
   @media (max-width: 768px) {
     margin-left: 0;
-    margin-right: 0;
   }
 `;
 
 const EmailWrap = styled.div`
-  margin-left: 30%;
-  margin-bottom: 5%;
+  width: 100%;
 
   @media (max-width: 768px) {
     margin-left: 0;
-    margin-right: 0;
   }
 `;
 
 const PasswordWrap = styled.div`
-  margin-left: 30%;
-  margin-bottom: 5%;
+  width: 100%;
 
   @media (max-width: 768px) {
     margin-left: 0;
-    margin-right: 0;
   }
 `;
 
 const ButtonWrap = styled.button`
-  margin-left: 30%;
-  color: white;
-  background-color: blue;
-  border: 0;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
 
-  @media (max-width: 768px) {
-    margin-left: 0;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+const LoginBtn = styled.button`
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  &:hover {
+    cursor: pointer;
   }
 `;
 
-const SignUp = ({ signup, authenticated: { loggedIn } }) => {
+const FormWrap = styled.form`
+  width: 100%;
+  height: 300px;
+`;
 
-  // const initialInpState = {
-  //   name: '',
-  //   email: '',
-  //   password: ''
-  // }
+const NameInp = styled.input`
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 0;
+
+  &:focus {
+    color: blue;
+  }
+`;
+
+const EmailInp = styled.input`
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 0;
+
+  &:focus {
+    color: blue;
+  }
+`;
+
+const PasswordInp = styled.input`
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 0;
+
+  &:focus {
+    color: blue;
+  }
+`;
+
+const CenterLink = styled.div`
+  text-align: center;
+`;
+
+
+const SignUp = ({ signup, authenticated: { loggedIn } }) => {
 
   const [signupData, setSignupData] = useState({
     name: '',
@@ -92,10 +141,10 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
 
   return (
     <RegFormWrap>
-      <form onSubmit={handleSubmit}>
+      <FormWrap onSubmit={handleSubmit}>
         <NameWrap>
           <label htmlFor="name">
-            <input
+            <NameInp
               type="text"
               onChange={handleChange}
               placeholder="Name"
@@ -107,7 +156,7 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
         </NameWrap>
         <EmailWrap>
           <label htmlFor="email">
-            <input
+            <EmailInp
               type="email"
               onChange={handleChange}
               placeholder="Email"
@@ -119,7 +168,7 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
         </EmailWrap>
         <PasswordWrap>
           <label htmlFor="password">
-            <input
+            <PasswordInp
               type="password"
               onChange={handleChange}
               placeholder="Password"
@@ -129,13 +178,15 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
             />
           </label>
         </PasswordWrap>
-        <ButtonWrap type="submit" onSubmit={handleSubmit}>
+        <ButtonWrap type="submit" onClick={handleSubmit}>
           Create a new User
         </ButtonWrap>
+        <CenterLink>
         or <Link to="/signin">
               Signin
             </Link>
-      </form>
+        </CenterLink>
+      </FormWrap>
     </RegFormWrap>
   );
 };

@@ -11,6 +11,11 @@ const MainWrap = styled.div`
   width: 100%;
   height: 690px;
   background-color: #51adcf;
+
+  @media (max-width: 768px) {
+    height: 520px;
+  }
+
 `;
 
 const UserWrap = styled.div`
@@ -18,6 +23,7 @@ const UserWrap = styled.div`
   flex-direction: row;
   text-align: center;
   border: 1px solid red;
+  height: 690px;
 `;
 
 const IntroWrap = styled.div`
@@ -40,9 +46,9 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
   <MainWrap>
     {loggedIn === false ? (
       <>
-        <IntroWrap>
+        {/* <IntroWrap>
           <IntroText>Water Intake Tracker</IntroText>
-        </IntroWrap>
+        </IntroWrap> */}
         <div>
           <Signin />
           <SignupWrap>
@@ -62,15 +68,16 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
           <div>
             welcome
             {' '}
-            {/* {user.email} */}
+            {user}
             {' '}
             !!
           </div>
           <div>
             <button type="button" onClick={signout}>Signout</button>
           </div>
+          <Footer />
         </UserWrap>
-        <Footer />
+        
       </>
     )}
   </MainWrap>

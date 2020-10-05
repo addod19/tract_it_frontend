@@ -2,7 +2,62 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addWaters } from '../../redux/actions/waterActions';
+import styled from 'styled-components';
 
+const AddWrap = styled.div`
+  height:450px;
+  width: 100%;
+`;
+
+const FormWrap = styled.form`
+  width: 100%;
+  height: 300px;
+`;
+
+const AmountInp = styled.input`
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 0;
+
+  &:focus {
+    color: blue;
+  }
+`;
+const TotalInp = styled.input`
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 0;
+
+  &:focus {
+    color: blue;
+  }
+`;
+
+const SubmitData = styled.button`
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const TrackWater = styled.div`
+  text-align: center;
+  margin-top:40px;
+  color: white;
+  font-weight: 500;
+  font-size: 23px;
+`;
 const AddWater = ({ addWaters }) => {
   const [formData, setFormData] = useState({
     amount: '',
@@ -22,17 +77,16 @@ const AddWater = ({ addWaters }) => {
   };
 
   return (
-    <>
+    <AddWrap>
       <div>
         <div>
-          <div>
+          <TrackWater>
             Add Water
-          </div>
-          <form onSubmit={onSubmit}>
+          </TrackWater>
+          <FormWrap onSubmit={onSubmit}>
             <div>
               <label htmlFor="amount">
-                Amount
-                <input
+                <AmountInp
                   type="number"
                   name="amount"
                   value={amount}
@@ -44,24 +98,23 @@ const AddWater = ({ addWaters }) => {
             </div>
             <div>
               <label htmlFor="WaterTarget">
-                Target
-                <input
+                <TotalInp
                   type="number"
-                  name="target"
+                  name="total"
                   placeholder="Water Target"
-                  required
                   value={total}
                   onChange={onChange}
+                  required
                 />
               </label>
             </div>
-            <button type="submit">
+            <SubmitData type="submit">
               Add Water to Data
-            </button>
-          </form>
+            </SubmitData>
+          </FormWrap>
         </div>
       </div>
-    </>
+    </AddWrap>
   );
 };
 

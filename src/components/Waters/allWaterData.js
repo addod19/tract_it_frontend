@@ -18,22 +18,22 @@ const AllWater = ({ getWaters, waters }) => {
     return percentage >= 100 ? 100 : Math.round(percentage);
   };
 
-  const allStacks = all_water.map(water => (
+  const allStacks = waters.map(water => (
     <div key={water.id}>
       <div>
         <div>
           <PieChart
             data={[{
-              value: 1, color: '#8ce08a', key: `${result(waters.amount, waters.total)} %`,
+              value: 1, color: '#8ce08a', key: `${result(water.amount, water.total)} %`,
             }]}
-            reveal={result(waters.amount, waters.total)}
+            reveal={result(water.amount, water.total)}
             lineWidth={20}
             animate
             label={({ dataEntry }) => dataEntry.key}
           />
           <h5>{water.amount}</h5>
           <Link
-            to={{ pathname: `/all_water/${water.id}` }}
+            to={{ pathname: `/waters/:${water.id}` }}
           >
             View All Water
           </Link>
@@ -50,14 +50,14 @@ const AllWater = ({ getWaters, waters }) => {
     </div>
   );
 
-  return all_water ? (
+  return waters ? (
     <>
       <div>
         Track Water Intake
       </div>
       <div>
         <div>
-          {all_water.length > 0 ? allStacks : noWaterData}
+          {waters.length > 0 ? allStacks : noWaterData}
         </div>
       </div>
     </>
@@ -66,11 +66,11 @@ const AllWater = ({ getWaters, waters }) => {
 
 AllWater.propTypes = {
   getWaters: PropTypes.func.isRequired,
-  all_water: PropTypes.shape([]).isRequired,
+  waters: PropTypes.shape([]).isRequired,
 };
 
 const mapStateToProps = state => ({
-  all_water: state.waters,
+  waters: state.waters,
 });
 
 export default connect(mapStateToProps, { getWaters })(AllWater);

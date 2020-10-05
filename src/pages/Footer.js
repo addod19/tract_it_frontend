@@ -10,53 +10,58 @@ import styled from 'styled-components';
 
 const FooterWrap = styled.div`
   height: 100px;
-  background-color: white;
+  width: 100%;
+  border: 1px solid green;
+  background-color: #808080;
+  // margin-left: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  position: relative;
-  margin-top: 45%;
+  grid-gap: 20px;
+  text-align: center;
+  // margin-top: 45%;
 `;
 
 const LogoWrap = styled.div`
 
 `;
 
+const ImgSize = styled.img`
+  height: 40px;
+  width: 40px;
+`;
 const Footer = () => (
 
   <FooterWrap>
     <Link
-      to="/add_waters"
-      className="btn btn-lg footer-btn"
+      to="/waters"
       role="button"
     >
       <LogoWrap>
-        <img className="footer-icons" src={addWater} alt="addwater" />
+        <ImgSize src={addWater} alt="addwater" />
       </LogoWrap>
-      <p className="mb-0">Add Water</p>
+      <p>Add Water</p>
     </Link>
     <Link
-      to="/water"
+      to="/waters/:id"
       className="btn footer-btn"
       role="button"
     >
-      <img className="footer-icons" src={trackIt} alt="trackit" />
-      <p className="mb-0">Track.it</p>
+      <ImgSize src={trackIt} alt="trackit" />
+      <p>Track.it</p>
     </Link>
     <Link
-      to="/progress_cal"
-      className="btn btn-lg footer-btn"
+      to="/water_levels/progress"
       role="button"
     >
-      <img className="footer-icons" src={progress} alt="progress" />
-      <p className="mb-0">Your progress</p>
+      <ImgSize src={progress} alt="progress" />
+      <p>Your progress</p>
     </Link>
     <Link
       to="/"
-      className="btn btn-lg footer-btn"
       role="button"
     >
-      <img className="footer-icons" src={home} alt="home" />
-      <p className="mb-0">Home</p>
+      <ImgSize src={home} alt="home" />
+      <p>Home</p>
     </Link>
   </FooterWrap>
 );

@@ -1,9 +1,8 @@
-// /* global id */
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 import {
   GET_WATERS, GET_WATER, DELETE_WATER, ADD_WATERS, UPDATE_WATER,
-  PROGRESS_CALCULATION, WATERS_ERRORS,
+  WATERS_ERRORS,
 } from './types';
 
 const defaultURL = 'http://localhost:3000';
@@ -99,23 +98,6 @@ const deleteWater = id => async dispatch => {
   }
 };
 
-const progressCal = () => async dispatch => {
-  try {
-    const prog = await axios.get(`${defaultURL}/water_levels/progress`, apiConfig);
-    dispatch({
-      type: PROGRESS_CALCULATION,
-      payload: prog.data.progress,
-    });
-    return prog;
-
-  } catch(error) {
-    dispatch({
-      type: WATERS_ERRORS,
-      payload: error,
-    });
-  }
-};
-
 export {
-  addWaters, getWater, getWaters, updateWater, deleteWater, progressCal
+  addWaters, getWater, getWaters, updateWater, deleteWater
 };

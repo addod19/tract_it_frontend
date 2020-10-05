@@ -15,6 +15,11 @@ const MainWrap = styled.div`
   border: 1px solid black;
 `;
 
+const LoadingWrap = styled.div`
+  height: 450px;
+  width: 100%;
+`;
+
 const Water = ({
   getWater, waters, match, deleteWater, history,
 }) => {
@@ -36,7 +41,7 @@ const Water = ({
     deleteWater(id, history);
   };
 
-  return waters ? (
+  return !waters ? (
     <MainWrap>
       <div>
         <div>
@@ -57,17 +62,17 @@ const Water = ({
         </div>
         <div>
           <div>
-            <Link to="/water" className="btn btn-lg custom-button mb-3">
+            <Link to="/waters" className="btn btn-lg custom-button mb-3">
               Back to Data
             </Link>
             <Link
-              to={`/edit/${waters.id}`}
+              to={`/waters/:${id}`}
               className="btn btn-lg custom-button mb-3"
               role="button"
             >
               Edit Water
             </Link>
-            <button onClick={handleDelete} type="button" className="btn btn-lg custom-button delete-btn">
+            <button onClick={handleDelete} type="button" className="btn">
               Delete Water
             </button>
           </div>
@@ -75,13 +80,15 @@ const Water = ({
       </div>
       <Footer />
     </MainWrap>
-  ) : <h1>Loading........</h1>;
+  ) : <LoadingWrap>
+      <h1>Loading........</h1>
+    </LoadingWrap>;
 };
 
 Water.propTypes = {
   getWater: PropTypes.func.isRequired,
   deleteWater: PropTypes.func.isRequired,
-  waters: PropTypes.shape({}).isRequired,
+  waters: PropTypes.object
 };
 
 const mapStateToProps = state => ({

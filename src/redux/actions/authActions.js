@@ -11,25 +11,25 @@ const loadUser = () => async dispatch => {
     setAuthToken(localStorage.token);
   }
 
-  const apiConfig = {
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-    },
-  };
-  try {
-    const data = await axios.get(`${defaultUrl}/auto_login`, apiConfig);
-    localStorage.setItem('token', data.token);
-    dispatch(setUser(data.user));
-    return data;
+  // const apiConfig = {
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     Accept: 'application/json',
+  //     Authorization: `Bearer ${localStorage.getItem('token')}`,
+  //   },
+  // };
+  // try {
+  //   const data = await axios.get(`${defaultUrl}/auto_login`, apiConfig);
+  //   localStorage.setItem('token', data.token);
+  //   dispatch(setUser(data.user));
+  //   return data;
 
-  } catch(error) {
-    dispatch({
-      type: AUTH_FAIL,
-      payload: error,
-    });
-  }
+  // } catch(error) {
+  //   dispatch({
+  //     type: AUTH_FAIL,
+  //     payload: error,
+  //   });
+  // }
   
 };
 
@@ -44,8 +44,9 @@ export const signup = userDetails => async dispatch => {
   };
   try {
     const data = await axios.post(`${defaultUrl}/signup`, userDetails, apiConfig);
+    // console.log(data);
     localStorage.setItem('token', data.token);
-    dispatch(setUser(data.user));
+    dispatch(setUser(data.userDetails));
     return data;
 
   } catch(error) {
@@ -59,7 +60,7 @@ export const signup = userDetails => async dispatch => {
 
 export const signin = userDetails => async dispatch => {
   const apiConfig = {
-    method: 'POST',
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -67,9 +68,10 @@ export const signin = userDetails => async dispatch => {
     body: JSON.stringify(userDetails),
   };
   try {
-    const data = await axios.post(`${defaultUrl}/auth/signin`, userDetails, apiConfig);
+    const data = await axios.get(`${defaultUrl}/auth/signin`, userDetails, apiConfig);
+    console.log(data);
     localStorage.setItem('token', data.token);
-    dispatch(setUser(data.user));
+    dispatch(setUser(data));
     return data;
 
   } catch(error) {

@@ -36,7 +36,6 @@ const EditWater = ({
   return (
     <>
       <div>
-        <div>
           <div>
             Edit Water
           </div>
@@ -75,7 +74,6 @@ const EditWater = ({
               Back to water data
             </Link>
           </form>
-        </div>
       </div>
     </>
   );
