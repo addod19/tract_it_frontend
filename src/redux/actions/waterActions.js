@@ -5,8 +5,8 @@ import {
   WATERS_ERRORS,
 } from './types';
 
-const defaultURL = 'http://localhost:3000';
-// const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
+// const defaultURL = 'http://localhost:3000';
+const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
 const apiConfig = {
   headers: {
     'Content-Type': 'application/json',
