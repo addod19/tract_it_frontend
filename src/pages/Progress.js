@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { PieChart } from 'react-minimal-pie-chart';
 import progressCal from '../redux/actions/progressActions';
-// import Footer from './Footer';
 
 import styled from 'styled-components';
 
@@ -30,39 +29,31 @@ const Progress = ({ progressCal, progress_calculations }) => {
   return (
     <MainWrap>
         Progress Data
-      {/* <div> */}
         <main>
           <div>
-            {/* <div>
-              <div> */}
-                <div>
-                  <PieChart
-                    // data={[{
-                    //   value: 1, color: '#8ce08a', key: `${result(progress_calculations.amount,
-                    //     progress_calculations.total)} %`,
-                    // }]}
-                    // reveal={result(progress_calculations.amount, progress_calculations.total)}
-                    // lineWidth={20}
-                    // animate
-                    // label={({ dataEntry }) => dataEntry.key}
-                    // labelStyle={{ fontSize: '1.6rem' }}
-                  />
-                  <p className="text-center">
-                    {/* {progress_calculations.amount} */}
-                    {' '}
-                    /
-                    {' '}
-                    {/* {progress_calculations.total} */}
-                    {' '}
-                    Water target acheived
-                  </p>
-                </div>
-              {/* </div>
-            </div> */}
+            {console.log(progress_calculations)}
+            <PieChart
+              data={[{
+                value: 1, color: '#8ce08a', key: `${result(progress_calculations[0].amount,
+                 progress_calculations[0].total)} %`,
+              }]}
+              reveal={result(progress_calculations[0].amount, progress_calculations[0].total)}
+                lineWidth={20}
+                animate
+                label={({ dataEntry }) => dataEntry.key}
+                labelStyle={{ fontSize: '1.6rem' }}
+            />
+            <p>
+              {progress_calculations[0].amount}
+              {' '}
+              /
+              {' '}
+              {progress_calculations[0].total}
+              {' '}
+              Water target acheived
+            </p>
           </div>
         </main>
-      {/* </div> */}
-      {/* <Footer /> */}
     </MainWrap>
   );
 };
@@ -76,16 +67,7 @@ Progress.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  progress_calculations: state.waters.progress_calculations,
+  progress_calculations: state.waters,
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    progressCal: () => dispatch(progressCal()),
-  }
-  // dispatch({
-
-  // })
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Progress);
+export default connect(mapStateToProps, { progressCal })(Progress);

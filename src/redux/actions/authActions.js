@@ -2,7 +2,7 @@ import setAuthToken from '../../helpers/setAuthToken';
 import { AUTH_FAIL } from './types';
 import axios from 'axios';
 
-const defaultUrl = 'http://localhost:3000';
+const defaultUrl = 'http://localhost:3003';
 
 const setUser = payload => ({ type: 'SET_USER', payload });
 
@@ -34,18 +34,19 @@ const loadUser = () => async dispatch => {
 };
 
 export const signup = userDetails => async dispatch => {
-  // console.log(userDetails);
+  console.log(userDetails);
   const apiConfig = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`
     },
     body: JSON.stringify(userDetails),
   };
   try {
     const data = await axios.post(`${defaultUrl}/signup`, userDetails, apiConfig);
-    // console.log(data);
+    console.log(data);
     localStorage.setItem('token', data.token);
     dispatch(setUser(data.userDetails));
     return data;
@@ -60,7 +61,7 @@ export const signup = userDetails => async dispatch => {
 };
 
 export const signin = userDetails => async dispatch => {
-  // console.log(userDetails);
+  console.log(userDetails);
   const apiConfig = {
     method: 'GET',
     headers: {
@@ -68,10 +69,11 @@ export const signin = userDetails => async dispatch => {
       Accept: 'application/json',
     },
     body: JSON.stringify(userDetails),
+    Authorization: `Bearer ${localStorage.getItem('token')}`
   };
   try {
     const data = await axios.get(`${defaultUrl}/auth/signin`, userDetails, apiConfig);
-    // console.log(data.config.email);
+    console.log(data.config.email);
     localStorage.setItem('token', data.token);
     dispatch(setUser(data));
     return data;

@@ -6,7 +6,14 @@ import styled from 'styled-components';
 
 const AddWrap = styled.div`
   height:450px;
-  width: 100%;
+  width: 60%;
+  margin-left: 20%;
+
+  @media (max-width: 768px) {
+    height:450px;
+    width: 100%;
+    margin-left: 0;
+  }
 `;
 
 const FormWrap = styled.form`
@@ -69,7 +76,7 @@ const AddWater = ({ addWaters }) => {
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async e => {
+  const onSubmit = e => {
     e.preventDefault();
     addWaters({
       amount, total,
@@ -108,7 +115,7 @@ const AddWater = ({ addWaters }) => {
                 />
               </label>
             </div>
-            <SubmitData type="submit">
+            <SubmitData type="submit" onSubmit={onSubmit}>
               Add Water to Data
             </SubmitData>
           </FormWrap>

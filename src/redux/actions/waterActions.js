@@ -5,7 +5,7 @@ import {
   WATERS_ERRORS,
 } from './types';
 
-const defaultURL = 'http://localhost:3000';
+const defaultURL = 'http://localhost:3003';
 const apiConfig = {
   headers: {
     'Content-Type': 'application/json',
@@ -14,7 +14,7 @@ const apiConfig = {
   },
 };
 const addWaters = waterData => async dispatch => {
-  // console.log("hi check debug");
+  console.log("hi check debug");
   try {
     const waters = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
     console.log(waters);

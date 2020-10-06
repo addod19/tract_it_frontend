@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { signout } from '../redux/actions/authActions';
-// import Footer from './Footer';
+
 import Signin from '../components/auth/Login';
 
 const MainWrap = styled.div`
   width: 100%;
-  height: 690px;
+  height: 650px;
   background-color: #51adcf;
 
   @media (max-width: 768px) {
@@ -21,9 +21,10 @@ const MainWrap = styled.div`
 const UserWrap = styled.div`
   display: flex;
   flex-direction: row;
-  text-align: center;
-  border: 1px solid red;
-  height: 690px;
+  justify-content: center;
+  align-content: center;
+  height: 390px;
+  border: 1px solid black;
 `;
 
 const IntroWrap = styled.div`
@@ -42,14 +43,26 @@ const IntroText = styled.div`
 const SignupWrap = styled.div`
   margin-left: 50%;
 `;
+
+const FormWrap = styled.div`
+  width: 60%;
+  height: auto;
+  margin-left: 15%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-left: 0;
+  }
+`;
+
+const HeaderStyle = styled.div`
+  text-align: center;
+`;
 const Home = ({ auth: { loggedIn, user }, signout }) => (
   <MainWrap>
     {loggedIn === false ? (
       <>
-        {/* <IntroWrap>
-          <IntroText>Water Intake Tracker</IntroText>
-        </IntroWrap> */}
-        <div>
+        <FormWrap>
           <Signin />
           <SignupWrap>
             <Link to="/signup">
@@ -57,18 +70,18 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
             </Link>
           </SignupWrap>
 
-        </div>
+        </FormWrap>
       </>
     ) : (
       <>
         <UserWrap>
-          <div>
+          <HeaderStyle>
             welcome to the water tracking app
             {' '}
             {user.config.email}
             {' '}
             !!
-          </div>
+          </HeaderStyle>
           <div>
             <button type="button" onClick={signout}>Signout</button>
           </div>
