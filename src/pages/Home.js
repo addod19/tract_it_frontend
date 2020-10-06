@@ -78,7 +78,8 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
           <HeaderStyle>
             welcome to the water tracking app
             {' '}
-            {user.config.email}
+            { console.log(user) }
+            {user.email}
             {' '}
             !!
           </HeaderStyle>
