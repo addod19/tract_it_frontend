@@ -31,7 +31,7 @@ To get the accurate data
 
 ## Live Demo
 
-[Live Demo Link](https://water-track.herokuapp.com/)
+[Live Demo Link](https://addo-water.herokuapp.com/)
 
 
 ## Getting Started
