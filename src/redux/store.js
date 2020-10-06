@@ -6,7 +6,6 @@ import INITIAL_STATE from '../constant/initialState';
 
 const initialState = { waters: INITIAL_STATE };
 
-// const initialState = {};
 
 const middleware = [thunk];
 

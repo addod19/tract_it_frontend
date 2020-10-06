@@ -7,12 +7,33 @@ import progressCal from '../redux/actions/progressActions';
 import styled from 'styled-components';
 
 const MainWrap = styled.main`
-  height: 700px;
+  height: 430px;
   width: 100%;
-  border: 1px solid red;
   display: flex;
 `;
 
+const ProgressStyle = styled.section`
+  width: 90%;
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 10%;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+const ChartSize = styled.div`
+  width: 200px;
+  height: 220px;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 120px;
+  }
+`;
 const Progress = ({ progressCal, progress_calculations }) => {
   const result = (amount, total) => {
     if (total === 0) {
@@ -28,9 +49,8 @@ const Progress = ({ progressCal, progress_calculations }) => {
 
   return (
     <MainWrap>
-        Progress Data
-        <main>
-          <div>
+        <ProgressStyle>
+          <ChartSize>
             {console.log(progress_calculations)}
             <PieChart
               data={[{
@@ -52,8 +72,54 @@ const Progress = ({ progressCal, progress_calculations }) => {
               {' '}
               Water target acheived
             </p>
-          </div>
-        </main>
+          </ChartSize>
+          <ChartSize>
+            {console.log(progress_calculations)}
+            <PieChart
+              data={[{
+                value: 1, color: '#8ce08a', key: `${result(progress_calculations[1].amount,
+                 progress_calculations[1].total)} %`,
+              }]}
+              reveal={result(progress_calculations[1].amount, progress_calculations[1].total)}
+                lineWidth={20}
+                animate
+                label={({ dataEntry }) => dataEntry.key}
+                labelStyle={{ fontSize: '1.6rem' }}
+            />
+            <p>
+              {progress_calculations[1].amount}
+              {' '}
+              /
+              {' '}
+              {progress_calculations[1].total}
+              {' '}
+              Water target acheived
+            </p>
+          </ChartSize>
+          <ChartSize>
+            {console.log(progress_calculations)}
+            <PieChart
+              data={[{
+                value: 1, color: '#8ce08a', key: `${result(progress_calculations[2].amount,
+                 progress_calculations[2].total)} %`,
+              }]}
+              reveal={result(progress_calculations[2].amount, progress_calculations[2].total)}
+                lineWidth={20}
+                animate
+                label={({ dataEntry }) => dataEntry.key}
+                labelStyle={{ fontSize: '1.6rem' }}
+            />
+            <p>
+              {progress_calculations[2].amount}
+              {' '}
+              /
+              {' '}
+              {progress_calculations[2].total}
+              {' '}
+              Water target acheived
+            </p>
+          </ChartSize>
+        </ProgressStyle>
     </MainWrap>
   );
 };

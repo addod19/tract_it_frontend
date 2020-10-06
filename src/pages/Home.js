@@ -9,7 +9,7 @@ import Signin from '../components/auth/Login';
 
 const MainWrap = styled.div`
   width: 100%;
-  height: 650px;
+  height: 450px;
   background-color: #51adcf;
 
   @media (max-width: 768px) {

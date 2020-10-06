@@ -5,7 +5,7 @@ import { addWaters } from '../../redux/actions/waterActions';
 import styled from 'styled-components';
 
 const AddWrap = styled.div`
-  height:450px;
+  height:400px;
   width: 60%;
   margin-left: 20%;
 
