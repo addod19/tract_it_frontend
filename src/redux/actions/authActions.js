@@ -2,8 +2,8 @@ import setAuthToken from '../../helpers/setAuthToken';
 import { AUTH_FAIL } from './types';
 import axios from 'axios';
 
-// const defaultUrl = 'http://localhost:3003'; //dev
-const defaultUrl = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
+const defaultUrl = 'http://localhost:3000'; //dev
+// const defaultUrl = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
 
 const setUser = payload => ({ type: 'SET_USER', payload });
 
@@ -14,7 +14,6 @@ const loadUser = () => async dispatch => {
 };
 
 export const signup = userDetails => async dispatch => {
-  console.log(userDetails);
   const apiConfig = {
     method: 'POST',
     headers: {
@@ -26,7 +25,6 @@ export const signup = userDetails => async dispatch => {
   };
   try {
     const data = await axios.post(`${defaultUrl}/signup`, userDetails, apiConfig);
-    console.log(data);
     localStorage.setItem('token', data.token);
     dispatch(setUser(data.userDetails));
     return data;
@@ -41,7 +39,6 @@ export const signup = userDetails => async dispatch => {
 };
 
 export const signin = userDetails => async dispatch => {
-  console.log(userDetails);
   const apiConfig = {
     method: 'GET',
     headers: {
@@ -53,7 +50,6 @@ export const signin = userDetails => async dispatch => {
   };
   try {
     const data = await axios.get(`${defaultUrl}/auth/signin`, userDetails, apiConfig);
-    console.log(data.config.email);
     localStorage.setItem('token', data.token);
     dispatch(setUser(data));
     return data;

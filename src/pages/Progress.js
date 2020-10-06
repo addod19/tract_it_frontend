@@ -7,14 +7,14 @@ import progressCal from '../redux/actions/progressActions';
 import styled from 'styled-components';
 
 const MainWrap = styled.main`
-  height: 430px;
+  height: 530px;
   width: 100%;
   display: flex;
 `;
 
 const ProgressStyle = styled.section`
   width: 90%;
-  height: auto;
+  height: 400px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-left: 10%;
@@ -51,7 +51,6 @@ const Progress = ({ progressCal, progress_calculations }) => {
     <MainWrap>
         <ProgressStyle>
           <ChartSize>
-            {console.log(progress_calculations)}
             <PieChart
               data={[{
                 value: 1, color: '#8ce08a', key: `${result(progress_calculations[0].amount,
@@ -74,7 +73,6 @@ const Progress = ({ progressCal, progress_calculations }) => {
             </p>
           </ChartSize>
           <ChartSize>
-            {console.log(progress_calculations)}
             <PieChart
               data={[{
                 value: 1, color: '#8ce08a', key: `${result(progress_calculations[1].amount,
@@ -97,7 +95,6 @@ const Progress = ({ progressCal, progress_calculations }) => {
             </p>
           </ChartSize>
           <ChartSize>
-            {console.log(progress_calculations)}
             <PieChart
               data={[{
                 value: 1, color: '#8ce08a', key: `${result(progress_calculations[2].amount,
