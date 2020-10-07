@@ -5,18 +5,21 @@ import {
   WATERS_ERRORS,
 } from './types';
 
-const defaultURL = 'http://localhost:3000';
-// const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
+// const defaultURL = 'http://localhost:3000';
+const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
 const apiConfig = {
+  method: 'POST',
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
+    body: JSON.stringify(waterData),
     Authorization: `Bearer ${localStorage.getItem('token')}`,
   },
 };
 const addWaters = waterData => async dispatch => {
   try {
     const waters = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
+    console.log(waters);
     dispatch({
       type: ADD_WATERS,
       payload: waters.data,
