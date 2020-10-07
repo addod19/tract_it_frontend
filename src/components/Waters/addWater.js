@@ -125,6 +125,7 @@ const AddWater = ({ addWaters }) => {
               type="number"
               name="current_user_id"
               value={current_user_id}
+              onChange={onChange}
               required
             />
             <SubmitData type="submit" onSubmit={onSubmit}>
