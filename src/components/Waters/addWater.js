@@ -52,6 +52,7 @@ const SubmitData = styled.button`
   margin: 8px 0;
   box-sizing: border-box;
   border-radius: 4px;
+  background-color: light-blue;
 
   &:hover {
     cursor: pointer;
@@ -66,26 +67,27 @@ const TrackWater = styled.div`
   font-size: 23px;
 `;
 
-const UserId = styled.input`
-  display: none;
-`;
+// const UserId = styled.input`
+//   display: none;
+// `;
 
 const AddWater = ({ addWaters }) => {
   const [formData, setFormData] = useState({
     amount: '',
     total: '',
-    current_user_id: '',
   });
   const {
-    amount, total, current_user_id
+    amount, total,
   } = formData;
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
+    console.log(amount, total)
+
     e.preventDefault();
     addWaters({
-      amount, total, current_user_id
+      amount, total, props.user_id,
     });
   };
 
@@ -121,13 +123,13 @@ const AddWater = ({ addWaters }) => {
                 />
               </label>
             </div>
-            <UserId
+            {/* <UserId
               type="number"
-              name="current_user_id"
-              value={current_user_id}
+              name="current_user"
+              value={user_id}
               onChange={onChange}
               required
-            />
+            /> */}
             <SubmitData type="submit" onSubmit={onSubmit}>
               Add Water to Data
             </SubmitData>
@@ -145,6 +147,7 @@ AddWater.propTypes = {
 
 const mapStateToProps = state => ({
   water: state.waters.water,
+  user_id: state.user.user.id,
 });
 
 export default connect(mapStateToProps, { addWaters })(AddWater);

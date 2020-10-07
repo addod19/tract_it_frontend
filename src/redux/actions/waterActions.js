@@ -9,7 +9,7 @@ const defaultURL = 'http://localhost:3000';
 // const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
 
 const addWaters = waterData => async dispatch => {
-  console.log('hiii' + waterData);
+  console.log(waterData);
   const apiConfig = {
     method: 'POST',
     headers: {
