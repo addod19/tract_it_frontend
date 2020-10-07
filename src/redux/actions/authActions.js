@@ -8,8 +8,8 @@ const defaultUrl = 'http://localhost:3000'; //dev
 const setUser = payload => ({ type: 'SET_USER', payload });
 
 const loadUser = () => async dispatch => {
-  if (localStorage.token) {
-    setAuthToken(localStorage.token);
+  if (localStorage.auth_token) {
+    setAuthToken(localStorage.auth_token);
   }
 };
 
@@ -25,8 +25,8 @@ export const signup = userDetails => async dispatch => {
   };
   try {
     const data = await axios.post(`${defaultUrl}/signup`, userDetails, apiConfig);
-    console.log(data);
-    localStorage.setItem('token', data.token);
+    console.log(data.data.auth_token);
+    localStorage.setItem('token', data.data.auth_token);
     dispatch(setUser(data.userDetails));
     return data;
 
@@ -51,8 +51,8 @@ export const signin = userDetails => async dispatch => {
   };
   try {
     const data = await axios.post(`${defaultUrl}/auth/signin`, userDetails, apiConfig);
-    console.log(data);
-    localStorage.setItem('token', data.token);
+    console.log(data.data.auth_token);
+    localStorage.setItem('token', data.data.auth_token);
     dispatch(setUser(data));
     return data;
 
