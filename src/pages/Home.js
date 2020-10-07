@@ -27,18 +27,18 @@ const UserWrap = styled.div`
   border: 1px solid black;
 `;
 
-const IntroWrap = styled.div`
-  height: 40px;
-  width: 50%;
-`;
+// const IntroWrap = styled.div`
+//   height: 40px;
+//   width: 50%;
+// `;
 
-const IntroText = styled.div`
-  text-align: center;
-  position: absolute;
-  margin-top: 20%;
-  margin-left: 40%;
-  font-size: 25px;
-`;
+// const IntroText = styled.div`
+//   text-align: center;
+//   position: absolute;
+//   margin-top: 20%;
+//   margin-left: 40%;
+//   font-size: 25px;
+// `;
 
 const SignupWrap = styled.div`
   margin-left: 50%;

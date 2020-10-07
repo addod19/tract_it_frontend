@@ -57,17 +57,6 @@ const ButtonWrap = styled.button`
     cursor: pointer;
   }
 `;
-const LoginBtn = styled.button`
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border-radius: 4px;
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
 
 const FormWrap = styled.form`
   width: 100%;
