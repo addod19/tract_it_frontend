@@ -65,13 +65,19 @@ const TrackWater = styled.div`
   font-weight: 500;
   font-size: 23px;
 `;
+
+const UserId = styled.input`
+  display: none;
+`;
+
 const AddWater = ({ addWaters }) => {
   const [formData, setFormData] = useState({
     amount: '',
     total: '',
+    current_user_id: '',
   });
   const {
-    amount, total,
+    amount, total, current_user_id
   } = formData;
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -79,7 +85,7 @@ const AddWater = ({ addWaters }) => {
   const onSubmit = e => {
     e.preventDefault();
     addWaters({
-      amount, total,
+      amount, total, current_user_id
     });
   };
 
@@ -115,6 +121,12 @@ const AddWater = ({ addWaters }) => {
                 />
               </label>
             </div>
+            <UserId
+              type="number"
+              name="current_user_id"
+              value={current_user_id}
+              required
+            />
             <SubmitData type="submit" onSubmit={onSubmit}>
               Add Water to Data
             </SubmitData>
