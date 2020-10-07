@@ -5,10 +5,11 @@ import {
   WATERS_ERRORS,
 } from './types';
 
-// const defaultURL = 'http://localhost:3000';
-const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
+const defaultURL = 'http://localhost:3000';
+// const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
 
 const addWaters = waterData => async dispatch => {
+  console.log(waterData);
   const apiConfig = {
     method: 'POST',
     headers: {
@@ -16,7 +17,7 @@ const addWaters = waterData => async dispatch => {
       Accept: 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
-    body: JSON.stringify(waterData),
+    // body: JSON.stringify(waterData),
   };
   try {
     const waters = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
@@ -37,7 +38,7 @@ const addWaters = waterData => async dispatch => {
 
 const getWater = id => async dispatch => {
   const apiConfig = {
-    method: 'POST',
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -62,7 +63,7 @@ const getWater = id => async dispatch => {
 
 const getWaters = () => async dispatch => {
   const apiConfig = {
-    method: 'POST',
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -87,7 +88,7 @@ const getWaters = () => async dispatch => {
 
 const updateWater = (id, water) => async dispatch => {
   const apiConfig = {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -113,7 +114,7 @@ const updateWater = (id, water) => async dispatch => {
 
 const deleteWater = id => async dispatch => {
   const apiConfig = {
-    method: 'POST',
+    method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
