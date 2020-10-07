@@ -7,16 +7,17 @@ import {
 
 // const defaultURL = 'http://localhost:3000';
 const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
-const apiConfig = {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-    body: JSON.stringify(waterData),
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
-  },
-};
+
 const addWaters = waterData => async dispatch => {
+  const apiConfig = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    body: JSON.stringify(waterData),
+  };
   try {
     const waters = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
     console.log(waters);
@@ -35,6 +36,14 @@ const addWaters = waterData => async dispatch => {
 };
 
 const getWater = id => async dispatch => {
+  const apiConfig = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  };
   try {
     const water = await axios.get(`${defaultURL}/waters/:${id}`, apiConfig);
     dispatch({
@@ -52,6 +61,14 @@ const getWater = id => async dispatch => {
 };
 
 const getWaters = () => async dispatch => {
+  const apiConfig = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  };
   try {
     const allData = await axios.get(`${defaultURL}/waters`, apiConfig);
     dispatch({
@@ -69,6 +86,15 @@ const getWaters = () => async dispatch => {
 };
 
 const updateWater = (id, water) => async dispatch => {
+  const apiConfig = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    body: JSON.stringify(water),
+  };
   try {
     const edit = await axios.put(`${defaultURL}/waters/${id}`, water, apiConfig);
     dispatch({
@@ -86,6 +112,14 @@ const updateWater = (id, water) => async dispatch => {
 };
 
 const deleteWater = id => async dispatch => {
+  const apiConfig = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  };
   try {
     const remove = await axios.delete(`${defaultURL}/waters/:${id}`, apiConfig);
     dispatch({
