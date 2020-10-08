@@ -21,7 +21,7 @@ const addWaters = waterData => async dispatch => {
   };
   try {
     const waters = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
-    console.log(waters);
+    // console.log(waters);
     dispatch({
       type: ADD_WATERS,
       payload: waters.data,
