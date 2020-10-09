@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 import {
-  GET_WATERS, GET_WATER, DELETE_WATER, ADD_WATERS, UPDATE_WATER,
+  GET_WATERS, GET_WATER, DELETE_WATER, ADD_WATER, UPDATE_WATER,
   WATERS_ERRORS,
 } from './types';
 
@@ -23,7 +23,7 @@ const addWaters = waterData => async dispatch => {
     const waters = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
     // console.log(waters);
     dispatch({
-      type: ADD_WATERS,
+      type: ADD_WATER,
       payload: waters.data,
     });
     return waters;

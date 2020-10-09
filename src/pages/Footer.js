@@ -43,7 +43,6 @@ const Footer = () => (
     </Link>
     <Link
       to="/waters"
-      className="btn footer-btn"
       role="button"
     >
       <ImgSize src={trackIt} alt="trackit" />

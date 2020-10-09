@@ -68,7 +68,7 @@ const TrackWater = styled.div`
 `;
 
 // const AddWater = ({ addWaters }) => {
-const AddWater = ({addWaters}, user) => {
+const AddWater = ({ addWaters }) => {
   const [formData, setFormData] = useState({
     amount: '',
     total: '',
@@ -76,16 +76,16 @@ const AddWater = ({addWaters}, user) => {
   const {
     amount, total,
   } = formData;
-  const {user_id} = user;
+  // const {user_id} = user;
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
     e.preventDefault();
     console.log({
-      amount, total, user_id
+      amount, total
     });
     addWaters({
-      amount, total, user_id
+      amount, total
     });
   };
 
@@ -134,14 +134,10 @@ const AddWater = ({addWaters}, user) => {
 AddWater.propTypes = {
   addWaters: PropTypes.func.isRequired,
   water: PropTypes.shape({}),
-  user: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
   water: state.waters.water,
-  // user: state.auth.user.user,
-  // user: state.auth.data,
-  user: state.waters.data
 });
 
 export default connect(mapStateToProps, { addWaters })(AddWater);
