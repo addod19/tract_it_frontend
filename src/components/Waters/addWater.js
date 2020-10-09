@@ -6,23 +6,23 @@ import styled from 'styled-components';
 
 const AddWrap = styled.div`
   height:400px;
-  width: 60%;
+  wuser_idth: 60%;
   margin-left: 20%;
 
-  @media (max-width: 768px) {
+  @media (max-wuser_idth: 768px) {
     height:450px;
-    width: 100%;
+    wuser_idth: 100%;
     margin-left: 0;
   }
 `;
 
 const FormWrap = styled.form`
-  width: 100%;
+  wuser_idth: 100%;
   height: 300px;
 `;
 
 const AmountInp = styled.input`
-  width: 100%;
+  wuser_idth: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -34,7 +34,7 @@ const AmountInp = styled.input`
   }
 `;
 const TotalInp = styled.input`
-  width: 100%;
+  wuser_idth: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -47,7 +47,7 @@ const TotalInp = styled.input`
 `;
 
 const SubmitData = styled.button`
-  width: 100%;
+  wuser_idth: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -67,10 +67,6 @@ const TrackWater = styled.div`
   font-size: 23px;
 `;
 
-// const UserId = styled.input`
-//   display: none;
-// `;
-
 // const AddWater = ({ addWaters }) => {
 const AddWater = ({addWaters}, user) => {
   const [formData, setFormData] = useState({
@@ -80,16 +76,16 @@ const AddWater = ({addWaters}, user) => {
   const {
     amount, total,
   } = formData;
-  const {id} = user;
+  const {user_id} = user;
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
     e.preventDefault();
     console.log({
-      amount, total, id
+      amount, total, user_id
     });
     addWaters({
-      amount, total, id
+      amount, total, user_id
     });
   };
 
@@ -125,13 +121,6 @@ const AddWater = ({addWaters}, user) => {
                 />
               </label>
             </div>
-            {/* <UserId
-              type="number"
-              name="current_user_id"
-              value={current_user_id}
-              onChange={onChange}
-              required
-            /> */}
             <SubmitData type="submit" onSubmit={onSubmit}>
               Add Water to Data
             </SubmitData>
@@ -150,7 +139,9 @@ AddWater.propTypes = {
 
 const mapStateToProps = state => ({
   water: state.waters.water,
-  user: state.auth.user.user,
+  // user: state.auth.user.user,
+  // user: state.auth.data,
+  user: state.waters.data
 });
 
 export default connect(mapStateToProps, { addWaters })(AddWater);
