@@ -19,14 +19,12 @@ export const signup = userDetails => async dispatch => {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`
     },
+    Authorization: `Bearer ${localStorage.getItem('token')}`,
     body: JSON.stringify(userDetails),
   };
   try {
     const data = await axios.post(`${defaultUrl}/signup`, userDetails, apiConfig);
-    // console.log(data);
-    // const [id, name] = data.data.user;
     localStorage.setItem('token', data.data.auth_token);
     dispatch(setUser({ loggedIn: true, user: data.data.user }));
     return data;

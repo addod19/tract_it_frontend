@@ -12,10 +12,9 @@ import Water from './Waters/waters';
 import AddWater from './Waters/addWater';
 import EditWater from './Waters/editWater';
 import Progress from '../pages/Progress';
+import AllWater from './Waters/allWaterData';
 
 import Header from '../pages/Header';
-import Footer from '../pages/Footer';
-
 
 import store from '../redux/store';
 
@@ -47,11 +46,10 @@ const App = () => {
             <Route path="/signup" exact component={Signup} />
             <Route path="/waters" exact component={AddWater} />
             <Route path="waters/:id" exact component={Water} />
-            <Route path="/waters" exact component={Water} />
+            <Route path="/waters" exact component={AllWater} />
             <Route path="/edit/:id" exact component={EditWater} />
             <Route path="/water_levels/progress" exact component={Progress} />
           </Switch>
-        <Footer /> 
         </Router>
       </AppWrap>
     </Provider>

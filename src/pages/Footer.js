@@ -8,7 +8,7 @@ import progress from '../images/progress.png';
 import '../App.css';
 import styled from 'styled-components';
 
-const FooterWrap = styled.div`
+const FooterWrap = styled.footer`
   height: 100px;
   width: 100%;
   border: 1px solid green;

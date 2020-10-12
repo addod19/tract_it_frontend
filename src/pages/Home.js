@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { signout } from '../redux/actions/authActions';
 
+import Footer from '../pages/Footer';
+
 import Signin from '../components/auth/Login';
 
 const MainWrap = styled.div`
@@ -27,19 +29,6 @@ const UserWrap = styled.div`
   border: 1px solid black;
 `;
 
-// const IntroWrap = styled.div`
-//   height: 40px;
-//   width: 50%;
-// `;
-
-// const IntroText = styled.div`
-//   text-align: center;
-//   position: absolute;
-//   margin-top: 20%;
-//   margin-left: 40%;
-//   font-size: 25px;
-// `;
-
 const SignupWrap = styled.div`
   margin-left: 50%;
 `;
@@ -58,10 +47,23 @@ const FormWrap = styled.div`
 const HeaderStyle = styled.div`
   text-align: center;
 `;
+
+const FooterWrapper = styled.div`
+  position: relative;
+  margin-bottom: -130px;
+`;
+
+const FalseWrap = styled.div`
+  width: 100%;
+  height: 100%;
+  border: 1px solid red;
+`;
+
+
 const Home = ({ auth: { loggedIn, user }, signout }) => (
   <MainWrap>
     {loggedIn === false ? (
-      <>
+      <FalseWrap >
         <FormWrap>
           <Signin />
           <SignupWrap>
@@ -69,17 +71,17 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
               Signup
             </Link>
           </SignupWrap>
-
         </FormWrap>
-      </>
+        <Footer />
+      </FalseWrap >
     ) : (
       <>
         <UserWrap>
           <HeaderStyle>
             welcome to the water tracking app
             {' '}
-            { console.log(user.email ) }
-            {user.email}
+            { console.log(user.user.data.user.name ) }
+            {user.user.data.user.name}
             {' '}
             !!
           </HeaderStyle>
@@ -87,6 +89,9 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
             <button type="button" onClick={signout}>Signout</button>
           </div>
         </UserWrap>
+        <FooterWrapper>
+          <Footer />
+        </FooterWrapper>
         
       </>
     )}
