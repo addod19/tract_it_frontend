@@ -1,4 +1,5 @@
 export const SET_USER = 'SET_USER';
+export const SET_WATER = 'SET_WATER';
 export const GET_WATERS = 'GET_WATERS';
 export const GET_WATER = 'GET_WATER';
 export const UPDATE_WATER = 'UPDATE_WATER';

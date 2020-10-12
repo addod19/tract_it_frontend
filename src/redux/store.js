@@ -4,7 +4,7 @@ import rootReducer from './reducers';
 
 import INITIAL_STATE from '../constant/initialState';
 
-const initialState = { water: INITIAL_STATE, waters: INITIAL_STATE };
+const initialState = { };
 
 
 const middleware = [thunk];
@@ -15,5 +15,6 @@ const store = createStore(
   compose(applyMiddleware(...middleware), // store enhancer func
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()),
 );
+
 
 export default store;

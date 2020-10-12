@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { addWaters } from '../../redux/actions/waterActions';
 import styled from 'styled-components';
 
+import Footer from '../../pages/Footer';
+
+
 const AddWrap = styled.div`
   height:400px;
   wuser_idth: 60%;
@@ -79,60 +82,59 @@ const AddWater = ({ addWaters }) => {
 
   const onSubmit = e => {
     e.preventDefault();
+    console.log(amount, total);
     addWaters({
       amount, total
     });
   };
 
   return (
+    <>
     <AddWrap>
-      <div>
-        <div>
-          <TrackWater>
-            Add Water
-          </TrackWater>
-          <FormWrap onSubmit={onSubmit}>
-            <div>
-              <label htmlFor="amount">
-                <AmountInp
-                  type="number"
-                  name="amount"
-                  value={amount}
-                  onChange={onChange}
-                  placeholder="Amount"
-                  required
-                />
-              </label>
-            </div>
-            <div>
-              <label htmlFor="WaterTarget">
-                <TotalInp
-                  type="number"
-                  name="total"
-                  placeholder="Water Target"
-                  value={total}
-                  onChange={onChange}
-                  required
-                />
-              </label>
-            </div>
-            <SubmitData type="submit" onSubmit={onSubmit}>
-              Add Water to Data
-            </SubmitData>
-          </FormWrap>
-        </div>
+      <div className="text-center">
+        <TrackWater>
+          Add Water
+        </TrackWater>
+        <FormWrap onSubmit={onSubmit}>
+          <AmountInp
+            type="number"
+            name="amount"
+            value={amount}
+            onChange={onChange}
+            placeholder="Amount"
+            required
+          />
+          <TotalInp
+            type="number"
+            name="total"
+            placeholder="Water Target"
+            value={total}
+            onChange={onChange}
+            required
+          />
+          <SubmitData type="submit" onSubmit={onSubmit}>
+            Add Water to Data
+          </SubmitData>
+        </FormWrap>
       </div>
     </AddWrap>
+    <Footer />
+    </>
   );
 };
 
 AddWater.propTypes = {
   addWaters: PropTypes.func.isRequired,
-  water: PropTypes.shape({}),
+  water: PropTypes.shape([]),
 };
 
-const mapStateToProps = state => ({
-  water: state.water,
+const mapStateToProps = store => ({
+  amount: store.water.amount,
+  total: store.water.total,
 });
 
-export default connect(mapStateToProps, { addWaters })(AddWater);
+const mapDispatchToProps = dispatch => ({
+  addWaters: (e) => dispatch(addWaters(e)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddWater);

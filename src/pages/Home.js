@@ -48,10 +48,10 @@ const HeaderStyle = styled.div`
   text-align: center;
 `;
 
-const FooterWrapper = styled.div`
-  position: relative;
-  margin-bottom: -130px;
-`;
+// const FooterWrapper = styled.div`
+//   position: relative;
+//   margin-bottom: -130px;
+// `;
 
 const FalseWrap = styled.div`
   width: 100%;
@@ -63,17 +63,19 @@ const FalseWrap = styled.div`
 const Home = ({ auth: { loggedIn, user }, signout }) => (
   <MainWrap>
     {loggedIn === false ? (
-      <FalseWrap >
-        <FormWrap>
-          <Signin />
-          <SignupWrap>
-            <Link to="/signup">
-              Signup
-            </Link>
-          </SignupWrap>
-        </FormWrap>
+      <>
+        <FalseWrap >
+          <FormWrap>
+            <Signin />
+            <SignupWrap>
+              <Link to="/signup">
+                Signup
+              </Link>
+            </SignupWrap>
+          </FormWrap>
+        </FalseWrap >
         <Footer />
-      </FalseWrap >
+      </>
     ) : (
       <>
         <UserWrap>
@@ -89,10 +91,9 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
             <button type="button" onClick={signout}>Signout</button>
           </div>
         </UserWrap>
-        <FooterWrapper>
+        {/* <FooterWrapper> */}
           <Footer />
-        </FooterWrapper>
-        
+        {/* </FooterWrapper> */}
       </>
     )}
   </MainWrap>

@@ -8,3 +8,8 @@
   color: white;
   border: 0;
 }
+
+.csize {
+  width: 200px;
+  border: 1px solid green;
+}

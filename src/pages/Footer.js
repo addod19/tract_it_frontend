@@ -42,7 +42,7 @@ const Footer = () => (
       <p>Add Water</p>
     </Link>
     <Link
-      to="/waters"
+      to="/allData"
       role="button"
     >
       <ImgSize src={trackIt} alt="trackit" />

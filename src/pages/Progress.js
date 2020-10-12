@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { PieChart } from 'react-minimal-pie-chart';
 import progressCal from '../redux/actions/progressActions';
 
+import Footer from '../pages/Footer';
+
 import styled from 'styled-components';
 
 const MainWrap = styled.main`
@@ -48,6 +50,7 @@ const Progress = ({ progressCal, progress_calculations }) => {
   }, [progressCal]);
 
   return (
+    <>
     <MainWrap>
         <ProgressStyle>
           <ChartSize>
@@ -118,6 +121,8 @@ const Progress = ({ progressCal, progress_calculations }) => {
           </ChartSize>
         </ProgressStyle>
     </MainWrap>
+    <Footer />
+    </>
   );
 };
 
