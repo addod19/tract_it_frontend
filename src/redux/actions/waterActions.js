@@ -24,7 +24,7 @@ const addWaters = waterData => async dispatch => {
     // console.log(waters);
     dispatch({
       type: ADD_WATER,
-      payload: waters.data,
+      payload: waters,
     });
     return waters;
 
@@ -46,7 +46,7 @@ const getWater = id => async dispatch => {
     },
   };
   try {
-    const water = await axios.get(`${defaultURL}/waters/:${id}`, apiConfig);
+    const water = await axios.get(`${defaultURL}/waters/${id}`, apiConfig);
     dispatch({
       type: GET_WATER,
       payload: water.data,
@@ -122,7 +122,7 @@ const deleteWater = id => async dispatch => {
     },
   };
   try {
-    const remove = await axios.delete(`${defaultURL}/waters/:${id}`, apiConfig);
+    const remove = await axios.delete(`${defaultURL}/waters/${id}`, apiConfig);
     dispatch({
       type: DELETE_WATER,
       payload: remove.data,

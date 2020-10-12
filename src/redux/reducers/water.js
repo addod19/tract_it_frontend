@@ -1,23 +1,22 @@
 import { GET_WATER,  ADD_WATER } from '../actions/types';
 
 const initialState = {
-  water: {},
+  water: [],
   loading: false,
 };
 
 export default function (state = initialState, action) {
-  const { type, payload } = action;
-  switch (type) {
+  switch (action.type) {
     case GET_WATER:
       return {
         ...state,
-        water: payload,
+        water: action.payload,
         loading: false,
       };
     case ADD_WATER:
       return {
         ...state,
-        water: [payload, ...state.water],
+        water: [action.payload, ...state.water],
         loading: false,
       };
     default:
