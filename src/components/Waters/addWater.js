@@ -10,6 +10,7 @@ const AddWrap = styled.div`
   height:360px;
   width: 60%;
   margin-left: 20%;
+  background-color: #51adcf;
 
   @media (max-width: 768px) {
     height:340px;
@@ -98,11 +99,11 @@ const AddWater = ({ addWaters }) => {
 
   return (
     <>
-    <AddWrap>
-      <TrackWater>
-        Add Water
-      </TrackWater>
-      <CenterW>
+      <AddWrap>
+        <TrackWater>
+          Add Water
+        </TrackWater>
+        <CenterW>
           
           <FormWrap onSubmit={onSubmit}>
             <AmountInp
@@ -125,9 +126,9 @@ const AddWater = ({ addWaters }) => {
               Add Water to Data
             </SubmitData>
           </FormWrap>
-      </CenterW>
-    </AddWrap>
-    <Footer />
+        </CenterW>
+      </AddWrap>
+      <Footer />
     </>
   );
 };

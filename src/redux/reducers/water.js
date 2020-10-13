@@ -5,7 +5,7 @@ const initialState = {
   loading: false,
 };
 
-export default function (state = initialState, action) {
+export default function (state = initialState, action) {                                           
   switch (action.type) {
     case GET_WATER:
       return {
@@ -16,7 +16,7 @@ export default function (state = initialState, action) {
     case ADD_WATER:
       return {
         ...state,
-        water: [action.payload, ...state.water],
+        water: [action.payload, ...state.water || {}],
         loading: false,
       };
     default:

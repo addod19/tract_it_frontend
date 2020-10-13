@@ -27,7 +27,7 @@ const addWaters = waterData => async dispatch => {
       type: ADD_WATER,
       payload: water.data,
     });
-    return water;
+    return water.data;
 
   } catch(error) {
     dispatch({
