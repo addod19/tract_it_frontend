@@ -2,9 +2,9 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
-// import INITIAL_STATE from '../constant/initialState';
+import INITIAL_STATE from '../constant/initialState';
 
-const initialState = { };
+const initialState = { water: INITIAL_STATE, waters: INITIAL_STATE };
 
 
 const middleware = [thunk];
