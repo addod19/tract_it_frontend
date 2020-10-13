@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import { addWaters } from '../../redux/actions/waterActions';
 import styled from 'styled-components';
 
+import Footer from '../../pages/Footer';
+
 const AddWrap = styled.div`
-  height:400px;
+  height:470px;
   wuser_idth: 60%;
   margin-left: 20%;
 
@@ -85,6 +87,7 @@ const AddWater = ({ addWaters }) => {
   };
 
   return (
+    <>
     <AddWrap>
       <div>
         <div>
@@ -123,6 +126,8 @@ const AddWater = ({ addWaters }) => {
         </div>
       </div>
     </AddWrap>
+    <Footer />
+    </>
   );
 };
 

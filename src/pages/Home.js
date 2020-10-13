@@ -11,11 +11,11 @@ import Signin from '../components/auth/Login';
 
 const MainWrap = styled.div`
   width: 100%;
-  height: 450px;
+  height: 480px;
   background-color: #51adcf;
 
   @media (max-width: 768px) {
-    height: 520px;
+    height: 550px;
   }
 
 `;
@@ -26,7 +26,10 @@ const UserWrap = styled.div`
   justify-content: center;
   align-content: center;
   height: 390px;
-  border: 1px solid black;
+  @media (max-width: 768px) {
+    height: 450px;
+  }
+
 `;
 
 const SignupWrap = styled.div`
@@ -56,12 +59,11 @@ const FooterWrapper = styled.div`
 const FalseWrap = styled.div`
   width: 100%;
   height: 100%;
-  border: 1px solid red;
 `;
 
 
 const Home = ({ auth: { loggedIn, user }, signout }) => (
-  <MainWrap>
+  <>
     {loggedIn === false ? (
       <FalseWrap >
         <FormWrap>
@@ -76,6 +78,7 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
       </FalseWrap >
     ) : (
       <>
+      <MainWrap>
         <UserWrap>
           <HeaderStyle>
             welcome to the water tracking app
@@ -85,17 +88,15 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
             {' '}
             !!
           </HeaderStyle>
-          <div>
+          <div className="mb-5">
             <button type="button" onClick={signout}>Signout</button>
           </div>
         </UserWrap>
-        <FooterWrapper>
-          <Footer />
-        </FooterWrapper>
-        
+      </MainWrap>
+      <Footer className="mt-5"/>
       </>
     )}
-  </MainWrap>
+  </>
 );
 
 Home.propTypes = {

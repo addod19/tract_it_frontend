@@ -46,7 +46,7 @@ const App = () => {
             <Route path="/signup" exact component={Signup} />
             <Route path="/waters" exact component={AddWater} />
             <Route path="waters/:id" exact component={Water} />
-            <Route path="/waters" exact component={AllWater} />
+            <Route path="/allData" exact component={AllWater} />
             <Route path="/edit/:id" exact component={EditWater} />
             <Route path="/water_levels/progress" exact component={Progress} />
           </Switch>

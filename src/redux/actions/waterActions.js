@@ -8,8 +8,9 @@ import {
 const defaultURL = 'http://localhost:3000';
 // const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
 
+const myLibrary = JSON.parse(localStorage.getItem('myLibrary')) || []
+
 const addWaters = waterData => async dispatch => {
-  console.log(waterData);
   const apiConfig = {
     method: 'POST',
     headers: {
@@ -17,16 +18,16 @@ const addWaters = waterData => async dispatch => {
       Accept: 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
-    // body: JSON.stringify(waterData),
   };
   try {
-    const waters = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
-    // console.log(waters);
+    const water = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
+    myLibrary.push(water.data);
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
     dispatch({
       type: ADD_WATER,
-      payload: waters,
+      payload: water.data,
     });
-    return waters;
+    return water;
 
   } catch(error) {
     dispatch({
@@ -36,7 +37,7 @@ const addWaters = waterData => async dispatch => {
   }
 };
 
-const getWater = id => async dispatch => {
+const getWater = id => async (dispatch, getState) => {
   const apiConfig = {
     method: 'GET',
     headers: {
@@ -47,6 +48,9 @@ const getWater = id => async dispatch => {
   };
   try {
     const water = await axios.get(`${defaultURL}/waters/${id}`, apiConfig);
+    console.log(water);
+    console.log(getState());
+    // localStorage.getItem('addWater', JSON.stringify(water.data));
     dispatch({
       type: GET_WATER,
       payload: water.data,
@@ -123,6 +127,8 @@ const deleteWater = id => async dispatch => {
   };
   try {
     const remove = await axios.delete(`${defaultURL}/waters/${id}`, apiConfig);
+    myLibrary.splice(remove, 1);
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
     dispatch({
       type: DELETE_WATER,
       payload: remove.data,
