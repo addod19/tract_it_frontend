@@ -6,6 +6,8 @@ import styled from 'styled-components';
 
 import Footer from '../../pages/Footer';
 
+import { v1 as uuidv1 } from 'uuid';
+
 const AddWrap = styled.div`
   height:360px;
   width: 60%;
@@ -92,9 +94,10 @@ const AddWater = ({ addWaters }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log(amount, total);
     addWaters({
-      amount, total
+      id: uuidv1(),
+      amount,
+      total,
     });
   };
 
@@ -136,12 +139,13 @@ const AddWater = ({ addWaters }) => {
 
 AddWater.propTypes = {
   addWaters: PropTypes.func.isRequired,
-  water: PropTypes.shape([]),
+  water: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = store => ({
-  amount: store.water.amount,
-  total: store.water.total,
+const mapStateToProps = state => ({
+  // amount: store.water.amount,
+  // total: store.water.total,
+  water: state.water.water,
 });
 
 const mapDispatchToProps = dispatch => ({
