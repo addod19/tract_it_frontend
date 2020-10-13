@@ -75,7 +75,7 @@ const getWaters = () => async dispatch => {
     },
   };
   try {
-    const allData = await axios.get(`${defaultURL}/waters`, apiConfig);
+    const allData = await axios.get(`${defaultURL}/allData`, apiConfig);
     dispatch({
       type: GET_WATERS,
       payload: allData.data,

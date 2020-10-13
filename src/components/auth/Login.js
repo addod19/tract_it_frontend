@@ -7,14 +7,12 @@ import { signin } from '../../redux/actions/authActions';
 
 const SignInWrap = styled.div`
   width: 50%;
-  height: auto;
-  margin-left: 30%;
+  height: 200px;
+  margin-left: 25%;
   display: flex;
   flex-direction: row;
   padding: 20px;
-  box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1), 
-              0 0  0 2px rgb(255,255,255),
-              0.3em 0.3em 1em rgba(0,0,0,0.3);
+
 
   @media (max-width: 768px) {
     margin-left: 0;
@@ -83,6 +81,9 @@ const LoginBtn = styled.button`
   margin: 8px 0;
   box-sizing: border-box;
   border-radius: 4px;
+    background-color: #1f3c88;
+  color: white;
+  border: 0;
 
   &:hover {
     cursor: pointer;

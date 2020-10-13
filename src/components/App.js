@@ -22,7 +22,7 @@ import '../App.css';
 
 const AppWrap = styled.div`
   width: 100%;
-  height: auto;
+  height: 630px;
   background-color: #51adcf;
 `;
 

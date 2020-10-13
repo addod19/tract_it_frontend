@@ -34,11 +34,15 @@ const UserWrap = styled.div`
 
 const SignupWrap = styled.div`
   margin-left: 50%;
+
+  @media(max-width: 768px) {
+    margin-left: 45%;
+  }
 `;
 
 const FormWrap = styled.div`
   width: 60%;
-  height: auto;
+  height: 200px;
   margin-left: 15%;
 
   @media (max-width: 768px) {
@@ -51,16 +55,21 @@ const HeaderStyle = styled.div`
   text-align: center;
 `;
 
-const FooterWrapper = styled.div`
-  position: relative;
-  margin-bottom: -130px;
-`;
-
 const FalseWrap = styled.div`
-  width: 100%;
+  width: 80%;
   height: 100%;
+  margin-left: 10%;
 `;
 
+const WelcomeMsg = styled.div`
+  font-size: 26px;
+  color: white;
+`;
+
+const Name = styled.div`
+  font-size: 29px;
+  color: gray;
+`;
 
 const Home = ({ auth: { loggedIn, user }, signout }) => (
   <>
@@ -74,17 +83,14 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
             </Link>
           </SignupWrap>
         </FormWrap>
-        <Footer />
       </FalseWrap >
     ) : (
       <>
       <MainWrap>
         <UserWrap>
           <HeaderStyle>
-            welcome to the water tracking app
-            {' '}
-            { console.log(user.user.data.user.name ) }
-            {user.user.data.user.name}
+            <WelcomeMsg>welcome to the water tracking app</WelcomeMsg>
+            <Name>{user.user.data.user.name}</Name>
             {' '}
             !!
           </HeaderStyle>
