@@ -11,18 +11,15 @@ import styled from 'styled-components';
 const FooterWrap = styled.footer`
   height: 100px;
   width: 100%;
-  border: 1px solid green;
   background-color: #808080;
-  // margin-left: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
   text-align: center;
-  // margin-top: 45%;
-`;
-
-const LogoWrap = styled.div`
-
+  margin-top: 90px;
+  @media(max-width: 768px) {
+    margin-top: -10px;
+  }
 `;
 
 const ImgSize = styled.img`
@@ -36,9 +33,7 @@ const Footer = () => (
       to="/waters"
       role="button"
     >
-      <LogoWrap>
-        <ImgSize src={addWater} alt="addwater" />
-      </LogoWrap>
+      <ImgSize src={addWater} alt="addwater" />
       <p>Add Water</p>
     </Link>
     <Link

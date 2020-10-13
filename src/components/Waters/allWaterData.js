@@ -9,39 +9,34 @@ import Footer from '../../pages/Footer';
 
 import styled from 'styled-components';
 
-const ContainerWrap = styled.section`
-  height: auto;
-  width: 100%;
-  margin-bottom: 10px;
-
-  @media(max-width: 768px) {
-    
-  }
-`;
-
-const ChartSize = styled.div`
-  height: 150px;
-  width: 900px;
-  display: flex;
-
-  @media(max-width: 768px) {
-    width: 80%;
-  }
-`;
-
-const CenterHeader = styled.div`
+const H4 = styled.h4`
   text-align: center;
 `;
 
-const DisplayData = styled.div`
-  display: grid;
-  grid-template-column: repeat(3, 1fr);
+const DataContent = styled.div`
+  display: flex;
+  background-color: #51adcf;
+  margin-bottom: -90px;
+
+  @media(max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
-const MoreInfo = styled.div`
-  display: flex;
-  flex-direction: column;
+const DataRow = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 150px;
+  margin-left: 25%;
+
+  @media(max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    margin-left: 35%;
+    gap: 10px;
+  }
 `;
+
 
 const AllWater = ({ getWaters, waters }) => {
   useEffect(() => {
@@ -52,51 +47,44 @@ const AllWater = ({ getWaters, waters }) => {
     if (amount + amount === total) {
       return 100;
     }
-    const percentage = ((amount + amount) / (total)) * 100;
+    const percentage = ((amount) / (total)) * 100;
     return percentage >= 100 ? 100 : Math.round(percentage);
   };
 
   const allStacks = waters.map(water => (
-    <ContainerWrap key={water.id}>
-      <ChartSize>
-        <PieChart
-          data={[{
-            value: 1, color: '#8ce08a', key: `${result(water.amount, water.total)} %`,
-          }]}
-          reveal={result(water.amount, water.total)}
-          lineWidth={20}
-          animate
-          label={({ dataEntry }) => dataEntry.key}
-        />
-        <MoreInfo>
-          <h5>{water.amount}</h5>
-          <Link
-            to={{ pathname: `/waters/:${water.id}` }}
-          >
-            View All Water
-          </Link>
-        </MoreInfo>
-      </ChartSize>
-    </ContainerWrap>
+    <div key={water.id}>
+      <PieChart className="cSize"
+        data={[{
+          value: 1, color: '#8ce08a', key: `${result(water.amount, water.total)} %`,
+        }]}
+        reveal={result(water.amount, water.total)}
+        lineWidth={20}
+        animate
+        label={({ dataEntry }) => dataEntry.key}
+      />
+      <h5>{water.amount}</h5>
+      <Link
+        to={{ pathname: `/waters/${water.id}` }}
+      >
+        View All Water
+      </Link>
+    </div>
   ));
 
   const noWaterData = (
-    <div>
-      <h4>
-        No water data yet? Kindly create one
-      </h4>
-    </div>
+    <H4>
+      No water data yet? Kindly create one
+    </H4>
   );
 
   return waters ? (
     <>
-      <CenterHeader>
-        Track Water Intake
-      </CenterHeader>
-      < DisplayData>
+    <DataContent>
+      <DataRow>
         {waters.length > 0 ? allStacks : noWaterData}
-      </ DisplayData>
-      <Footer />
+      </DataRow>
+    </DataContent>
+    <Footer />
     </>
   ) : <h2>Loading........</h2>;
 };

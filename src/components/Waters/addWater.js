@@ -6,26 +6,27 @@ import styled from 'styled-components';
 
 import Footer from '../../pages/Footer';
 
-
 const AddWrap = styled.div`
-  height:400px;
-  wuser_idth: 60%;
+  height:360px;
+  width: 60%;
   margin-left: 20%;
+  background-color: #51adcf;
 
-  @media (max-wuser_idth: 768px) {
-    height:450px;
-    wuser_idth: 100%;
+  @media (max-width: 768px) {
+    height:340px;
+    width: 100%;
     margin-left: 0;
   }
 `;
 
 const FormWrap = styled.form`
-  wuser_idth: 100%;
+  width: 100%;
   height: 300px;
+  margin-top: 50px;
 `;
 
 const AmountInp = styled.input`
-  wuser_idth: 100%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -37,7 +38,7 @@ const AmountInp = styled.input`
   }
 `;
 const TotalInp = styled.input`
-  wuser_idth: 100%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -50,12 +51,13 @@ const TotalInp = styled.input`
 `;
 
 const SubmitData = styled.button`
-  wuser_idth: 100%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   border-radius: 4px;
-  background-color: light-blue;
+  background-color: red;
+  color: white;
 
   &:hover {
     cursor: pointer;
@@ -63,13 +65,21 @@ const SubmitData = styled.button`
 `;
 
 const TrackWater = styled.div`
-  text-align: center;
-  margin-top:40px;
   color: white;
   font-weight: 500;
   font-size: 23px;
+  text-align: center;
 `;
 
+const CenterW = styled.div`
+  width: 70%;
+  margin-left: 15%;
+
+  @media(max-width: 768px) {
+    display: flex;
+    margin-left: 15%;
+  }
+`;
 const AddWater = ({ addWaters }) => {
   const [formData, setFormData] = useState({
     amount: '',
@@ -90,35 +100,36 @@ const AddWater = ({ addWaters }) => {
 
   return (
     <>
-    <AddWrap>
-      <div className="text-center">
+      <AddWrap>
         <TrackWater>
           Add Water
         </TrackWater>
-        <FormWrap onSubmit={onSubmit}>
-          <AmountInp
-            type="number"
-            name="amount"
-            value={amount}
-            onChange={onChange}
-            placeholder="Amount"
-            required
-          />
-          <TotalInp
-            type="number"
-            name="total"
-            placeholder="Water Target"
-            value={total}
-            onChange={onChange}
-            required
-          />
-          <SubmitData type="submit" onSubmit={onSubmit}>
-            Add Water to Data
-          </SubmitData>
-        </FormWrap>
-      </div>
-    </AddWrap>
-    <Footer />
+        <CenterW>
+          
+          <FormWrap onSubmit={onSubmit}>
+            <AmountInp
+              type="number"
+              name="amount"
+              value={amount}
+              onChange={onChange}
+              placeholder="Amount"
+              required
+            />
+            <TotalInp
+              type="number"
+              name="total"
+              placeholder="Water Target"
+              value={total}
+              onChange={onChange}
+              required
+            />
+            <SubmitData type="submit" onSubmit={onSubmit}>
+              Add Water to Data
+            </SubmitData>
+          </FormWrap>
+        </CenterW>
+      </AddWrap>
+      <Footer />
     </>
   );
 };

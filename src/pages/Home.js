@@ -11,11 +11,11 @@ import Signin from '../components/auth/Login';
 
 const MainWrap = styled.div`
   width: 100%;
-  height: 450px;
+  height: 480px;
   background-color: #51adcf;
 
   @media (max-width: 768px) {
-    height: 520px;
+    height: 550px;
   }
 
 `;
@@ -26,16 +26,25 @@ const UserWrap = styled.div`
   justify-content: center;
   align-content: center;
   height: 390px;
-  border: 1px solid black;
+  @media (max-width: 768px) {
+    height: 450px;
+  }
+
 `;
 
 const SignupWrap = styled.div`
   margin-left: 50%;
+  position: absolute;
+  top: 300px;
+  left: 10px;
+  @media(max-width: 768px) {
+    margin-left: 45%;
+  }
 `;
 
 const FormWrap = styled.div`
   width: 60%;
-  height: auto;
+  height: 200px;
   margin-left: 15%;
 
   @media (max-width: 768px) {
@@ -48,55 +57,58 @@ const HeaderStyle = styled.div`
   text-align: center;
 `;
 
-// const FooterWrapper = styled.div`
-//   position: relative;
-//   margin-bottom: -130px;
-// `;
-
 const FalseWrap = styled.div`
-  width: 100%;
-  height: 100%;
-  border: 1px solid red;
+  width: 80%;
+  height: 600px;
+  margin-left: 10%;
 `;
 
+const Bg = styled.div`
+  background-color: #51adcf;
+`;
+
+const WelcomeMsg = styled.div`
+  font-size: 26px;
+  color: white;
+`;
+
+const Name = styled.div`
+  font-size: 29px;
+  color: gray;
+`;
 
 const Home = ({ auth: { loggedIn, user }, signout }) => (
-  <MainWrap>
+  <Bg>
     {loggedIn === false ? (
-      <>
-        <FalseWrap >
-          <FormWrap>
-            <Signin />
-            <SignupWrap>
-              <Link to="/signup">
-                Signup
-              </Link>
-            </SignupWrap>
-          </FormWrap>
-        </FalseWrap >
-        <Footer />
-      </>
+      <FalseWrap >
+        <FormWrap>
+          <Signin />
+          <SignupWrap>
+            <Link to="/signup">
+              Signup
+            </Link>
+          </SignupWrap>
+        </FormWrap>
+      </FalseWrap >
     ) : (
       <>
+      <MainWrap>
         <UserWrap>
           <HeaderStyle>
-            welcome to the water tracking app
-            {' '}
-            { console.log(user.user.data.user.name ) }
-            {user.user.data.user.name}
+            <WelcomeMsg>welcome to the water tracking app</WelcomeMsg>
+            <Name>{user.user.data.user.name}</Name>
             {' '}
             !!
           </HeaderStyle>
-          <div>
+          <div className="mb-5">
             <button type="button" onClick={signout}>Signout</button>
           </div>
         </UserWrap>
-        {/* <FooterWrapper> */}
-          <Footer />
-        {/* </FooterWrapper> */}
+      </MainWrap>
+      <Footer/>
       </>
     )}
-  </MainWrap>
+  </Bg>
 );
 
 Home.propTypes = {

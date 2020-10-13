@@ -10,31 +10,25 @@ const setWater = payload => ({ type: 'SET_WATER', payload });
 const defaultURL = 'http://localhost:3000';
 // const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
 
-const addWaters = waterData => async (dispatch, getState) => {
-  console.log("starting.......");
+const myLibrary = JSON.parse(localStorage.getItem('myLibrary')) || []
+
+const addWaters = waterData => async dispatch => {
   const apiConfig = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
-    // body: JSON.stringify(waterData),
   };
   try {
     const water = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
-    console.log(water);
-    console.log("after axios call, before dispatch.......");
-    // dispatch({
-    //   type: ADD_WATER,
-    //   payload: water.data,
-    // });
-    console.log(water.data);
-    dispatch(setWater({ water: water.data }));
-    console.log("after dispatch.......");
-    console.log(getState()); // is not updating state
-    // console.log(store.getState(water));
-    return water;
+    myLibrary.push(water.data);
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+    dispatch({
+      type: ADD_WATER,
+      payload: water.data,
+    });
+    return water.data;
 
   } catch(error) {
     dispatch({
@@ -44,7 +38,7 @@ const addWaters = waterData => async (dispatch, getState) => {
   }
 };
 
-const getWater = id => async dispatch => {
+const getWater = id => async (dispatch, getState) => {
   const apiConfig = {
     method: 'GET',
     headers: {
@@ -54,7 +48,10 @@ const getWater = id => async dispatch => {
     Authorization: `Bearer ${localStorage.getItem('token')}`,
   };
   try {
-    const water = await axios.get(`${defaultURL}/waters/:${id}`, apiConfig);
+    const water = await axios.get(`${defaultURL}/waters/${id}`, apiConfig);
+    console.log(water);
+    console.log(getState());
+    // localStorage.getItem('addWater', JSON.stringify(water.data));
     dispatch({
       type: GET_WATER,
       payload: water.data,
@@ -80,7 +77,6 @@ const getWaters = () => async dispatch => {
   };
   try {
     const allData = await axios.get(`${defaultURL}/allData`, apiConfig);
-    console.log(allData);
     dispatch({
       type: GET_WATERS,
       payload: allData.data,
@@ -131,7 +127,9 @@ const deleteWater = id => async dispatch => {
     Authorization: `Bearer ${localStorage.getItem('token')}`,
   };
   try {
-    const remove = await axios.delete(`${defaultURL}/waters/:${id}`, apiConfig);
+    const remove = await axios.delete(`${defaultURL}/waters/${id}`, apiConfig);
+    myLibrary.splice(remove, 1);
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
     dispatch({
       type: DELETE_WATER,
       payload: remove.data,

@@ -7,14 +7,13 @@ import { signup } from '../../redux/actions/authActions';
 
 const RegFormWrap = styled.div`
   width: 50%;
-  height: 450px;
-  margin-left: 30%;
+  height: 600px;
+  margin-left: 25%;
   display: flex;
   flex-direction: row;
   padding: 20px;
-  box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1), 
-              0 0  0 2px rgb(255,255,255),
-              0.3em 0.3em 1em rgba(0,0,0,0.3);
+  background-color: #51adcf;
+
 
   @media (max-width: 768px) {
     margin-left: 0;
@@ -52,6 +51,9 @@ const ButtonWrap = styled.button`
   margin: 8px 0;
   box-sizing: border-box;
   border-radius: 4px;
+  background-color: #1f3c88;
+  color: white;
+  border: 0;
 
   &:hover {
     cursor: pointer;

@@ -5,24 +5,18 @@ const initialState = {
   loading: false,
 };
 
-export default function (state = initialState, action) {
-  const { type, payload } = action;
-  switch (type) {
-    case 'SET_WATER':
-      return {
-        loggedIn: true,
-        water: { ...payload },
-      };
+export default function (state = initialState, action) {                                           
+  switch (action.type) {
     case GET_WATER:
       return {
         ...state,
-        water: payload,
+        water: action.payload,
         loading: false,
       };
     case ADD_WATER:
       return {
         ...state,
-        water: [payload, ...state.water],
+        water: [action.payload, ...state.water || {}],
         loading: false,
       };
     default:

@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
-import INITIAL_STATE from '../constant/initialState';
+// import INITIAL_STATE from '../constant/initialState';
 
 const initialState = { };
 
@@ -16,5 +16,6 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()),
 );
 
+console.log(store.getState().water);
 
 export default store;

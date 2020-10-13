@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const HeaderWrap = styled.header`
   width: 100%;
   height: 100px;
+  background-color: #51adcf;
 `;
 
 const Hstyle = styled.h2`
@@ -13,7 +15,11 @@ const Hstyle = styled.h2`
 const Header = () => {
   return(
     <HeaderWrap>
-      <Hstyle>Track.it</Hstyle>
+      <Hstyle>
+        <Link to="/">
+          Track.it
+        </Link>
+      </Hstyle>
     </HeaderWrap>
   );
 }

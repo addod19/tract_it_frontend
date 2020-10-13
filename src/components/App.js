@@ -12,7 +12,8 @@ import Water from './Waters/waters';
 import AddWater from './Waters/addWater';
 import EditWater from './Waters/editWater';
 import Progress from '../pages/Progress';
-import AllWater from './Waters/allWaterData';
+// import AllWater from './Waters/allWaterData';
+import { WaterList } from './Waters/waterList';
 
 import Header from '../pages/Header';
 
@@ -22,8 +23,7 @@ import '../App.css';
 
 const AppWrap = styled.div`
   width: 100%;
-  height: auto;
-  background-color: #51adcf;
+  height: 100%;
 `;
 
 if (localStorage.token) {
@@ -46,7 +46,8 @@ const App = () => {
             <Route path="/signup" exact component={Signup} />
             <Route path="/waters" exact component={AddWater} />
             <Route path="waters/:id" exact component={Water} />
-            <Route path="/allData" exact component={AllWater} />
+            {/* <Route path="/allData" exact component={AllWater} /> */}
+            <Route path="/allData" exact component={WaterList} />
             <Route path="/edit/:id" exact component={EditWater} />
             <Route path="/water_levels/progress" exact component={Progress} />
           </Switch>
