@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const HeaderWrap = styled.header`
   width: 100%;
   height: 100px;
+  background-color: #51adcf;
 `;
 
 const Hstyle = styled.h2`

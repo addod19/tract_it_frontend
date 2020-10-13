@@ -22,8 +22,7 @@ import '../App.css';
 
 const AppWrap = styled.div`
   width: 100%;
-  height: 630px;
-  background-color: #51adcf;
+  height: 100%;
 `;
 
 if (localStorage.token) {

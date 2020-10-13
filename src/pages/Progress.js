@@ -9,9 +9,10 @@ import Footer from '../pages/Footer';
 import styled from 'styled-components';
 
 const MainWrap = styled.main`
-  height: 430px;
+  height: 500px;
   width: 100%;
   display: flex;
+  background-color: #51adcf;
 `;
 
 const ProgressStyle = styled.section`

@@ -34,7 +34,9 @@ const UserWrap = styled.div`
 
 const SignupWrap = styled.div`
   margin-left: 50%;
-
+  position: absolute;
+  top: 300px;
+  left: 10px;
   @media(max-width: 768px) {
     margin-left: 45%;
   }
@@ -57,8 +59,12 @@ const HeaderStyle = styled.div`
 
 const FalseWrap = styled.div`
   width: 80%;
-  height: 100%;
+  height: 600px;
   margin-left: 10%;
+`;
+
+const Bg = styled.div`
+  background-color: #51adcf;
 `;
 
 const WelcomeMsg = styled.div`
@@ -72,7 +78,7 @@ const Name = styled.div`
 `;
 
 const Home = ({ auth: { loggedIn, user }, signout }) => (
-  <>
+  <Bg>
     {loggedIn === false ? (
       <FalseWrap >
         <FormWrap>
@@ -99,10 +105,10 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
           </div>
         </UserWrap>
       </MainWrap>
-      <Footer className="mt-5"/>
+      <Footer/>
       </>
     )}
-  </>
+  </Bg>
 );
 
 Home.propTypes = {

@@ -18,7 +18,7 @@ const FooterWrap = styled.footer`
   text-align: center;
   margin-top: 90px;
   @media(max-width: 768px) {
-    margin-top: 150px;
+    margin-top: -10px;
   }
 `;
 

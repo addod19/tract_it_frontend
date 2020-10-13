@@ -7,11 +7,12 @@ import { signup } from '../../redux/actions/authActions';
 
 const RegFormWrap = styled.div`
   width: 50%;
-  height: 490px;
+  height: 600px;
   margin-left: 25%;
   display: flex;
   flex-direction: row;
   padding: 20px;
+  background-color: #51adcf;
 
 
   @media (max-width: 768px) {

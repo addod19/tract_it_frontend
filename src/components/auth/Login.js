@@ -7,11 +7,12 @@ import { signin } from '../../redux/actions/authActions';
 
 const SignInWrap = styled.div`
   width: 50%;
-  height: 200px;
+  height: 500px;
   margin-left: 25%;
   display: flex;
   flex-direction: row;
   padding: 20px;
+  background-color: #51adcf;
 
 
   @media (max-width: 768px) {

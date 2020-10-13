@@ -15,6 +15,12 @@ const H4 = styled.h4`
 
 const DataContent = styled.div`
   display: flex;
+  background-color: #51adcf;
+  margin-bottom: -90px;
+
+  @media(max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
 const DataRow = styled.div`
