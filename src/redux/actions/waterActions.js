@@ -7,8 +7,8 @@ import {
 
 // const setWater = payload => ({ type: 'SET_WATER', payload });
 
-const defaultURL = 'http://localhost:3000';
-// const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
+// const defaultURL = 'http://localhost:3000'; //dev
+const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
 
 const myLibrary = JSON.parse(localStorage.getItem('myLibrary')) || []
 
