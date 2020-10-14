@@ -50,7 +50,6 @@ export const signin = userDetails => async dispatch => {
   };
   try {
     const data = await axios.post(`${defaultUrl}/auth/signin`, userDetails, apiConfig);
-    console.log(data);
     localStorage.setItem('token', data.data.auth_token);
     dispatch(setUser({ loggedIn: true, user: data }));
     return data;
