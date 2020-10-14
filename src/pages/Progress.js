@@ -57,7 +57,7 @@ const Progress = ({ progressCal, progress_calculations }) => {
           <ChartSize>
             <PieChart
               data={[{
-                value: 1, color: '#8ce08a', key: `${result(progress_calculations[0].amount,
+                value: 1, color: '#1F3C88', key: `${result(progress_calculations[0].amount,
                  progress_calculations[0].total)} %`,
               }]}
               reveal={result(progress_calculations[0].amount, progress_calculations[0].total)}
@@ -79,7 +79,7 @@ const Progress = ({ progressCal, progress_calculations }) => {
           <ChartSize>
             <PieChart
               data={[{
-                value: 1, color: '#8ce08a', key: `${result(progress_calculations[1].amount,
+                value: 1, color: '#1F3C88', key: `${result(progress_calculations[1].amount,
                  progress_calculations[1].total)} %`,
               }]}
               reveal={result(progress_calculations[1].amount, progress_calculations[1].total)}
@@ -101,7 +101,7 @@ const Progress = ({ progressCal, progress_calculations }) => {
           <ChartSize>
             <PieChart
               data={[{
-                value: 1, color: '#8ce08a', key: `${result(progress_calculations[2].amount,
+                value: 1, color: '#1F3C88', key: `${result(progress_calculations[2].amount,
                  progress_calculations[2].total)} %`,
               }]}
               reveal={result(progress_calculations[2].amount, progress_calculations[2].total)}

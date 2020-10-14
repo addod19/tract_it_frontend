@@ -10,5 +10,3 @@ export default combineReducers({
   waters,
   progressCalculations,
 });
-
-console.log(water);
