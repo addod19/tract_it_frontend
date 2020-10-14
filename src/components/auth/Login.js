@@ -7,7 +7,7 @@ import { signin } from '../../redux/actions/authActions';
 
 const SignInWrap = styled.div`
   width: 50%;
-  height: 500px;
+  height: 540px;
   margin-left: 25%;
   display: flex;
   flex-direction: row;
@@ -17,7 +17,7 @@ const SignInWrap = styled.div`
 
   @media (max-width: 768px) {
     margin-left: 0;
-    width: 90%;
+    width: 100%;
   }
 `;
 
@@ -51,7 +51,7 @@ const FormWrap = styled.form`
 `;
 
 const EmailInp = styled.input`
-  width: 110%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -64,7 +64,7 @@ const EmailInp = styled.input`
 `;
 
 const PasswordInp = styled.input`
-  width: 110%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -77,7 +77,7 @@ const PasswordInp = styled.input`
 `;
 
 const LoginBtn = styled.button`
-  width: 110%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;

@@ -16,14 +16,15 @@ const RegFormWrap = styled.div`
 
   @media (max-width: 768px) {
     margin-left: 0;
-    width: 90%;
+    width: 100%;
   }
 `;
 
 const NameWrap = styled.div`
   width: 60%;
   @media (max-width: 768px) {
-    margin-left: 0;
+    width: 90%;
+    margin-left: 5%;
   }
 `;
 
@@ -31,7 +32,8 @@ const EmailWrap = styled.div`
   width: 100%;
 
   @media (max-width: 768px) {
-    margin-left: 0;
+    width: 90%;
+    margin-left: 5%;
   }
 `;
 
@@ -39,7 +41,8 @@ const PasswordWrap = styled.div`
   width: 100%;
 
   @media (max-width: 768px) {
-    margin-left: 0;
+    width: 90%;
+    margin-left: 5%;
   }
 `;
 
@@ -56,16 +59,21 @@ const ButtonWrap = styled.button`
   &:hover {
     cursor: pointer;
   }
+
+  @media(max-width: 768px) {
+    width: 116%;
+    margin-left: 5%;
+  }
 `;
 
 const FormWrap = styled.form`
-  width: 50%;
-  margin-left: 35%;
-  height: 300px;
+  // width: 50%;
+  // margin-left: 35%;
+  // height: 300px;
 `;
 
 const NameInp = styled.input`
-  width: 155%;
+  width: 130%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -78,7 +86,7 @@ const NameInp = styled.input`
 `;
 
 const EmailInp = styled.input`
-  width: 155%;
+  width: 130%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -91,7 +99,7 @@ const EmailInp = styled.input`
 `;
 
 const PasswordInp = styled.input`
-  width: 155%;
+  width: 130%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
