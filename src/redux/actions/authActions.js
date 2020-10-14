@@ -3,7 +3,7 @@ import { AUTH_FAIL } from './types';
 import axios from 'axios';
 
 // const defaultUrl = 'http://localhost:3000'; //dev
-const defaultUrl = 'https://mysterious-ravine-52687.herokuapp.com/'; //production
+const defaultUrl = 'https://mysterious-ravine-52687.herokuapp.com'; //production
 
 const setUser = payload => ({ type: 'SET_USER', payload });
 

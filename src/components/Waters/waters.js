@@ -90,7 +90,7 @@ const Water = ({
           <ChartPos>
             <PieChart className="cSize"
               data={[{
-                value: 1, color: '#8ce08a', key: `${result(waters.amount, waters.total)} %`,
+                value: 1, color: '#1F3C88', key: `${result(waters.amount, waters.total)} %`,
               }]}
               reveal={result(waters.amount, waters.total)}
               lineWidth={20}
