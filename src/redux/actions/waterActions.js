@@ -49,9 +49,6 @@ const getWater = id => async (dispatch, getState) => {
   };
   try {
     const water = await axios.get(`${defaultURL}/waters/${id}`, apiConfig);
-    console.log(water);
-    console.log(getState());
-    // localStorage.getItem('addWater', JSON.stringify(water.data));
     dispatch({
       type: GET_WATER,
       payload: water.data,

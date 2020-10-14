@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import Footer from '../../pages/Footer';
 
-// import { v1 as uuidv1 } from 'uuid';
+import { v1 as uuidv1 } from 'uuid';
 
 const AddWrap = styled.div`
   height:475px;
@@ -111,6 +111,7 @@ const AddWater = ({ addWaters }) => {
   const onSubmit = e => {
     e.preventDefault();
     addWaters({
+      id: uuidv1(),
       amount,
       total,
     });
