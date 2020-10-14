@@ -13,3 +13,9 @@
   width: 100px;
   height: 120px;;
 }
+
+.back,
+.edit {
+  color: white;
+  margin: 10px;
+}

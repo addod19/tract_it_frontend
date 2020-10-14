@@ -6,16 +6,15 @@ import styled from 'styled-components';
 
 import Footer from '../../pages/Footer';
 
-import { v1 as uuidv1 } from 'uuid';
+// import { v1 as uuidv1 } from 'uuid';
 
 const AddWrap = styled.div`
-  height:360px;
-  width: 60%;
-  margin-left: 20%;
+  height:475px;
+  width: 100%;
   background-color: #51adcf;
 
   @media (max-width: 768px) {
-    height:340px;
+    height:450px;
     width: 100%;
     margin-left: 0;
   }
@@ -25,6 +24,10 @@ const FormWrap = styled.form`
   width: 100%;
   height: 300px;
   margin-top: 50px;
+
+  @media(max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const AmountInp = styled.input`
@@ -38,6 +41,10 @@ const AmountInp = styled.input`
   &:focus {
     color: blue;
   }
+
+  @media(max-width: 768px) {
+    width: 140%;
+  }
 `;
 const TotalInp = styled.input`
   width: 100%;
@@ -50,6 +57,10 @@ const TotalInp = styled.input`
   &:focus {
     color: blue;
   }
+
+  @media(max-width: 768px) {
+    width: 140%;
+  }
 `;
 
 const SubmitData = styled.button`
@@ -58,11 +69,16 @@ const SubmitData = styled.button`
   margin: 8px 0;
   box-sizing: border-box;
   border-radius: 4px;
-  background-color: red;
+  background-color: #1f3c88;
   color: white;
+  border: none;
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media(max-width: 768px) {
+    width: 140%;
   }
 `;
 
@@ -74,8 +90,8 @@ const TrackWater = styled.div`
 `;
 
 const CenterW = styled.div`
-  width: 70%;
-  margin-left: 15%;
+  width: 50%;
+  margin-left: 25%;
 
   @media(max-width: 768px) {
     display: flex;
@@ -95,7 +111,6 @@ const AddWater = ({ addWaters }) => {
   const onSubmit = e => {
     e.preventDefault();
     addWaters({
-      id: uuidv1(),
       amount,
       total,
     });
@@ -143,8 +158,6 @@ AddWater.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  // amount: store.water.amount,
-  // total: store.water.total,
   water: state.water.water,
 });
 

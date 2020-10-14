@@ -51,7 +51,7 @@ const FormWrap = styled.form`
 `;
 
 const EmailInp = styled.input`
-  width: 100%;
+  width: 110%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -64,7 +64,7 @@ const EmailInp = styled.input`
 `;
 
 const PasswordInp = styled.input`
-  width: 100%;
+  width: 110%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -77,12 +77,12 @@ const PasswordInp = styled.input`
 `;
 
 const LoginBtn = styled.button`
-  width: 100%;
+  width: 110%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   border-radius: 4px;
-    background-color: #1f3c88;
+  background-color: #1f3c88;
   color: white;
   border: 0;
 

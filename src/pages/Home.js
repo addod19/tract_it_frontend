@@ -15,7 +15,7 @@ const MainWrap = styled.div`
   background-color: #51adcf;
 
   @media (max-width: 768px) {
-    height: 550px;
+    height: 480px;
   }
 
 `;
@@ -33,19 +33,18 @@ const UserWrap = styled.div`
 `;
 
 const SignupWrap = styled.div`
-  margin-left: 50%;
+  margin-left: 23%;
+  margin-top: 2%;
   position: absolute;
   top: 300px;
-  left: 10px;
   @media(max-width: 768px) {
-    margin-left: 45%;
-  }
+    margin-left: 32%;
 `;
 
 const FormWrap = styled.div`
   width: 60%;
   height: 200px;
-  margin-left: 15%;
+  margin-left: 20%;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -59,7 +58,7 @@ const HeaderStyle = styled.div`
 
 const FalseWrap = styled.div`
   width: 80%;
-  height: 600px;
+  height: 560px;
   margin-left: 10%;
 `;
 
@@ -75,6 +74,21 @@ const WelcomeMsg = styled.div`
 const Name = styled.div`
   font-size: 29px;
   color: gray;
+`;
+
+const SignoutPos = styled.div`
+  position: absolute;
+  right: 10%;
+
+  @media(max-width: 768px) {
+    top: 10%;
+  }
+`;
+
+const SignoutBtn = styled.button`
+  background-color: red;
+  color: white;
+  border: none;
 `;
 
 const Home = ({ auth: { loggedIn, user }, signout }) => (
@@ -100,9 +114,9 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
             {' '}
             !!
           </HeaderStyle>
-          <div className="mb-5">
-            <button type="button" onClick={signout}>Signout</button>
-          </div>
+          <SignoutPos>
+            <SignoutBtn type="button" onClick={signout}>Signout</SignoutBtn>
+          </SignoutPos>
         </UserWrap>
       </MainWrap>
       <Footer/>

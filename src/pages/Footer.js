@@ -16,7 +16,7 @@ const FooterWrap = styled.footer`
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
   text-align: center;
-  margin-top: 90px;
+  // margin-top: 90px;
   @media(max-width: 768px) {
     margin-top: -10px;
   }

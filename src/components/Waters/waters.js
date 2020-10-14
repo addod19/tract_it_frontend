@@ -11,13 +11,54 @@ import styled from 'styled-components';
 
 const MainWrap = styled.div`
   width: 100%;
-  height: 100%;
-  border: 1px solid black;
+  height: 471px;
+  background-color: #51adcf;
 `;
 
 const LoadingWrap = styled.div`
   height: 450px;
   width: 100%;
+`;
+
+const DeleteB = styled.button`
+  color: white;
+  background-color: blue;
+  width: 150px;
+  border: none;
+  &:hover {
+    opacity: .6;
+  }
+`;
+
+const DFlex = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 10px;
+  margin-left: 25%;
+
+  @media(max-width: 768px) {
+    margin-left: 0;
+    width:100%;
+  }
+`;
+
+const TextA = styled.p`
+  text-align: center;
+`;
+
+const ChartPos = styled.div`
+  margin-left: 260px;
+  @media(max-width: 768px) {
+    margin-left: 35%;
+  }
+`;
+
+const LinkPos = styled.div`
+  margin-left: 160px;
+  @media(max-width: 768px) {
+    margin-left: 20%;
+  }
 `;
 
 const Water = ({
@@ -41,45 +82,41 @@ const Water = ({
     deleteWater(id, history);
   };
 
-  return !waters ? (
-    <MainWrap>
-      <div>
-        <div>
-          <div>
-            <PieChart
+  return waters ? (
+    <>
+      <MainWrap>
+        <TextA>Water Data</TextA>
+        <DFlex>
+          <ChartPos>
+            <PieChart className="cSize"
               data={[{
                 value: 1, color: '#8ce08a', key: `${result(waters.amount, waters.total)} %`,
               }]}
               reveal={result(waters.amount, waters.total)}
               lineWidth={20}
               animate
-              className="pie-chart"
               label={({ dataEntry }) => dataEntry.key}
               labelStyle={{ fontSize: '1.6rem' }}
             />
-            <p className="mt-2">Water Data</p>
-          </div>
-        </div>
-        <div>
-          <div>
-            <Link to="/waters" className="btn btn-lg custom-button mb-3">
+          </ChartPos>
+          <LinkPos>
+            <Link to="/waters" className="back">
               Back to Data
             </Link>
-            <Link
+            <Link className="edit"
               to={`/waters/:${id}`}
-              className="btn btn-lg custom-button mb-3"
               role="button"
             >
               Edit Water
             </Link>
-            <button onClick={handleDelete} type="button" className="btn">
+            <DeleteB onClick={handleDelete} type="button">
               Delete Water
-            </button>
-          </div>
-        </div>
-      </div>
+            </DeleteB>
+          </LinkPos>
+        </DFlex>
+      </MainWrap>
       <Footer />
-    </MainWrap>
+     </>
   ) : <LoadingWrap>
       <h1>Loading........</h1>
     </LoadingWrap>;
@@ -88,11 +125,11 @@ const Water = ({
 Water.propTypes = {
   getWater: PropTypes.func.isRequired,
   deleteWater: PropTypes.func.isRequired,
-  waters: PropTypes.object
+  waters: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = state => ({
-  waters: state.waters.water,
+  waters: state.waters  ,
 });
 
 export default connect(mapStateToProps, { getWater, deleteWater })(withRouter(Water));

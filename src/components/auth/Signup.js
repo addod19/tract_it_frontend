@@ -6,9 +6,8 @@ import styled from 'styled-components';
 import { signup } from '../../redux/actions/authActions';
 
 const RegFormWrap = styled.div`
-  width: 50%;
-  height: 600px;
-  margin-left: 25%;
+  width: 100%;
+  height: 560px;
   display: flex;
   flex-direction: row;
   padding: 20px;
@@ -22,8 +21,7 @@ const RegFormWrap = styled.div`
 `;
 
 const NameWrap = styled.div`
-  width: 100%;
-
+  width: 60%;
   @media (max-width: 768px) {
     margin-left: 0;
   }
@@ -46,7 +44,7 @@ const PasswordWrap = styled.div`
 `;
 
 const ButtonWrap = styled.button`
-  width: 100%;
+  width: 60%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -61,12 +59,13 @@ const ButtonWrap = styled.button`
 `;
 
 const FormWrap = styled.form`
-  width: 100%;
+  width: 50%;
+  margin-left: 35%;
   height: 300px;
 `;
 
 const NameInp = styled.input`
-  width: 100%;
+  width: 155%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -79,7 +78,7 @@ const NameInp = styled.input`
 `;
 
 const EmailInp = styled.input`
-  width: 100%;
+  width: 155%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -92,7 +91,7 @@ const EmailInp = styled.input`
 `;
 
 const PasswordInp = styled.input`
-  width: 100%;
+  width: 155%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;

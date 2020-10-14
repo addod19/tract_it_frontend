@@ -86,7 +86,7 @@ EditWater.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  water: state.allwater.water,
+  water: state.water,
 });
 
 export default connect(mapStateToProps, { getWater, updateWater })(withRouter(EditWater));
