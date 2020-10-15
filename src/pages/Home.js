@@ -111,7 +111,7 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
           <HeaderStyle>
             <WelcomeMsg>welcome to the water tracking app</WelcomeMsg>
             {/* { console.log(user.name) } */}
-            <Name>{this.props.name}</Name>
+            <Name>{user.name}</Name>
             {' '}
             !!
           </HeaderStyle>
@@ -138,8 +138,8 @@ Home.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  name: state.auth.user.user.name,
-  // user: state.user
+  auth: state.auth,
+
 });
 
 export default connect(mapStateToProps, { signout })(Home);
