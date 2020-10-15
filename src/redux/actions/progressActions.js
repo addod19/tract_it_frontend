@@ -16,6 +16,7 @@ const apiConfig = {
 const progressCal = () => async dispatch => {
   try {
     const prog = await axios.get(`${defaultURL}/water_levels/progress`, apiConfig);
+    console.log(prog);
     dispatch({
       type: PROGRESS_CALCULATION,
       payload: prog.data.progress,

@@ -5,7 +5,8 @@ const initialState = {
   loading: false,
 };
 
-export default function (state = initialState, action) {                                           
+export default function (state = initialState, action) {    
+  console.log(action);                                       
   switch (action.type) {
     case GET_WATER:
       return {

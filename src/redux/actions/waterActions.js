@@ -5,8 +5,8 @@ import {
   WATERS_ERRORS,
 } from './types';
 
-// const defaultURL = 'http://localhost:3000'; //dev
-const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com'; //production
+const defaultURL = 'http://localhost:3000'; //dev
+// const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com'; //production
 
 const myLibrary = JSON.parse(localStorage.getItem('myLibrary')) || []
 
@@ -20,6 +20,7 @@ const addWaters = waterData => async dispatch => {
   };
   try {
     const water = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
+    console.log(water);
     myLibrary.push(water.data);
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
     dispatch({
