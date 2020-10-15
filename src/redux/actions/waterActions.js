@@ -5,8 +5,6 @@ import {
   WATERS_ERRORS,
 } from './types';
 
-// const setWater = payload => ({ type: 'SET_WATER', payload });
-
 const defaultURL = 'http://localhost:3000'; //dev
 // const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com'; //production
 

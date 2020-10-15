@@ -25,6 +25,7 @@ export const signup = userDetails => async dispatch => {
   };
   try {
     const data = await axios.post(`${defaultUrl}/signup`, userDetails, apiConfig);
+    console.log(data);
     localStorage.setItem('token', data.data.auth_token);
     dispatch(setUser({ loggedIn: true, user: data.data.user }));
     return data;

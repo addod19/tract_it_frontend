@@ -110,7 +110,8 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
         <UserWrap>
           <HeaderStyle>
             <WelcomeMsg>welcome to the water tracking app</WelcomeMsg>
-            <Name>{user.user.data.user.name}</Name>
+            {/* { console.log(user.name) } */}
+            <Name>{this.props.name}</Name>
             {' '}
             !!
           </HeaderStyle>
@@ -130,13 +131,15 @@ Home.propTypes = {
     loggedIn: PropTypes.bool.isRequired,
     user: PropTypes.shape({
       email: PropTypes.string,
+      name: PropTypes.string,
     }).isRequired,
   }).isRequired,
   signout: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth,
+  name: state.auth.user.user.name,
+  // user: state.user
 });
 
 export default connect(mapStateToProps, { signout })(Home);
