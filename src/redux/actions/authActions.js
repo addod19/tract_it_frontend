@@ -2,8 +2,8 @@ import setAuthToken from '../../helpers/setAuthToken';
 import { AUTH_FAIL } from './types';
 import axios from 'axios';
 
-const defaultUrl = 'http://localhost:3000'; //dev
-// const defaultUrl = 'https://mysterious-ravine-52687.herokuapp.com'; //production
+// const defaultUrl = 'http://localhost:3000'; //dev
+const defaultUrl = 'https://mysterious-ravine-52687.herokuapp.com'; //production
 
 const setUser = payload => ({ type: 'SET_USER', payload });
 
@@ -25,7 +25,6 @@ export const signup = userDetails => async dispatch => {
   };
   try {
     const data = await axios.post(`${defaultUrl}/signup`, userDetails, apiConfig);
-    console.log(data);
     localStorage.setItem('token', data.data.auth_token);
     dispatch(setUser({ loggedIn: true, user: data.data.user }));
     return data;
@@ -51,7 +50,6 @@ export const signin = userDetails => async dispatch => {
   };
   try {
     const data = await axios.post(`${defaultUrl}/auth/signin`, userDetails, apiConfig);
-    console.log(data);
     localStorage.setItem('token', data.data.auth_token);
     dispatch(setUser({ loggedIn: true, user: data.data.user }));
     return data;
