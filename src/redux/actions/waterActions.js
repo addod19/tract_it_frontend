@@ -20,7 +20,7 @@ const addWaters = waterData => async dispatch => {
   };
   try {
     const water = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
-    console.log(water);
+    // console.log(water);
     myLibrary.push(water.data);
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
     dispatch({
@@ -37,7 +37,7 @@ const addWaters = waterData => async dispatch => {
   }
 };
 
-const getWater = id => async (dispatch, getState) => {
+const getWater = id => async (dispatch, getState) => { // index page
   const apiConfig = {
     method: 'GET',
     headers: {
@@ -48,6 +48,7 @@ const getWater = id => async (dispatch, getState) => {
   };
   try {
     const water = await axios.get(`${defaultURL}/waters/${id}`, apiConfig);
+    console.log(water);
     dispatch({
       type: GET_WATER,
       payload: water.data,
@@ -73,6 +74,7 @@ const getWaters = () => async dispatch => {
   };
   try {
     const allData = await axios.get(`${defaultURL}/allData`, apiConfig);
+    console.log(`getWaters ${allData}`);
     dispatch({
       type: GET_WATERS,
       payload: allData.data,
