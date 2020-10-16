@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { addWaters } from '../../redux/actions/waterActions';
 import styled from 'styled-components';
 
+import { useHistory } from 'react-router-dom';
+
 import Footer from '../../pages/Footer';
 
 import { v1 as uuidv1 } from 'uuid';
@@ -99,6 +101,9 @@ const CenterW = styled.div`
   }
 `;
 const AddWater = ({ addWaters }) => {
+
+  const history = useHistory();
+  
   const [formData, setFormData] = useState({
     amount: '',
     total: '',
@@ -115,6 +120,7 @@ const AddWater = ({ addWaters }) => {
       amount,
       total,
     });
+    history.push('/allData');
   };
 
   return (

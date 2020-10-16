@@ -100,11 +100,11 @@ const Water = ({
             />
           </ChartPos>
           <LinkPos>
-            <Link to="/waters" className="back">
+            <Link to="/waters">
               Back to Data
             </Link>
             <Link className="edit"
-              to={`/waters/:${id}`}
+              to={`/waters/${id}`}
               role="button"
             >
               Edit Water
