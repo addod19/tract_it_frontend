@@ -129,8 +129,8 @@ const Progress = ({ progressCal, progress_calculations }) => {
 
 Progress.propTypes = {
   progress_calculations: PropTypes.shape({
-    amount: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired,
+    amount: PropTypes.number,
+    total: PropTypes.number,
   }),
   progressCal: PropTypes.func.isRequired,
 };

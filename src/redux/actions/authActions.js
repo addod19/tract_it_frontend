@@ -20,7 +20,7 @@ export const signup = userDetails => async dispatch => {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      // Authorization: `Bearer ${localStorage.getItem('token')}`,
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
     // Authorization: `Bearer ${localStorage.getItem('token')}`,
     body: JSON.stringify(userDetails),
@@ -30,7 +30,7 @@ export const signup = userDetails => async dispatch => {
     console.log(data);
     localStorage.setItem('token', data.data.auth_token.result);
     dispatch(setUser({ loggedIn: true, user: data.data.user }));
-    return data;
+    return data.data;
 
   } catch(error) {
     dispatch({
@@ -53,7 +53,8 @@ export const signin = userDetails => async dispatch => {
   };
   try {
     const data = await axios.post(`${defaultUrl}/auth/signin`, userDetails, apiConfig);
-    localStorage.setItem('token', data.data.auth_token.result);
+    console.log(data);
+    localStorage.setItem('token', data.data.auth_token);
     dispatch(setUser({ loggedIn: true, user: data.data.user }));
     return data;
 

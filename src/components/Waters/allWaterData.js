@@ -57,6 +57,7 @@ const AllWater = ({ getWaters, waters }) => {
     getWaters();
   }, [getWaters]);
 
+  console.log(waters);
   const result = (amount, total) => {
     if (amount + amount === total) {
       return 100;
@@ -93,11 +94,11 @@ const AllWater = ({ getWaters, waters }) => {
     </H4>
   );
 
-  return waters ? (
+  return waters.waters ? (
     <>
     <DataContent>
       <DataRow>
-        {waters.length > 0 ? allStacks : noWaterData}
+        {waters.waters.length > 0 ? allStacks : noWaterData}
       </DataRow>
     </DataContent>
     <Footer />
