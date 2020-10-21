@@ -74,12 +74,12 @@ const getWaters = () => async dispatch => {
   };
   try {
     const allData = await axios.get(`${defaultURL}/allData`, apiConfig);
-    console.log(`getWaters ${allData}`);
+    console.log(allData.data);
     dispatch({
       type: GET_WATERS,
       payload: allData.data,
     });
-    return allData;
+    return allData.data;
 
   } catch(error) {
     dispatch({

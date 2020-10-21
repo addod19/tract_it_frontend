@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import water from '../../redux/reducers/water';
+// import water from '../../redux/reducers/water';
 
 
 class WaterList extends Component {
@@ -11,14 +11,14 @@ class WaterList extends Component {
 
     this.state = {
       water: [],
-      amount: '',
-      total: '',
+      // amount: '',
+      // total: '',
     }
   }
 
   componentDidMount() {
     const auth_token = localStorage.getItem('token');
-    const url = 'http://localhost:3000';
+    const url = 'http://localhost:3000/allData';
 
     try {
       const wD = axios.get(url, {
@@ -37,18 +37,24 @@ class WaterList extends Component {
 
   render() {
 
+    // const { id } = this.state.water;
 
     return(
       <>
         <ul>
-          { water.map(w => {
-            <li key={w.id}>
-              { }
-              { w.amount }
-              { }
-              { w.total }
-            </li>
-          })}
+          {
+            if(water) {
+              { water.map(w => (
+                <li key={w.id}>
+                  { }
+                  { w.amount }
+                  { }
+                  { w.total }
+                </li>
+              ))}
+            }
+          }
+          
         </ul>
       </>
     )
@@ -57,9 +63,11 @@ class WaterList extends Component {
   
 }
 
+const mapStateToProps = state => ({
+  water: state.water,
+});
+
 WaterList.propTypes = {
-  water: PropTypes.array.isRequired,
-  amount: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired,
+  water: PropTypes.shape({}).isRequired,
 }
-export default WaterList;
+export default connect(mapStateToProps, null)(WaterList);

@@ -10,7 +10,21 @@ import Footer from '../../pages/Footer';
 import styled from 'styled-components';
 
 const H4 = styled.h4`
-  text-align: center;
+  height: 550px;
+  color: white;
+
+  @media(max-width: 768px) {
+    height: 450px;
+  }
+`;
+
+const P = styled.p`
+  position: absolute;
+  left: 35%;
+
+  @media(max-width: 768px) {
+    left: 10%;
+  }
 `;
 
 const DataContent = styled.div`
@@ -50,8 +64,10 @@ const AllWater = ({ getWaters, waters }) => {
     const percentage = ((amount) / (total)) * 100;
     return percentage >= 100 ? 100 : Math.round(percentage);
   };
-
-  const allStacks = waters.map(water => (
+  // console.log(getWaters());
+  // waters = getWaters();
+  // console.log(waters.allData);
+  const allStacks = waters.waters.map(water => (
     <div key={water.id}>
       <PieChart className="cSize"
         data={[{
@@ -73,7 +89,7 @@ const AllWater = ({ getWaters, waters }) => {
 
   const noWaterData = (
     <H4>
-      No water data yet? Kindly create one
+      <P>No water data yet? Kindly create one</P>
     </H4>
   );
 
