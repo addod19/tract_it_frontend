@@ -30,7 +30,7 @@ const P = styled.p`
 const DataContent = styled.div`
   display: flex;
   background-color: #51adcf;
-  margin-bottom: -90px;
+  margin-bottom: 0px;
 
   @media(max-width: 768px) {
     margin-bottom: 10px;
@@ -41,7 +41,7 @@ const DataRow = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 150px;
-  margin-left: 25%;
+  margin-left: 20%;
 
   @media(max-width: 768px) {
     display: flex;
@@ -57,7 +57,6 @@ const AllWater = ({ getWaters, waters }) => {
     getWaters();
   }, [getWaters]);
 
-  console.log(waters);
   const result = (amount, total) => {
     if (amount + amount === total) {
       return 100;
@@ -65,25 +64,24 @@ const AllWater = ({ getWaters, waters }) => {
     const percentage = ((amount) / (total)) * 100;
     return percentage >= 100 ? 100 : Math.round(percentage);
   };
-  // console.log(getWaters());
-  // waters = getWaters();
-  // console.log(waters.allData);
+  
   const allStacks = waters.waters.map(water => (
     <div key={water.id}>
       <PieChart className="cSize"
         data={[{
-          value: 1, color: '#8ce08a', key: `${result(water.amount, water.total)} %`,
+          value: 1, color: '#1F3C88', key: `${result(water.amount, water.total)} %`,
         }]}
         reveal={result(water.amount, water.total)}
         lineWidth={20}
         animate
         label={({ dataEntry }) => dataEntry.key}
       />
-      <h5>{water.amount}</h5>
+      <h5>Water Intake: {water.amount}ml</h5>
+      <h5>Water Target: {water.total}ml</h5>
       <Link
         to={{ pathname: `/waters/${water.id}` }}
       >
-        View All Water
+        View Water Details
       </Link>
     </div>
   ));

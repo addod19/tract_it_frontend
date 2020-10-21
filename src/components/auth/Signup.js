@@ -47,7 +47,7 @@ const PasswordWrap = styled.div`
 `;
 
 const ButtonWrap = styled.button`
-  width: 60%;
+  width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
@@ -67,9 +67,14 @@ const ButtonWrap = styled.button`
 `;
 
 const FormWrap = styled.form`
-  // width: 50%;
-  // margin-left: 35%;
-  // height: 300px;
+  width: 50%;
+  margin-left: 38%;
+  height: 300px;
+
+  @media(max-width: 768px) {
+    width: 80%;
+    margin-left: 0px;
+  }
 `;
 
 const NameInp = styled.input`
@@ -113,6 +118,11 @@ const PasswordInp = styled.input`
 
 const CenterLink = styled.div`
   text-align: center;
+  margin-right: 45%;
+
+  @media(max-width: 768px) {
+    margin-right: 0%;
+  }
 `;
 
 

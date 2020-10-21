@@ -14,7 +14,6 @@ const loadUser = () => async dispatch => {
 };
 
 export const signup = userDetails => async dispatch => {
-  console.log(userDetails);
   const apiConfig = {
     method: 'POST',
     headers: {
@@ -22,12 +21,10 @@ export const signup = userDetails => async dispatch => {
       Accept: 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
-    // Authorization: `Bearer ${localStorage.getItem('token')}`,
     body: JSON.stringify(userDetails),
   };
   try {
     const data = await axios.post(`${defaultUrl}/signup`, userDetails, apiConfig);
-    console.log(data);
     localStorage.setItem('token', data.data.auth_token.result);
     dispatch(setUser({ loggedIn: true, user: data.data.user }));
     return data.data;
@@ -53,10 +50,9 @@ export const signin = userDetails => async dispatch => {
   };
   try {
     const data = await axios.post(`${defaultUrl}/auth/signin`, userDetails, apiConfig);
-    console.log(data);
     localStorage.setItem('token', data.data.auth_token);
     dispatch(setUser({ loggedIn: true, user: data.data.user }));
-    return data;
+    return data.data;
 
   } catch(error) {
     dispatch({

@@ -20,7 +20,6 @@ const addWaters = waterData => async dispatch => {
   };
   try {
     const water = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
-    // console.log(water);
     myLibrary.push(water.data);
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
     dispatch({
@@ -48,12 +47,11 @@ const getWater = id => async (dispatch, getState) => { // index page
   };
   try {
     const water = await axios.get(`${defaultURL}/waters/${id}`, apiConfig);
-    console.log(water);
     dispatch({
       type: GET_WATER,
       payload: water.data,
     });
-    return water;
+    return water.data;
 
   } catch(error) {
     dispatch({
@@ -74,7 +72,6 @@ const getWaters = () => async dispatch => {
   };
   try {
     const allData = await axios.get(`${defaultURL}/allData`, apiConfig);
-    console.log(allData.data);
     dispatch({
       type: GET_WATERS,
       payload: allData.data,
@@ -105,7 +102,7 @@ const updateWater = (id, water) => async dispatch => {
       type: UPDATE_WATER,
       payload: edit.data,
     });
-    return edit;
+    return edit.data;
 
   } catch(error) {
     dispatch({
@@ -132,7 +129,7 @@ const deleteWater = id => async dispatch => {
       type: DELETE_WATER,
       payload: remove.data,
     });
-    return remove;
+    return remove.data;
 
   } catch(error) {
     dispatch({
