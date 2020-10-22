@@ -136,7 +136,7 @@ Progress.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  progress_calculations: state.waters,
+  progress_calculations: state.waters.waters,
 });
 
 export default connect(mapStateToProps, { progressCal })(Progress);
