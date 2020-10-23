@@ -4,10 +4,9 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { PieChart } from 'react-minimal-pie-chart';
+import styled from 'styled-components';
 import Footer from '../../pages/Footer';
 import { getWater, deleteWater } from '../../redux/actions/waterActions';
-
-import styled from 'styled-components';
 
 const MainWrap = styled.div`
   width: 100%;
@@ -88,7 +87,8 @@ const Water = ({
         <TextA>Water Data</TextA>
         <DFlex>
           <ChartPos>
-            <PieChart className="cSize"
+            <PieChart
+              className="cSize"
               data={[{
                 value: 1, color: '#1F3C88', key: `${result(waters.amount, waters.total)} %`,
               }]}
@@ -103,7 +103,8 @@ const Water = ({
             <Link to="/waters">
               Back to Data
             </Link>
-            <Link className="edit"
+            <Link
+              className="edit"
               to={`/waters/${id}`}
               role="button"
             >
@@ -116,20 +117,22 @@ const Water = ({
         </DFlex>
       </MainWrap>
       <Footer />
-     </>
-  ) : <LoadingWrap>
+    </>
+  ) : (
+    <LoadingWrap>
       <h1>Loading........</h1>
-    </LoadingWrap>;
+    </LoadingWrap>
+  );
 };
 
 Water.propTypes = {
   getWater: PropTypes.func.isRequired,
   deleteWater: PropTypes.func.isRequired,
-  waters: PropTypes.array.isRequired,
+  waters: PropTypes.shape([]).isRequired,
 };
 
 const mapStateToProps = state => ({
-  waters: state.waters  ,
+  waters: state.waters,
 });
 
 export default connect(mapStateToProps, { getWater, deleteWater })(withRouter(Water));

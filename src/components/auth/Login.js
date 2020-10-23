@@ -91,7 +91,6 @@ const LoginBtn = styled.button`
   }
 `;
 
-
 const Signin = ({ signin, authenticated: { loggedIn } }) => {
   const [loginData, setloginData] = useState({
     email: '',

@@ -39,7 +39,7 @@ const App = () => {
     <Provider store={store}>
       <AppWrap>
         <Router>
-        <Header />
+          <Header />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/signin" exact component={Signin} />

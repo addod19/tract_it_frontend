@@ -12,18 +12,17 @@ const apiConfig = {
     Authorization: `Bearer ${localStorage.getItem('token')}`,
   },
 };
-
+// eslint-disable-next-line consistent-return
 const progressCal = () => async dispatch => {
   try {
     const prog = await axios.get(`${defaultURL}/water_levels/progress`, apiConfig);
-    console.log(prog);
+    // console.log(prog);
     dispatch({
       type: PROGRESS_CALCULATION,
       payload: prog.data.progress,
     });
     return prog;
-
-  } catch(error) {
+  } catch (error) {
     dispatch({
       type: WATERS_ERRORS,
       payload: error,

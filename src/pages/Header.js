@@ -12,16 +12,14 @@ const Hstyle = styled.h2`
   text-align: center;
 `;
 
-const Header = () => {
-  return(
-    <HeaderWrap>
-      <Hstyle>
-        <Link to="/">
-          Track.it
-        </Link>
-      </Hstyle>
-    </HeaderWrap>
-  );
-}
+const Header = () => (
+  <HeaderWrap>
+    <Hstyle>
+      <Link to="/">
+        Track.it
+      </Link>
+    </Hstyle>
+  </HeaderWrap>
+);
 
 export default Header;

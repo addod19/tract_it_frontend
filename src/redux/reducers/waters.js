@@ -1,10 +1,10 @@
 import { GET_WATERS, DELETE_WATER, UPDATE_WATER } from '../actions/types';
-  
+
 const initialState = {
   waters: [],
   loading: false,
 };
-  
+
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
@@ -29,4 +29,3 @@ export default function (state = initialState, action) {
       return state;
   }
 }
-  

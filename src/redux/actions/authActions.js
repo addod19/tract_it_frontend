@@ -1,18 +1,18 @@
+import axios from 'axios';
 import setAuthToken from '../../helpers/setAuthToken';
 import { AUTH_FAIL } from './types';
-import axios from 'axios';
 
-const defaultUrl = 'http://localhost:3000'; //dev
+const defaultUrl = 'http://localhost:3000'; // dev
 // const defaultUrl = 'https://mysterious-ravine-52687.herokuapp.com'; //production
 
 const setUser = payload => ({ type: 'SET_USER', payload });
-
+// eslint-disable-next-line no-unused-vars
 const loadUser = () => async dispatch => {
   if (localStorage.auth_token) {
     setAuthToken(localStorage.auth_token);
   }
 };
-
+// eslint-disable-next-line consistent-return
 export const signup = userDetails => async dispatch => {
   const apiConfig = {
     method: 'POST',
@@ -25,19 +25,18 @@ export const signup = userDetails => async dispatch => {
   };
   try {
     const data = await axios.post(`${defaultUrl}/signup`, userDetails, apiConfig);
+    // console.log(data);
     localStorage.setItem('token', data.data.auth_token.result);
     dispatch(setUser({ loggedIn: true, user: data.data.user }));
     return data.data;
-
-  } catch(error) {
+  } catch (error) {
     dispatch({
       type: AUTH_FAIL,
       payload: error,
     });
   }
-  
 };
-
+// eslint-disable-next-line consistent-return
 export const signin = userDetails => async dispatch => {
   const apiConfig = {
     method: 'POST',
@@ -46,21 +45,20 @@ export const signin = userDetails => async dispatch => {
       Accept: 'application/json',
     },
     body: JSON.stringify(userDetails),
-    Authorization: `Bearer ${localStorage.getItem('token')}`
+    Authorization: `Bearer ${localStorage.getItem('token')}`,
   };
   try {
     const data = await axios.post(`${defaultUrl}/auth/signin`, userDetails, apiConfig);
+    // console.log(data);
     localStorage.setItem('token', data.data.auth_token);
     dispatch(setUser({ loggedIn: true, user: data.data.user }));
     return data.data;
-
-  } catch(error) {
+  } catch (error) {
     dispatch({
       type: AUTH_FAIL,
       payload: error,
-    })
+    });
   }
-  
 };
 
 export const signout = () => ({ type: 'SIGN_OUT' });

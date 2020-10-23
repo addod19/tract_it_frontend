@@ -125,13 +125,11 @@ const CenterLink = styled.div`
   }
 `;
 
-
 const SignUp = ({ signup, authenticated: { loggedIn } }) => {
-
   const [signupData, setSignupData] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
   });
 
   const { name, email, password } = signupData;
@@ -151,48 +149,44 @@ const SignUp = ({ signup, authenticated: { loggedIn } }) => {
     <RegFormWrap>
       <FormWrap onSubmit={handleSubmit}>
         <NameWrap>
-          <label htmlFor="name">
-            <NameInp
-              type="text"
-              onChange={handleChange}
-              placeholder="Name"
-              value={name}
-              name="name"            
-              required
-            />
-          </label>
+          <NameInp
+            type="text"
+            onChange={handleChange}
+            placeholder="Name"
+            value={name}
+            name="name"
+            required
+          />
         </NameWrap>
         <EmailWrap>
-          <label htmlFor="email">
-            <EmailInp
-              type="email"
-              onChange={handleChange}
-              placeholder="Email"
-              value={email}
-              name="email"
-              required
-            />
-          </label>
+          <EmailInp
+            type="email"
+            onChange={handleChange}
+            placeholder="Email"
+            value={email}
+            name="email"
+            required
+          />
         </EmailWrap>
         <PasswordWrap>
-          <label htmlFor="password">
-            <PasswordInp
-              type="password"
-              onChange={handleChange}
-              placeholder="Password"
-              value={password}
-              name="password"
-              required
-            />
-          </label>
+          <PasswordInp
+            type="password"
+            onChange={handleChange}
+            placeholder="Password"
+            value={password}
+            name="password"
+            required
+          />
         </PasswordWrap>
         <ButtonWrap type="submit" onClick={handleSubmit}>
           Create a new User
         </ButtonWrap>
         <CenterLink>
-        or <Link to="/signin">
-              Signin
-            </Link>
+          or
+          {' '}
+          <Link to="/signin">
+            Signin
+          </Link>
         </CenterLink>
       </FormWrap>
     </RegFormWrap>

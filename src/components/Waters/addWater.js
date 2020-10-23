@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addWaters } from '../../redux/actions/waterActions';
 import styled from 'styled-components';
 
 import { useHistory } from 'react-router-dom';
 
+import { v1 as uuidv1 } from 'uuid';
 import Footer from '../../pages/Footer';
 
-import { v1 as uuidv1 } from 'uuid';
+import { addWaters } from '../../redux/actions/waterActions';
 
 const AddWrap = styled.div`
   height:475px;
@@ -101,9 +101,8 @@ const CenterW = styled.div`
   }
 `;
 const AddWater = ({ addWaters }) => {
-
   const history = useHistory();
-  
+
   const [formData, setFormData] = useState({
     amount: '',
     total: '',
@@ -130,7 +129,7 @@ const AddWater = ({ addWaters }) => {
           Add Water
         </TrackWater>
         <CenterW>
-          
+
           <FormWrap onSubmit={onSubmit}>
             <AmountInp
               type="number"
@@ -161,7 +160,7 @@ const AddWater = ({ addWaters }) => {
 
 AddWater.propTypes = {
   addWaters: PropTypes.func.isRequired,
-  water: PropTypes.array.isRequired,
+  // water: PropTypes.shape([]).isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -169,7 +168,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addWaters: (e) => dispatch(addWaters(e)),
+  addWaters: e => dispatch(addWaters(e)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddWater);

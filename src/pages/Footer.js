@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import addWater from '../images/add-stack.png';
 import home from '../images/home.png';
 import trackIt from '../images/track-it.png';
 import progress from '../images/progress.png';
 
 import '../App.css';
-import styled from 'styled-components';
 
 const FooterWrap = styled.footer`
   height: 100px;

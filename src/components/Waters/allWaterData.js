@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { PieChart } from 'react-minimal-pie-chart';
+import styled from 'styled-components';
 import { getWaters } from '../../redux/actions/waterActions';
 
 import Footer from '../../pages/Footer';
-
-import styled from 'styled-components';
 
 const H4 = styled.h4`
   height: 550px;
@@ -51,7 +50,6 @@ const DataRow = styled.div`
   }
 `;
 
-
 const AllWater = ({ getWaters, waters }) => {
   useEffect(() => {
     getWaters();
@@ -64,10 +62,11 @@ const AllWater = ({ getWaters, waters }) => {
     const percentage = ((amount) / (total)) * 100;
     return percentage >= 100 ? 100 : Math.round(percentage);
   };
-  
+
   const allStacks = waters.waters.map(water => (
     <div key={water.id}>
-      <PieChart className="cSize"
+      <PieChart
+        className="cSize"
         data={[{
           value: 1, color: '#1F3C88', key: `${result(water.amount, water.total)} %`,
         }]}
@@ -76,8 +75,16 @@ const AllWater = ({ getWaters, waters }) => {
         animate
         label={({ dataEntry }) => dataEntry.key}
       />
-      <h5>Water Intake: {water.amount}ml</h5>
-      <h5>Water Target: {water.total}ml</h5>
+      <h5>
+        Water Intake:
+        {water.amount}
+        ml
+      </h5>
+      <h5>
+        Water Target:
+        {water.total}
+        ml
+      </h5>
       <Link
         to={{ pathname: `/waters/${water.id}` }}
       >
@@ -94,12 +101,12 @@ const AllWater = ({ getWaters, waters }) => {
 
   return waters.waters ? (
     <>
-    <DataContent>
-      <DataRow>
-        {waters.waters.length > 0 ? allStacks : noWaterData}
-      </DataRow>
-    </DataContent>
-    <Footer />
+      <DataContent>
+        <DataRow>
+          {waters.waters.length > 0 ? allStacks : noWaterData}
+        </DataRow>
+      </DataContent>
+      <Footer />
     </>
   ) : <h2>Loading........</h2>;
 };

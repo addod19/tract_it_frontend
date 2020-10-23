@@ -1,11 +1,11 @@
-import { GET_WATER,  ADD_WATER } from '../actions/types';
+import { GET_WATER, ADD_WATER } from '../actions/types';
 
 const initialState = {
   water: [],
   loading: false,
 };
 
-export default function (state = initialState, action) {                                          
+export default function (state = initialState, action) {
   switch (action.type) {
     case GET_WATER:
       return {

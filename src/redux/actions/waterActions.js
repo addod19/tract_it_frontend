@@ -1,15 +1,15 @@
-/* eslint-disable import/prefer-default-export */
+// eslint-disable import/prefer-default-export no-unused-vars
 import axios from 'axios';
 import {
   GET_WATERS, GET_WATER, DELETE_WATER, ADD_WATER, UPDATE_WATER,
   WATERS_ERRORS,
 } from './types';
 
-const defaultURL = 'http://localhost:3000'; //dev
+const defaultURL = 'http://localhost:3000'; // dev
 // const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com'; //production
 
-const myLibrary = JSON.parse(localStorage.getItem('myLibrary')) || []
-
+const myLibrary = JSON.parse(localStorage.getItem('myLibrary')) || [];
+// eslint-disable-next-line consistent-return
 const addWaters = waterData => async dispatch => {
   const apiConfig = {
     method: 'POST',
@@ -20,6 +20,7 @@ const addWaters = waterData => async dispatch => {
   };
   try {
     const water = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
+    // console.log(water);
     myLibrary.push(water.data);
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
     dispatch({
@@ -27,16 +28,15 @@ const addWaters = waterData => async dispatch => {
       payload: water.data,
     });
     return water.data;
-
-  } catch(error) {
+  } catch (error) {
     dispatch({
       type: WATERS_ERRORS,
-      payload: error
+      payload: error,
     });
   }
 };
-
-const getWater = id => async (dispatch, getState) => { // index page
+// eslint-disable-next-line consistent-return
+const getWater = id => async dispatch => { // index page
   const apiConfig = {
     method: 'GET',
     headers: {
@@ -52,15 +52,14 @@ const getWater = id => async (dispatch, getState) => { // index page
       payload: water.data,
     });
     return water.data;
-
-  } catch(error) {
+  } catch (error) {
     dispatch({
       type: WATERS_ERRORS,
       payload: error,
     });
   }
 };
-
+// eslint-disable-next-line consistent-return
 const getWaters = () => async dispatch => {
   const apiConfig = {
     method: 'GET',
@@ -78,15 +77,14 @@ const getWaters = () => async dispatch => {
       payload: allData.data,
     });
     return allData.data;
-
-  } catch(error) {
+  } catch (error) {
     dispatch({
       type: WATERS_ERRORS,
       payload: error,
-    })
+    });
   }
 };
-
+// eslint-disable-next-line consistent-return
 const updateWater = (id, water) => async dispatch => {
   const apiConfig = {
     method: 'PUT',
@@ -104,15 +102,14 @@ const updateWater = (id, water) => async dispatch => {
       payload: edit.data,
     });
     return edit.data;
-
-  } catch(error) {
+  } catch (error) {
     dispatch({
       type: WATERS_ERRORS,
       payload: error,
     });
   }
 };
-
+// eslint-disable-next-line consistent-return
 const deleteWater = id => async dispatch => {
   const apiConfig = {
     method: 'DELETE',
@@ -131,8 +128,7 @@ const deleteWater = id => async dispatch => {
       payload: remove.data,
     });
     return remove.data;
-
-  } catch(error) {
+  } catch (error) {
     dispatch({
       type: WATERS_ERRORS,
       payload: error,
@@ -141,5 +137,5 @@ const deleteWater = id => async dispatch => {
 };
 
 export {
-  addWaters, getWater, getWaters, updateWater, deleteWater
+  addWaters, getWater, getWaters, updateWater, deleteWater,
 };

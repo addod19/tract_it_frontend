@@ -1,5 +1,11 @@
-import reducers from '../../redux/reducers/auth';
+import auth from '../../redux/reducers/auth';
 
-test('reducers', () => {
-
+describe('auth reducer', () => {
+  const initialState = {
+    loggedIn: false,
+    user: {},
+  };
+  test('should return the initial state', () => {
+    expect(auth(undefined, {})).toEqual(initialState);
+  });
 });

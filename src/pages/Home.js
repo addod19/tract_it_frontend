@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { signout } from '../redux/actions/authActions';
 
-import Footer from '../pages/Footer';
+import Footer from './Footer';
 
 import Signin from '../components/auth/Login';
 
@@ -94,7 +94,7 @@ const SignoutBtn = styled.button`
 const Home = ({ auth: { loggedIn, user }, signout }) => (
   <Bg>
     {loggedIn === false ? (
-      <FalseWrap >
+      <FalseWrap>
         <FormWrap>
           <Signin />
           <SignupWrap>
@@ -103,24 +103,24 @@ const Home = ({ auth: { loggedIn, user }, signout }) => (
             </Link>
           </SignupWrap>
         </FormWrap>
-      </FalseWrap >
+      </FalseWrap>
     ) : (
       <>
-      <MainWrap>
-        <UserWrap>
-          <HeaderStyle>
-            <WelcomeMsg>welcome to the water tracking app</WelcomeMsg>
-            {/* { console.log(user.name) } */}
-            <Name>{user.name}</Name>
-            {' '}
-            !!
-          </HeaderStyle>
-          <SignoutPos>
-            <SignoutBtn type="button" onClick={signout}>Signout</SignoutBtn>
-          </SignoutPos>
-        </UserWrap>
-      </MainWrap>
-      <Footer/>
+        <MainWrap>
+          <UserWrap>
+            <HeaderStyle>
+              <WelcomeMsg>welcome to the water tracking app</WelcomeMsg>
+              {/* { console.log(user.name) } */}
+              <Name>{user.name}</Name>
+              {' '}
+              !!
+            </HeaderStyle>
+            <SignoutPos>
+              <SignoutBtn type="button" onClick={signout}>Signout</SignoutBtn>
+            </SignoutPos>
+          </UserWrap>
+        </MainWrap>
+        <Footer />
       </>
     )}
   </Bg>

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { getWater, updateWater } from '../../redux/actions/waterActions';
 
 const EditWater = ({
-  getWater, match, updateWater, history, water
+  getWater, match, updateWater, history, water,
 }) => {
   const [formData, setFormData] = useState({
     amount: '',
@@ -36,44 +36,43 @@ const EditWater = ({
   return (
     <>
       <div>
+        <div>
+          Edit Water
+        </div>
+        <form onSubmit={onSubmit}>
           <div>
-            Edit Water
+            <label htmlFor="amount">
+              Amount
+              <input
+                type="number"
+                name="amount"
+                value={amount}
+                onChange={onChange}
+                placeholder="Amount"
+                required
+              />
+            </label>
           </div>
-          <form onSubmit={onSubmit}>
-            <div>
-              <label htmlFor="amount">
-                Amount
-                <input
-                  type="number"
-                  name="amount"
-                  value={amount}
-                  onChange={onChange}
-                  placeholder="Amount"
-                  required
-
-                />
-              </label>
-            </div>
-            <div>
-              <label htmlFor="WaterTarget">
-                Target
-                <input
-                  type="number"
-                  name="target"
-                  placeholder="Water Target"
-                  required
-                  value={total}
-                  onChange={onChange}
-                />
-              </label>
-            </div>
-            <button type="submit">
-              Save changes
-            </button>
-            <Link to={`/water/${id}`}>
-              Back to water data
-            </Link>
-          </form>
+          <div>
+            <label htmlFor="WaterTarget">
+              Target
+              <input
+                type="number"
+                name="target"
+                placeholder="Water Target"
+                required
+                value={total}
+                onChange={onChange}
+              />
+            </label>
+          </div>
+          <button type="submit">
+            Save changes
+          </button>
+          <Link to={`/water/${id}`}>
+            Back to water data
+          </Link>
+        </form>
       </div>
     </>
   );
