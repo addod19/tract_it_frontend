@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { PROGRESS_CALCULATION, WATERS_ERRORS } from './types';
 
-// const defaultURL = 'http://localhost:3000';
+// const defaultURL = 'http://localhost:3000'; //dev
 
 const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com'; //production
 

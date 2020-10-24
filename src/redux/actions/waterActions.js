@@ -16,6 +16,7 @@ const addWaters = waterData => async dispatch => {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   };
   try {
@@ -42,8 +43,8 @@ const getWater = id => async dispatch => { // index page
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
   };
   try {
     const water = await axios.get(`${defaultURL}/waters/${id}`, apiConfig);
@@ -92,8 +93,8 @@ const updateWater = (id, water) => async dispatch => {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
     body: JSON.stringify(water),
   };
   try {
@@ -117,8 +118,8 @@ const deleteWater = id => async dispatch => {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
-    Authorization: `Bearer ${localStorage.getItem('token')}`,
   };
   try {
     const remove = await axios.delete(`${defaultURL}/waters/${id}`, apiConfig);
