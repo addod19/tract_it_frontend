@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { useHistory } from 'react-router-dom';
 
-import { v1 as uuidv1 } from 'uuid';
+// import { v1 as uuidv1 } from 'uuid';
 import Footer from '../../pages/Footer';
 
 import { addWaters } from '../../redux/actions/waterActions';
@@ -115,7 +115,6 @@ const AddWater = ({ addWaters }) => {
   const onSubmit = e => {
     e.preventDefault();
     addWaters({
-      id: uuidv1(),
       amount,
       total,
     });
