@@ -5,8 +5,8 @@ import {
   WATERS_ERRORS,
 } from './types';
 
-const defaultURL = 'http://localhost:3000'; // dev
-// const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com'; //production
+// const defaultURL = 'http://localhost:3000'; // dev
+const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com'; //production
 
 const myLibrary = JSON.parse(localStorage.getItem('myLibrary')) || [];
 // eslint-disable-next-line consistent-return
@@ -17,11 +17,14 @@ const addWaters = waterData => async dispatch => {
       'Content-Type': 'application/json',
       Accept: 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
+      // 'Access-Control-Allow-Origin': '*',
     },
   };
+  console.log(apiConfig);
   try {
     const water = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
     myLibrary.push(water.data);
+    
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
     dispatch({
       type: ADD_WATER,

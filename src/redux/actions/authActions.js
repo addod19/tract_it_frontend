@@ -2,8 +2,8 @@ import axios from 'axios';
 import setAuthToken from '../../helpers/setAuthToken';
 import { AUTH_FAIL } from './types';
 
-const defaultUrl = 'http://localhost:3000'; // dev
-// const defaultUrl = 'https://mysterious-ravine-52687.herokuapp.com'; //production
+// const defaultUrl = 'http://localhost:3000'; // dev
+const defaultUrl = 'https://mysterious-ravine-52687.herokuapp.com'; //production
 
 const setUser = payload => ({ type: 'SET_USER', payload });
 // eslint-disable-next-line no-unused-vars
