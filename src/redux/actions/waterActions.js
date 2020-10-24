@@ -5,8 +5,8 @@ import {
   WATERS_ERRORS,
 } from './types';
 
-const defaultURL = 'http://localhost:3000'; // dev
-// const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com'; //production
+// const defaultURL = 'http://localhost:3000'; // dev
+const defaultURL = 'https://mysterious-ravine-52687.herokuapp.com'; //production
 
 const myLibrary = JSON.parse(localStorage.getItem('myLibrary')) || [];
 // eslint-disable-next-line consistent-return
@@ -20,7 +20,7 @@ const addWaters = waterData => async dispatch => {
   };
   try {
     const water = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
-    // console.log(water);
+    console.log(water);
     myLibrary.push(water.data);
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
     dispatch({
@@ -47,6 +47,7 @@ const getWater = id => async dispatch => { // index page
   };
   try {
     const water = await axios.get(`${defaultURL}/waters/${id}`, apiConfig);
+    console.log(water);
     dispatch({
       type: GET_WATER,
       payload: water.data,
@@ -71,7 +72,7 @@ const getWaters = () => async dispatch => {
   };
   try {
     const allData = await axios.get(`${defaultURL}/allData`, apiConfig);
-    // console.log(allData);
+    console.log(allData);
     dispatch({
       type: GET_WATERS,
       payload: allData.data,
