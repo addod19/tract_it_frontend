@@ -50,7 +50,10 @@ To get a local copy up and running follow these simple example steps.
 ![screenshot](test.png)
 
 ## Screenshot
-![screenshot](water.png)
+![screenshot](one.png)
+![screenshot](two.png)
+![screenshot](three.png)
+![screenshot](four.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
