@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { PROGRESS_CALCULATION, WATERS_ERRORS } from './types';
 
-// const defaultURL = 'http://localhost:3000'; //dev
+const defaultURL = 'http://localhost:3000'; //dev
 
-const defaultURL = 'https://fierce-garden-43632.herokuapp.com'; // production
+// const defaultURL = 'https://fierce-garden-43632.herokuapp.com'; // production
 
 const apiConfig = {
   headers: {

@@ -5,8 +5,8 @@ import {
   WATERS_ERRORS,
 } from './types';
 
-// const defaultURL = 'http://localhost:3000'; // dev
-const defaultURL = 'https://fierce-garden-43632.herokuapp.com'; //production
+const defaultURL = 'http://localhost:3000'; // dev
+// const defaultURL = 'https://fierce-garden-43632.herokuapp.com'; //production
 
 const myLibrary = JSON.parse(localStorage.getItem('myLibrary')) || [];
 // eslint-disable-next-line consistent-return

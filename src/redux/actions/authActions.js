@@ -2,8 +2,8 @@ import axios from 'axios';
 import setAuthToken from '../../helpers/setAuthToken';
 import { AUTH_FAIL } from './types';
 
-// const defaultUrl = 'http://localhost:3000'; // dev
-const defaultUrl = 'https://fierce-garden-43632.herokuapp.com'; //production
+const defaultUrl = 'http://localhost:3000'; // dev
+// const defaultUrl = 'https://fierce-garden-43632.herokuapp.com'; //production
 
 const setUser = payload => ({ type: 'SET_USER', payload });
 // eslint-disable-next-line no-unused-vars
@@ -23,6 +23,7 @@ export const signup = userDetails => async dispatch => {
     },
     body: JSON.stringify(userDetails),
   };
+  console.log(apiConfig);
   try {
     const data = await axios.post(`${defaultUrl}/signup`, userDetails, apiConfig);
     localStorage.setItem('token', data.data.auth_token.result);
@@ -43,9 +44,11 @@ export const signin = userDetails => async dispatch => {
       'Content-Type': 'application/json',
       Accept: 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
+      // 'Access-Control-Allow-Origin': '*',
     },
     body: JSON.stringify(userDetails),
   };
+  console.log(apiConfig);
   try {
     const data = await axios.post(`${defaultUrl}/auth/signin`, userDetails, apiConfig);
     localStorage.setItem('token', data.data.auth_token);
