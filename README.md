@@ -20,6 +20,12 @@ To get the accurate data
 - npm
 - React
 - Redux
+- React-Redux
+- Redux-thunk
+- Axios
+- React-Minimal-Pie-Chart
+- React-Router
+- UUID
 - Styled-components
 - Heroku
 
