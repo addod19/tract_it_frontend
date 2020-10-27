@@ -23,10 +23,10 @@ export const signup = userDetails => async dispatch => {
     },
     body: JSON.stringify(userDetails),
   };
-  console.log(apiConfig);
+
   try {
     const data = await axios.post(`${defaultUrl}/signup`, userDetails, apiConfig);
-    console.log(data);
+
     localStorage.setItem('token', data.data.auth_token.result);
     dispatch(setUser({ loggedIn: true, user: data.data.user }));
     return data.data;
@@ -49,10 +49,10 @@ export const signin = userDetails => async dispatch => {
     },
     body: JSON.stringify(userDetails),
   };
-  console.log(apiConfig);
+
   try {
     const data = await axios.post(`${defaultUrl}/auth/signin`, userDetails, apiConfig);
-    console.log(data);
+
     localStorage.setItem('token', data.data.auth_token);
     dispatch(setUser({ loggedIn: true, user: data.data.user }));
     return data.data;
