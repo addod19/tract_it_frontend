@@ -23,8 +23,8 @@ const addWaters = waterData => async dispatch => {
   console.log(apiConfig);
   try {
     const water = await axios.post(`${defaultURL}/waters`, waterData, apiConfig);
-    myLibrary.push(water.data);
-    
+    console.log(water);
+    myLibrary.push(water.data); 
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
     dispatch({
       type: ADD_WATER,
@@ -74,6 +74,7 @@ const getWaters = () => async dispatch => {
   };
   try {
     const allData = await axios.get(`${defaultURL}/allData`, apiConfig);
+    console.log(allData);
     dispatch({
       type: GET_WATERS,
       payload: allData.data,
