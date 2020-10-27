@@ -85,11 +85,6 @@ const AllWater = ({ getWaters, waters }) => {
         {water.total}
         ml
       </h5>
-      <Link
-        to={{ pathname: `/waters/${water.id}` }}
-      >
-        View Water Details
-      </Link>
     </div>
   ));
 
